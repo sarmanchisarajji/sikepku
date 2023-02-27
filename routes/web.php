@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
+
+Route::get('/dashboard/posts-soal', function () {
+    return view('dashboard.posts.tambah');
+});
+
+Route::get('/dashboard/tampil-soal', function () {
+    return view('dashboard.posts.index');
+});

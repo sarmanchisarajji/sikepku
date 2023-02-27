@@ -45,7 +45,7 @@
                     </g> --}}
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">SIKEPKU</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2 text-uppercase">SIKEPKU</span>
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -54,11 +54,33 @@
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
             <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
+        </li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Forms Pertanyaan</span>
+        </li>
+        <!-- Forms -->
+        <li class="menu-item {{ request()->is('dashboard/*') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Layouts">Form Layouts</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('dashboard/tampil-soal') ? 'active' : '' }}">
+                    <a href="/dashboard/tampil-soal" class="menu-link">
+                        <div data-i18n="Vertical Form">Bank Pertanyaan</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('dashboard/posts-soal') ? 'active' : '' }}">
+                    <a href="/dashboard/posts-soal" class="menu-link">
+                        <div data-i18n="Horizontal Form">Pertanyaan Baru</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <!-- Layouts -->
         {{-- <li class="menu-item">

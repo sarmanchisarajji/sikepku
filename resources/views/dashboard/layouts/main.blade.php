@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     {{-- <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico" /> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,6 +103,15 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="/vendor/js/helpers.js"></script>
+
+    <script src="/js/config.js"></script>
+    <script src="/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="/vendor/libs/popper/popper.js"></script>
+    <script src="/vendor/js/bootstrap.js"></script>
+
+    <script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vendor/js/menu.js"></script>
 </body>
 
 </html>
