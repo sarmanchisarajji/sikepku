@@ -38,7 +38,7 @@
               <input type="text" class="form-control" id="password" name="password" required placeholder="Masukan Password" aria-describedby="basic-addon3">
             </div>
             <!-- Pilih status -->
-            <label for="status" class="form-label">Pilih Status</label>
+            <label for="password" class="form-label">Pilih Status</label>
             <div class="input-group mb-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pilih status
@@ -75,4 +75,3 @@
  
   </body>
 </html>
-<!-- coba -->
