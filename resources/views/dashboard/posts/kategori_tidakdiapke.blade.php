@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body">
                         <form action="" method="">
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label text-capitalize" for="basic-default-name"
                                     style="font-size: .9rem !important">Kategori</label>
                                 <div class="col-sm-10">
@@ -28,7 +28,7 @@
                                         <option value="2">Mitra Pengabdian</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label text-capitalize" for="basic-default-message"
                                     style="font-size: .9rem !important">Pertanyaan</label>

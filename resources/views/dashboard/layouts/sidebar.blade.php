@@ -70,8 +70,8 @@
                 <div data-i18n="Form Layouts">Form Layouts</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('dashboard/tampil-soal') ? 'active' : '' }}">
-                    <a href="/dashboard/tampil-soal" class="menu-link">
+                <li class="menu-item {{ request()->is('dashboard/tampil*') ? 'active' : '' }}">
+                    <a href="/dashboard/tampil" class="menu-link">
                         <div data-i18n="Vertical Form">Bank Pertanyaan</div>
                     </a>
                 </li>

@@ -1,26 +1,36 @@
 <?php
 
+use App\Models\Kategori;
+use App\Models\Pertanyaan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PertanyaanController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
-Route::get('/dashboard/posts-soal', function () {
-    return view('dashboard.posts.tambah');
-});
+// Route::get('/dashboard/posts-soal', function () {
+//     return view('dashboard.posts.tambah');
+// });
 
-Route::get('/dashboard/tampil-soal', function () {
-    return view('dashboard.posts.index');
-});
+// Route::get('/dashboard/tampil', function () {
+//     return view('dashboard.posts.index', [
+//         'kategories' => Kategori::all()
+//     ]);
+// });
+
+// Route::get('/dashboard/tampil/kategori/{kategori:id}', function (Kategori $kategori) {
+//     return view('dashboard.posts.pertanyaan', [
+//         'pertanyaans' => $kategori->pertanyaan
+//     ]);
+// });
+
+Route::get('/dashboard/tampil/kategori/{kategori:id}', [PertanyaanController::class, 'index']);
+Route::get('/dashboard/tampil', [KategoriController::class, 'index']);
+
+
+Route::post('/create', [PertanyaanController::class, 'create']);
+Route::put('/update/{id}', [PertanyaanController::class, 'update']);
+Route::get('/hapus/{id}', [PertanyaanController::class, 'destroy']);
