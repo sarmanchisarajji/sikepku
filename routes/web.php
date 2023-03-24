@@ -2,7 +2,9 @@
 
 use App\Models\Kategori;
 use App\Models\Pertanyaan;
+use App\Models\Dosen;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PertanyaanController;
 
@@ -29,6 +31,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/tampil/kategori/{kategori:id}', [PertanyaanController::class, 'index']);
 Route::get('/dashboard/tampil', [KategoriController::class, 'index']);
+Route::get('/dosen', [DosenController::class, 'index-dosen']);
 
 
 Route::post('/create', [PertanyaanController::class, 'create']);
