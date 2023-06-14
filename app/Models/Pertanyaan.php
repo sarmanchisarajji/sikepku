@@ -19,4 +19,14 @@ class Pertanyaan extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class);
+    }
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class);
+    }
 }

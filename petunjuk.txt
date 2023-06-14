@@ -1,0 +1,17 @@
+Cara menggunakan SikepKu
+
+1. Download source code pada link yang tersedia
+2. Ekstrak folder source code
+3. Membuat nama database dengan nama mydb lalu mengimport database dengan database yang ada pada folder yang telah diekstrak (nama file mydb.sql)
+4. Sebelum dapat menjalankan aplikasi aktifkan Apache dan MySQL pada XAMPP terlebih dahulu
+5. Aplikasi sudah dapat dijalankan dengan menggunakan perintah php artisan serve
+
+Untuk melakukan login, terdapat 7 level user : 
+1. level 1 - admin username : admin@gmail.com password : 11111 
+2. Untuk 6 level user lainnya dapat melakukan registrasi terlebih dahulu
+   Untuk password maksimum 5 karakter.
+
+
+Note :
+
+JANGAN MELAKUKAN MIGRATE PADA SOURCE CODE INI KARENA MIGRASI DATABASENYA TIDAK ADA

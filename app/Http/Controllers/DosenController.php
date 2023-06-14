@@ -9,8 +9,6 @@ class DosenController extends Controller
 {
     public function dosen()
     {
-        return view('dashboard.level.index-dosen', [
-            "Dosen" => Dosen::all()
-        ]);
+        return view('level.layouts.profile.dosen-profil');
     }
 }

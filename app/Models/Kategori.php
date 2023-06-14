@@ -17,7 +17,11 @@ class Kategori extends Model
 
     public function pertanyaan()
     {
-
         return $this->hasMany(Pertanyaan::class);
+    }
+
+    public function kriteria()
+    {
+        return $this->hasMany(Kriteria::class);
     }
 }

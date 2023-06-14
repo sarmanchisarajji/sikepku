@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Jurusan;
 use App\Models\Pertanyaan;
 use App\Models\Kategori;
 use Illuminate\Database\Seeder;
@@ -58,5 +59,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Pertanyaan::factory(10)->create();
+
+
     }
 }

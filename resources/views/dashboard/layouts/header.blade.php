@@ -24,7 +24,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="#" style="pointer-events: none">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -32,8 +32,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">Fauzan Al Ashar</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-semibold d-block">{{ Auth::user()->nama_lengkap }}</span>
+                                    <small class="text-muted">Admin SikepKu</small>
                                 </div>
                             </div>
                         </a>
@@ -42,10 +42,24 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
-                        </a>
+                        {{-- <a class="dropdown-item" href="/logout" method="post"> --}}
+                        <form action="/logout" method="post" class="dropdown-item">
+                            @csrf
+                            <button type="submit" class="align-middle">
+                                <i class="bx bx-power-off me-2"></i>Log Out
+                            </button>
+                        </form>
+                        {{-- </a> --}}
+                        {{-- <form action="/logout" method="post" class="dropdown-item">
+                            @csrf
+                            <i class="bx bx-power-off me-2">
+                                <span class="align-middle">
+                                    <button type="submit" class="align-middle">
+                                        Log Out
+                                    </button>
+                                </span>
+                            </i>
+                        </form> --}}
                     </li>
                 </ul>
             </li>
