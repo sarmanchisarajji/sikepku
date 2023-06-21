@@ -31,7 +31,7 @@
 
                     <div class="align-items-center justify-content-between mb-4">
                         {{-- <a href="/daftar" class=""> --}}
-                        <h3 class="text-primary"><i></i>SIKEPKU</h3>
+                        <h3 class="text-primary"><i></i>SikepKu</h3>
                         {{-- </a> --}}
                     </div>
                     <h5 class="text-center my-3" style="color: #19376D">Silahkan Login</h5>

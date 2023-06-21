@@ -56,9 +56,9 @@
                     mengukur keberhasilan layanan <br> <span class="fw-bold">Kepuasan Pengguna Fakultas Teknik.</span>
                 </p>
             </div>
-            <div class="text-center">
+            {{-- <div class="text-center">
                 <a href="/profile/{{ $userType }}-{{ $nama_lengkap }}" class="btn btn-primary">Lihat Profil</a>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Pertanyaan -->

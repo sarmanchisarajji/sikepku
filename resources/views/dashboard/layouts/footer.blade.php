@@ -5,7 +5,7 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            , made with ❤️ by SIKEPKU
+            Jurusan Teknik Informatika
         </div>
     </div>
 </footer>

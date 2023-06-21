@@ -8,7 +8,7 @@
                 <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="align-items-center justify-content-between mb-4">
                         {{-- <a href="/login" class=""> --}}
-                        <h3 class="text-primary"><i></i>SIKEPKU</h3>
+                        <h3 class="text-primary"><i></i>SikepKu</h3>
                         {{-- </a> --}}
                     </div>
                     <h5 class="text-center my-3" style="color: #19376D">Silahkan Daftar</h5>

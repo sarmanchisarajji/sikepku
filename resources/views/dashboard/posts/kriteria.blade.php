@@ -2,8 +2,9 @@
 @section('main-content')
     <div class="container col-lg-12">
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4" style="font-size: 16px"><span class="text-muted fw-light">Tabel /</span> Daftar
-                Kriteria Pertanyaan
+            <h4 class="fw-bold py-3 mb-4 d-block flex-wrap justify-content-between" style="font-size: 16px"><span
+                    class="text-muted fw-light">Tabel /</span>
+                Daftar Kriteria Pertanyaan
                 <a href="/dashboard/tampil/kriteria/{{ $kriteriaId }}"
                     class="float-end fs-12{{ Request::is('dashboard/tampil/kriteria/*') ? ' text-primary' : ' text-muted' }}">Kriteria</a>
                 <a href="/dashboard/tampil" class="float-end fs-12 text-muted fw-light">Kategori/</a>
@@ -61,5 +62,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

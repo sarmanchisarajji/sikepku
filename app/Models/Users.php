@@ -62,9 +62,9 @@ class Users extends Authenticatable
     // Untuk login
     protected $guarded = [''];
 
-    public function user()
+    public function jurusan()
     {
-        return $this->belongsTo(Jurusan::class);
+        return $this->belongsTo(Jurusan::class, 'tbl_jurusan_id');
     }
 
     public function dosen()

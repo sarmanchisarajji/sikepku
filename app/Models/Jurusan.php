@@ -14,8 +14,8 @@ class Jurusan extends Model
 
     public $timestamps = false;
 
-    public function jurusan()
+    public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Users::class);
     }
 }
