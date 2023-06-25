@@ -36,6 +36,18 @@ document.getElementById("card-5").addEventListener("click", function() {
   toggleCardSelection("card-5");
 });
 
+// Splash Screen==============/
+window.addEventListener('load', function() {
+  var splash = document.getElementById('splash');
+  var navbar = document.getElementById('navbar');
+
+  setTimeout(function() {
+    splash.style.display = 'none';
+    navbar.style.display = 'none';
+  }, 3000);
+});
+
+
 
 // $(document).ready(function() {
 //   $('.card').click(function() {

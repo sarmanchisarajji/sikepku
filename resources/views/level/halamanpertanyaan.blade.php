@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('question/assets/CSS/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('question/assets/CSS/splash.css') }}">
     <link rel="stylesheet" href="{{ asset('question/assets/js/script.js') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/d695a86071.js" crossorigin="anonymous"></script>
@@ -31,6 +32,22 @@
 </head>
 
 <body>
+  <!-- Splash Screen Section -->
+  <div id="splash">
+    <div class="load-logo">
+      <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="load-logo1" role="status">
+            <img src="{{ asset('question/assets/gif/load-logo.gif') }}" alt="logo-loading" class="align-self-center">
+          </div>
+        </div>
+      <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="load-logob" role="status">
+            <img src="{{ asset('question/assets/gif/load-bounche.gif') }}" alt="bounche-load">
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- Akhir Splash Screen Section -->
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -38,11 +55,6 @@
                 <img src="{{ asset('question/assets/img/brand/logo.svg') }}" alt="brand">
                 <img src="{{ asset('question/assets/img/brand/logo-uho.svg') }}" alt="brand">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <!-- Profile -->
                 <div class="action">
                     <div class="profile" onclick="menuToggle();">
@@ -58,7 +70,6 @@
                     </div>
                 </div>
                 <!-- Akhir Profile -->
-            </div>
         </div>
     </nav>
     <!-- Hero Section -->
