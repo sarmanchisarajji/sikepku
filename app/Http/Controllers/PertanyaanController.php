@@ -69,7 +69,7 @@ class PertanyaanController extends Controller
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
         // dd($pertanyaan);
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.halamanpertanyaan', compact('pertanyaan'));
     }
 
     public function penggunalulusan()
@@ -83,7 +83,7 @@ class PertanyaanController extends Controller
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
         // dd($pertanyaan);
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.halamanpertanyaan', compact('pertanyaan'));
     }
 
     public function alumni()
@@ -97,7 +97,7 @@ class PertanyaanController extends Controller
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
         // dd($pertanyaan);
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.index', compact('pertanyaan'));
     }
 
     public function tenegakependidikan()
@@ -110,7 +110,7 @@ class PertanyaanController extends Controller
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.index', compact('pertanyaan'));
     }
 
 
@@ -124,7 +124,7 @@ class PertanyaanController extends Controller
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.index', compact('pertanyaan'));
     }
 
 
@@ -143,6 +143,6 @@ class PertanyaanController extends Controller
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.layouts.main', compact('pertanyaan'));
+        return view('level.index', compact('pertanyaan'));
     }
 }

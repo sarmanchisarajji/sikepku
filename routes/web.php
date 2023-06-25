@@ -23,8 +23,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // logout
-Route::get('/daftar', [RegisterController::class, 'index']);
-Route::post('/daftar', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 // Tampilan Dashboard
 Route::middleware(['auth', 'can:admin'])->group(function () {
@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mitra', [PertanyaanController::class, 'mitra']);
 });
 
-Route::get('/profile/{userType}-{nama_lengkap}', [DosenController::class, 'dosen']);
+// Route::get('/profile/{userType}-{nama_lengkap}', [DosenController::class, 'dosen']);
 
 Route::post('/pengguna-lulusan', [JawabanController::class, 'store']);
 Route::post('/dosen', [JawabanController::class, 'store']);

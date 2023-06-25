@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -9,10 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //
+    // public function index()
+    // {
+    //     return view('auth.login', [
+    //         "title" => 'Login'
+    //     ]);
+    // }
+
     public function index()
     {
-        return view('auth.login', [
+        return view('auth.login-ui', [
             "title" => 'Login'
         ]);
     }
@@ -47,19 +54,12 @@ class LoginController extends Controller
             }
         }
 
-        return back()->with('loginError', 'Email atau Password Salah!');
+        return back()->with('loginError', 'Email atau Password Salah!')->onlyInput('email');
 
         // return back()->withErrors([
         //     'email' => 'Perhatikan! Email yang dimasukan salah.',
+        //     'password' => 'Password Salah'
         // ])->onlyInput('email');
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     return redirect()->intended('/dashboard');
-        // }
-
-        // return back()->with('loginError', 'Gagal Login!');
     }
 
     public function logout(Request $request)
