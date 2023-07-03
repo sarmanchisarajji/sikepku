@@ -124,7 +124,7 @@ class PertanyaanController extends Controller
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.index', compact('pertanyaan'));
+        return view('level.halamanpertanyaan', compact('pertanyaan'));
     }
 
 

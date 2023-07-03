@@ -33,20 +33,7 @@
 
 <body>
   <!-- Splash Screen Section -->
-  <div id="splash">
-    <div class="load-logo">
-      <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="load-logo1" role="status">
-            <img src="{{ asset('question/assets/gif/load-logo.gif') }}" alt="logo-loading" class="align-self-center">
-          </div>
-        </div>
-      <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="load-logob" role="status">
-            <img src="{{ asset('question/assets/gif/load-bounche.gif') }}" alt="bounche-load">
-          </div>
-        </div>
-    </div>
-  </div>
+  @include('level.layouts.splashscreen')
   <!-- Akhir Splash Screen Section -->
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg">
@@ -175,89 +162,65 @@
                                         <div class="perfect-circle">
                                             <h4>{{ $no++ }}</h4>
                                         </div>
-                                        <h4 class="tanyaku">Kemudahan komunikasi antara pihak Mitra dengan unit kerja
-                                            dan/atau
-                                            bagian kerja sama UHO</h4>
+                                        <h4 class="tanyaku"><label for="question_{{ $item->id }}">{{ $item->pertanyaan }}</label></h4>
                                     </div>
                                     <div class="card choice">
                                         <div class="card-body">
                                             <div class="row d-flex justify-content-center">
-                                                <!-- item 1 card -->
-                                                <div class="col-md-3 custom-width-s">
-                                                    <div class="card pilih" id="card-1">
-                                                        <div class="card-body">
-                                                            <div class="icons">
-                                                                <img src="{{ asset('question/assets/svg/e-sangat-tidak-puas.svg') }}"
-                                                                    alt="icons">
-                                                            </div>
-                                                            <div class="desc">
-                                                                <h5>Sangat Tidak Puas</h5>
-                                                            </div>
-                                                        </div>
+                                                <!-- radio -->
+                                                <div class="radio-tile-group">
+                                                    
+                                                    <div class="input-container">
+                                                    <input id="jawaban_{{ $item->id }}" name="jawaban[{{ $item->id }}]" value="sangat_tidak_puas"type="radio">
+                                                    <div class="radio-tile">
+                                                        <img name="sangat_tidak_puas" src="{{ asset('question/assets/svg/e-sangat-tidak-puas.svg') }}" alt="icon-survei">
+                                                        <label for="sangat_tidak_puas">Sangat Tidak Puas</label>
                                                     </div>
-                                                </div>
-                                                <!-- item 2 card -->
-                                                <div class="col-md-3 custom-width">
-                                                    <div class="card" id="card-2">
-                                                        <div class="card-body">
-                                                            <div class="icons">
-                                                                <img src="{{ asset('question/assets/svg/e-tidak-puas.svg') }}"
-                                                                    alt="icons">
-                                                            </div>
-                                                            <div class="desc">
-                                                                <h5>Tidak Puas</h5>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- item 3 card -->
-                                                <div class="col-md-3 custom-width">
-                                                    <div class="card" id="card-3">
-                                                        <div class="card-body">
-                                                            <div class="icons">
-                                                                <img src="{{ asset('question/assets/svg/e-cukup.svg') }}"
-                                                                    alt="icons">
-                                                            </div>
-                                                            <div class="desc">
-                                                                <h5>Cukup</h5>
-                                                            </div>
-                                                        </div>
+                                            
+                                                    <div class="input-container">
+                                                    <input id="jawaban_{{ $item->id }}" name="jawaban[{{ $item->id }}]" value="tidak_puas" type="radio">
+                                                    <div class="radio-tile">
+                                                        <img name="walk" src="{{ asset('question/assets/svg/e-tidak-puas.svg') }}" alt="icon-survei">
+                                                        <ion-icon name="bicycle"></ion-icon>
+                                                        <label for="tidak_puas">Tidak Puas</label>
                                                     </div>
-                                                </div>
-                                                <!-- item 4 card -->
-                                                <div class="col-md-3 custom-width">
-                                                    <div class="card" id="card-4">
-                                                        <div class="card-body">
-                                                            <div class="icons">
-                                                                <img src="{{ asset('question/assets/svg/e-puas.svg') }}"
-                                                                    alt="icons">
-                                                            </div>
-                                                            <div class="desc">
-                                                                <h5>Puas</h5>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                                <!-- item 5 card -->
-                                                <div class="col-md-3 custom-width">
-                                                    <div class="card" id="card-5">
-                                                        <div class="card-body">
-                                                            <div class="icons">
-                                                                <img src="{{ asset('question/assets/svg/e-sangat-puas.svg') }}"
-                                                                    alt="icons">
-                                                            </div>
-                                                            <div class="desc">
-                                                                <h5>Sangat Puas</h5>
-                                                            </div>
-                                                        </div>
+                                            
+                                                    <div class="input-container">
+                                                    <input id="jawaban_{{ $item->id }}" name="jawaban[{{ $item->id }}]" value="cukup_puas" type="radio">
+                                                    <div class="radio-tile">
+                                                        <img name="walk" src="{{ asset('question/assets/svg/e-cukup.svg') }}" alt="icon-survei">
+                                                        <ion-icon name="cukup_puas-sport"></ion-icon>
+                                                        <label for="cukup_puas">Cukup Puas</label>
                                                     </div>
-                                                </div>
+                                                    </div>
+                                            
+                                                    <div class="input-container">
+                                                    <input id="jawaban_{{ $item->id }}" name="jawaban[{{ $item->id }}]" value="puas" type="radio">
+                                                    <div class="radio-tile">
+                                                        <img name="walk" src="{{ asset('question/assets/svg/e-puas.svg') }}" alt="icon-survei">
+                                                        <ion-icon name="airplane"></ion-icon>
+                                                        <label for="puas">Puas</label>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="input-container">
+                                                    <input id="jawaban_{{ $item->id }}" name="jawaban[{{ $item->id }}]" value="sangat_puas" type="radio">
+                                                    <div class="radio-tile">
+                                                        <img name="walk" src="{{ asset('question/assets/svg/e-sangat-puas.svg') }}" alt="icon-survei">
+                                                        <ion-icon name="airplane"></ion-icon>
+                                                        <label for="sangat_puas">Sangat Puas</label>
+                                                    </div>
+                                                    </div>
+                                                </div>  
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{-- <input type="hidden" name="pertanyaan_id[]" value="{{ $item->id }}"> --}}
                         @endforeach
                     </div>
                 </div>
@@ -270,11 +233,9 @@
                                     <div class="perfect-circle">
                                         <h4>{{ $no++ }}</h4>
                                     </div>
-                                    <h4 class="tanyaku">Kemudahan komunikasi antara pihak Mitra dengan unit kerja
-                                        dan/atau
-                                        bagian kerja sama UHO</h4>
+                                    <h4 class="tanyaku"><label for="">Suara Anda, Inovasi Kami: Transformasi Fasilitas Akademik untuk Kesejahteraan Fakultas Teknik Universitas Halu Oleo!</label></h4>
                                 </div>
-                                <textarea class="card-saran form-control" id="exampleFormControlTextarea1" rows="3"
+                                <textarea class="card-saran form-control" id="saran" name="saran" rows="3"
                                     placeholder="Silahkan saran anda.."></textarea>
                             </div>
                         </div>
