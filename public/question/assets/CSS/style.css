@@ -748,7 +748,6 @@ footer{
     color: var(--primary-color);
     font-size: 0.80rem;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 1px;
   }
   
