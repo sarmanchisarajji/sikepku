@@ -82,7 +82,7 @@
             </div>
         </div>
     </section>
-    <!-- Setup Section -->
+    <!-- Setup Section / Keterangan -->
     <section class="setup" id="keterangan">
         <div class="container">
             <div class="text-header text-center">
