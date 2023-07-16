@@ -15,7 +15,7 @@ class Jawaban extends Model
 
     public function user()
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(Users::class, 'users_id');
     }
 
     public function pertanyaan()

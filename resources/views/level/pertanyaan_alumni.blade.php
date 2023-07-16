@@ -147,12 +147,7 @@
                 <p>Kami sangat mengapresiasi kerja kerasmu! Nikmati setiap momen luar biasa dalam menjawab survei ini
                     dengan <br> penuh semangat, kegembiraan, dan antusiasme yang membara!</p>
             </div>
-            {{-- @if (jawabanTerisi())
-                <script>
-                    window.location.href = "{{ route('level.thanks') }}";
-                </script>
-            @else --}}
-            <form action="/{{ $usertype }}" method="post">
+            <form action="/alumni" method="post">
                 @csrf
                 @php
                     $no = 1;
@@ -179,19 +174,18 @@
                                                     <div class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]"
-                                                            value="sangat_tidak_puas" type="radio" required>
+                                                            value="sangat_tidak_puas" type="radio">
                                                         <div class="radio-tile">
                                                             <img name="sangat_tidak_puas"
                                                                 src="{{ asset('question/assets/svg/e-sangat-tidak-puas.svg') }}"
                                                                 alt="icon-survei">
-                                                            <label for="sangat_tidak_puas">Sangat Tidak
-                                                                Puas</label>
+                                                            <label for="sangat_tidak_puas">Sangat Tidak Puas</label>
                                                         </div>
                                                     </div>
                                                     <div class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="tidak_puas"
-                                                            type="radio" required>
+                                                            type="radio">
                                                         <div class="radio-tile">
                                                             <img name="walk"
                                                                 src="{{ asset('question/assets/svg/e-tidak-puas.svg') }}"
@@ -203,7 +197,7 @@
                                                     <div class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="cukup_puas"
-                                                            type="radio" required>
+                                                            type="radio">
                                                         <div class="radio-tile">
                                                             <img name="walk"
                                                                 src="{{ asset('question/assets/svg/e-cukup.svg') }}"
@@ -215,7 +209,7 @@
                                                     <div class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="puas"
-                                                            type="radio" required>
+                                                            type="radio">
                                                         <div class="radio-tile">
                                                             <img name="walk"
                                                                 src="{{ asset('question/assets/svg/e-puas.svg') }}"
@@ -227,7 +221,7 @@
                                                     <div class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="sangat_puas"
-                                                            type="radio" required>
+                                                            type="radio">
                                                         <div class="radio-tile">
                                                             <img name="walk"
                                                                 src="{{ asset('question/assets/svg/e-sangat-puas.svg') }}"
@@ -256,8 +250,7 @@
                                     <div class="perfect-circle">
                                         <h4>{{ $no++ }}</h4>
                                     </div>
-                                    <h4 class="tanyaku"><label for="">Suara Anda, Inovasi Kami:
-                                            Transformasi
+                                    <h4 class="tanyaku"><label for="">Suara Anda, Inovasi Kami: Transformasi
                                             Fasilitas Akademik untuk Kesejahteraan Fakultas Teknik Universitas Halu
                                             Oleo!</label></h4>
                                 </div>
@@ -273,7 +266,6 @@
                     </button>
                 </div>
             </form>
-            {{-- @endif --}}
         </div>
     </section>
     <!-- Footer Section -->
@@ -307,10 +299,7 @@
                         </div>
                     </div>
                     <div class="copy d-flex justify-content-center mb-5">
-                        &copy; Jurusan Teknik Informatika Universitas Halu Oleo
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>. All Rights Reserved
+                        &copy;Teknik Informatika Universitas Halu Oleo 2023. All Rights Reserved
                     </div>
                 </div>
             </div>

@@ -7,30 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
+    //
     public function index()
     {
-        // $dosen = Users::with('jurusan')->where('user_type', 'dosen')->get();
-        // $mahasiswa = Users::with('jurusan')->where('user_type', 'mahasiswa')->get();
-        // $alumni = Users::with('jurusan')->where('user_type', 'alumni')->get();
-        // $tenaga_kependidikan = Users::with('jurusan')->where('user_type', 'tenaga_kependidikan')->get();
-        // $mitra = Users::with('jurusan')->where('user_type', 'mitra')->get();
-        // $pengguna_lulusan = Users::with('jurusan')->where('user_type', 'pengguna_lulusan')->get();
-        return view('dashboard.posts.user', [
-            "users" => Users::with('jurusan')
-                ->whereNotIn('user_type', ['admin'])
-                ->get()
-            // "dosens" => $dosen,
-            // "mahaiswas" => $mahasiswa,
-            // "alumnis" => $alumni,
-            // "tendiks" => $tenaga_kependidikan,
-            // "mitras" => $mitra,
-            // "penglus" => $pengguna_lulusan
+        return view('dashboard.posts.admin', [
+            'admins' => Users::with('jurusan')->where('user_type', 'admin')->get()
         ]);
     }
 
-    public function create(Request $request)
+    public function tambah(Request $request)
     {
         $request->validate([
             'nama_lengkap' => 'required|max:255',
@@ -43,7 +30,6 @@ class UserController extends Controller
             'alamat' => 'required',
             'no_hp' => 'required'
         ]);
-        // dd($request->validate);
         Users::create([
             'nama_lengkap' => $request->nama_lengkap,
             'nim' => strtoupper($request->nim),
@@ -56,16 +42,10 @@ class UserController extends Controller
             'no_hp' => $request->no_hp,
         ]);
 
-        return redirect()->to('/dashboard/user');
+        return redirect()->to('/dashboard/admin');
     }
 
-    // public function getData($id)
-    // {
-    //     $users = Users::find($id);
-    //     return view('dashboard.posts.user', compact('users'));
-    // }
-
-    public function update(Request $request, $id)
+    public function upTodate(Request $request, $id)
     {
         $request->validate([
             'nama_lengkap' => 'required|max:255',
@@ -91,20 +71,14 @@ class UserController extends Controller
         $user->no_hp = $request->no_hp;
         $user->save();
 
-        return redirect()->to('/dashboard/user');
-        // return redirect()->route('update.user', ['id' => $id]);
+        return redirect()->to('/dashboard/admin');
     }
 
-    // public function getUser($id)
-    // {
-    //     $user = Users::find($id);
-    //     return response()->json($user);
-    // }
 
-    public function destroy($id)
+    public function hapus($id)
     {
         $user = Users::find($id);
         $user->delete();
-        return redirect()->to('/dashboard/user');
+        return redirect()->to('/dashboard/admin');
     }
 }

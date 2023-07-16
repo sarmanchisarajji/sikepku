@@ -50,7 +50,12 @@
                 </div>
             </div>
             <div class="col">
-                <span class="app-brand-text demo menu-text fw-bolder ms-2 text-capitalize">SikepKu</span>
+                <span>
+                    <img src="{{ asset('question/assets/img/brand/logo-brand2.svg') }}" alt="brand">
+                </span> <br>
+                <span class="app-brand-text demo menu-text fw-bolder text-capitalize" style="font-size: 12px">
+                    Sistem Informasi Evaluasi KepuasanKu
+                </span>
                 {{-- <p>(Sistem Informasi Evaluasi Kepuasan Ku)</p> --}}
             </div>
         </a>
@@ -72,14 +77,15 @@
         </li>
         <!-- Forms -->
         <li class="menu-item {{ request()->is('dashboard/tampil*') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="javascript:void(0);" class="menu-link menu-toggle" data-bs-toggle="collapse"
+                data-bs-target="#formLayoutsSubMenu">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Layouts">Form Layouts</div>
             </a>
-            <ul class="menu-sub">
+            <ul class="menu-sub collapse" id="formLayoutsSubMenu">
                 <li class="menu-item {{ request()->is('dashboard/tampil') ? 'active' : '' }}">
                     <a href="/dashboard/tampil" class="menu-link">
-                        <div data-i18n="Vertical Form">Bank Pertanyaan</div>
+                        <div data-i18n="Vertical Form">Data Pertanyaan</div>
                     </a>
                 </li>
                 {{-- <li class="menu-item {{ request()->is('dashboard/posts-soal') ? 'active' : '' }}">
@@ -127,82 +133,43 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" style="font-size: 12px">Management Akun</span>
         </li>
-        <li class="menu-item {{ request()->is('dashboard/user*') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <li
+            class="menu-item {{ request()->is('dashboard/user*') || request()->is('dashboard/admin*') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle" data-bs-toggle="collapse"
+                data-bs-target="#accountSettingsSubMenu">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Data Akun User</div>
+                <div data-i18n="Account Settings">Data Akun</div>
             </a>
-            <ul class="menu-sub">
+            <ul class="menu-sub collapse" id="accountSettingsSubMenu">
                 <li class="menu-item {{ request()->is('dashboard/user') ? 'active' : '' }}">
                     <a href="/dashboard/user" class="menu-link">
                         <div data-i18n="Account">Akun User</div>
                     </a>
                 </li>
-                {{-- <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
+                <li class="menu-item {{ request()->is('dashboard/admin') ? 'active' : '' }}">
+                    <a href="/dashboard/admin" class="menu-link">
+                        <div data-i18n="Account">Akun Admin</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li> --}}
             </ul>
         </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" style="font-size: 12px">Monitoring Kepuasan Layanan</span>
         </li>
         <li class="menu-item {{ request()->is('dashboard/kepuasan*)' ? 'active open' : '') }}">
-            <a href="/yyaay" class="menu-link {{ request()->is('dashboard/kepuasan)' ? 'active' : '') }}">
+            <a href="/grafik-kepuasan" class="menu-link {{ request()->is('dashboard/kepuasan)' ? 'active' : '') }}">
                 <i class="menu-icon tf-icons bx bx-pie-chart"></i>
                 <div data-i18n="Authentications">Prsentasi Kepuasan Layanan</div>
             </a>
-            <a href="/yyaya" class="menu-link {{ request()->is('dashboard/jmlResponden)' ? 'active' : '') }}">
+            {{-- <a href="/yyaya" class="menu-link {{ request()->is('dashboard/jmlResponden)' ? 'active' : '') }}">
                 <i class="menu-icon tf-icons  bx bx-bar-chart"></i>
                 <div data-i18n="Authentications">Presentasi Jumlah Responden</div>
-            </a>
-            {{-- <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Grafik</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Kepuasan Alumni</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Kepuasan Tenaga Kependidikan</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Kepuasan Mahasiswa</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Kepuasan Dosen</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">Kepuasan Mitra</div>
-                    </a>
-                </li>
-            </ul> --}}
+            </a> --}}
         </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" style="font-size: 12px">Lainnya</span>
         </li>
         <li class="menu-item {{ request()->is('dashboard/report*') ? 'active open' : '' }}">
-            <a href="" class="menu-link {{ request()->is('dashboard/report)' ? 'active' : '') }}">
-                <i class="menu-icon tf-icons bx bx-file"></i>
-                <div data-i18n="Misc">Report Hasil</div>
-            </a>
             <a href="" class="menu-link {{ request()->is('dashboard/tentang)' ? 'active' : '') }}">
                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
                 <div data-i18n="Misc">Tentang</div>

@@ -25,26 +25,27 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         Gate::define('admin', function (Users $users) {
-            return $users->user_type == 'admin';
+            return $users->user_type === 'admin';
         });
         Gate::define('mahasiswa', function (Users $users) {
-            return $users->user_type == 'mahasiswa';
+            return $users->user_type === 'mahasiswa';
         });
         Gate::define('dosen', function (Users $users) {
-            return $users->user_type == 'dosen';
+            return $users->user_type === 'dosen';
         });
         Gate::define('mitra', function (Users $users) {
-            return $users->user_type == 'mitra';
+            return $users->user_type === 'mitra';
         });
         Gate::define('tenaga_kependidikan', function (Users $users) {
-            return $users->user_type == 'tenaga_kependidikan';
+            return $users->user_type === 'tenaga_kependidikan';
         });
         Gate::define('alumni', function (Users $users) {
-            return $users->user_type == 'alumni';
+            return $users->user_type === 'alumni';
         });
         Gate::define('pengguna_lulusan', function (Users $users) {
-            return $users->user_type == 'pengguna_lulusan';
+            return $users->user_type === 'pengguna_lulusan';
         });
     }
 }

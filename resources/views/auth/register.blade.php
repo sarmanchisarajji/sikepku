@@ -20,8 +20,8 @@
                         name="nama_lengkap" value="{{ old('nama_lengkap') }}" placeholder="Nama Lengkap" autofocus required>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" id="username" name="username"
-                        value="{{ old('username') }}" placeholder="Username" autofocus required>
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" id="nim" name="nim"
+                        value="{{ old('nim') }}" placeholder="NIM/NIDN" autofocus required>
                 </div>
                 <div class="input-group mb-3">
                     <input type="email"
@@ -46,40 +46,54 @@
                 </div>
                 <div class="input-group mb-3">
                     <select class="form-select form-control-lg bg-light fs-6" id="tbl_jurusan_id" name="tbl_jurusan_id"
-                        placeholder="Jurusan" required autofocus {{ old('tbl_jurusan_id') }}>
-                        <option selected>Pilih Program Studi</option>
-                        <option value="1">Teknik Arsitektur</option>
-                        <option value="2">Teknik Elektro</option>
-                        <option value="3">Teknik Informatika</option>
-                        <option value="4">Teknik Mesin</option>
-                        <option value="5">Teknik Sipil</option>
-                        <option value="6">Rekayasa Infrastruktur & Lingkungan</option>
-                        <option value="7">Teknik Kelautan</option>
+                        placeholder="Jurusan" required autofocus value="{{ old('tbl_jurusan_id') }}">
+                        <option selected>~ Pilih Program Studi ~</option>
+                        <option value="1" {{ old('tbl_jurusan_id') == 1 ? 'selected' : '' }}>Teknik Arsitektur</option>
+                        <option value="2" {{ old('tbl_jurusan_id') == 2 ? 'selected' : '' }}>Teknik Elektro</option>
+                        <option value="3" {{ old('tbl_jurusan_id') == 3 ? 'selected' : '' }}>
+                            Teknik Informatika
+                        </option>
+                        <option value="4" {{ old('tbl_jurusan_id') == 4 ? 'selected' : '' }}>Teknik Mesin</option>
+                        <option value="5" {{ old('tbl_jurusan_id') == 5 ? 'selected' : '' }}>Teknik Sipil</option>
+                        <option value="6" {{ old('tbl_jurusan_id') == 6 ? 'selected' : '' }}>
+                            Rekayasa Infrastruktur & Lingkungan
+                        </option>
+                        <option value="7" {{ old('tbl_jurusan_id') == 7 ? 'selected' : '' }}>Teknik Kelautan</option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
                     <select class="form-select form-control-lg bg-light fs-6" id="jenis_kelamin" name="jenis_kelamin"
-                        placeholder="Jenis Kelamin" required autofocus {{ old('jenis_kelamin') }}>
-                        <option selected>Pilih Jenis Kelamin</option>
-                        <option value="1">Laki - Laki</option>
-                        <option value="2">Perempuan</option>
+                        placeholder="Jenis Kelamin" required autofocus value="{{ old('jenis_kelamin') }}">
+                        <option selected>~ Pilih Jenis Kelamin ~</option>
+                        <option value="Laki - Laki" {{ old('jenis_kelamin') == 'Laki - Laki' ? 'selected' : '' }}>
+                            Laki - Laki
+                        </option>
+                        <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>
+                            Perempuan
+                        </option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
                     <select class="form-select form-control-lg bg-light fs-6" id="user_type" name="user_type"
-                        placeholder="Kategori Pengguna" autofocus required {{ old('user_type') }}>
-                        <option selected>Kategori Pengguna</option>
-                        <option value="pengguna_lulusan">Pengguna Lulusan</option>
-                        <option value="alumni">Alumni</option>
-                        <option value="tenaga_kependidikan">Tenaga Kependidikan</option>
-                        <option value="mahasiswa">Mahasiswa</option>
-                        <option value="dosen">Dosen</option>
-                        <option value="mitra">Mitra</option>
+                        placeholder="Kategori Pengguna" autofocus required value="{{ old('user_type') }}">
+                        <option selected>~ Pilih Kategori Pengguna ~</option>
+                        <option value="pengguna_lulusan" {{ old('user_type') == 'pengguna_lulusan' ? 'selected' : '' }}>
+                            Pengguna Lulusan
+                        </option>
+                        <option value="alumni" {{ old('user_type') == 'alumni' ? 'selected' : '' }}>Alumni</option>
+                        <option value="tenaga_kependidikan"
+                            {{ old('user_type') == 'tenaga_kependidikan' ? 'selected' : '' }}>
+                            Tenaga Kependidikan
+                        </option>
+                        <option value="mahasiswa" {{ old('user_type') == 'mahasiswa' ? 'selected' : '' }}>Mahasiswa
+                        </option>
+                        <option value="dosen" {{ old('user_type') == 'dosen' ? 'selected' : '' }}>Dosen</option>
+                        <option value="mitra" {{ old('user_type') == 'mitra' ? 'selected' : '' }}>Mitra</option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
                     <textarea name="alamat" id="alamat" rows="3" autofocus required
-                        class="form-control form-control-lg bg-light fs-6" placeholder="Alamat" {{ old('alamat') }}></textarea>
+                        class="form-control form-control-lg bg-light fs-6" placeholder="Alamat" value="{{ old('alamat') }}">{{ old('alamat') }}</textarea>
                     {{-- <input type="textarea" class="form-control form-control-lg bg-light fs-6" placeholder="Alamat"> --}}
                 </div>
                 <div class="input-group mb-3">
