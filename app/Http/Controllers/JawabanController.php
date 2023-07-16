@@ -39,7 +39,16 @@ class JawabanController extends Controller
             'saran' => $saran,
             'users_id' => auth()->user()->id // Ambil ID user yang sedang terautentikasi
         ]);
+
         return view('level.thanks')->with('success', 'Data berhasil disimpan');
         // return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
+
+    // public function jawabanTerisi()
+    // {
+    //     $userId = auth()->user()->id;
+    //     $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+    //     return $isiJawaban > 0;
+    // }
 }

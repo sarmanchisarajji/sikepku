@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('auth.login', [
-    //         "title" => 'Login'
-    //     ]);
-    // }
-
     public function index()
     {
         return view('auth.login-ui', [
@@ -27,15 +20,15 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'nim' => 'required',
             'password' => 'required'
-            // 'password' => 'required|max:5'
         ]);
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+
+        if (Auth::attempt(['nim' => $credentials['nim'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
 
-            if (auth()->user()->user_type == 'admin') {
+            if (auth()->user()->user_type === 'admin') {
                 return redirect()->intended('/dashboard');
             } elseif (auth()->user()->user_type === 'mahasiswa') {
                 return redirect()->intended('/mahasiswa');
@@ -44,7 +37,7 @@ class LoginController extends Controller
             } elseif (auth()->user()->user_type === 'pengguna_lulusan') {
                 return redirect()->intended('/pengguna-lulusan');
             } elseif (auth()->user()->user_type === 'tenaga_kependidikan') {
-                return redirect()->intended('/tendik');
+                return redirect()->intended('/tenaga-kependidikan');
             } elseif (auth()->user()->user_type === 'alumni') {
                 return redirect()->intended('/alumni');
             } elseif (auth()->user()->user_type === 'mitra') {
@@ -54,12 +47,9 @@ class LoginController extends Controller
             }
         }
 
-        return back()->with('loginError', 'Email atau Password Salah!')->onlyInput('email');
+        // dd($credentials['nim']);
 
-        // return back()->withErrors([
-        //     'email' => 'Perhatikan! Email yang dimasukan salah.',
-        //     'password' => 'Password Salah'
-        // ])->onlyInput('email');
+        return back()->with('loginError', 'NIM/NIDN atau Password Salah!')->onlyInput('email');
     }
 
     public function logout(Request $request)

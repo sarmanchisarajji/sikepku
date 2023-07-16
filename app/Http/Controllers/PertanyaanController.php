@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 // use App\Models\Kategori;
-use Illuminate\Support\Str;
+use App\Models\Jawaban;
 use App\Models\Kategori;
 use App\Models\Kriteria;
 use App\Models\Pertanyaan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -61,15 +62,21 @@ class PertanyaanController extends Controller
     public function dosen()
     {
         $userType = Auth::user()->user_type; // Mendapatkan tipe pengguna saat ini (misalnya, mahasiswa)
-
         $usertype = str_replace('_', ' ', $userType);
-
         $kategori = Kategori::where('nama_kategori', Str::lower($usertype))->first();
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        // dd($pertanyaan);
-        return view('level.halamanpertanyaan', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 
     public function penggunalulusan()
@@ -82,49 +89,76 @@ class PertanyaanController extends Controller
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        // dd($pertanyaan);
-        return view('level.halamanpertanyaan', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 
     public function alumni()
     {
         $userType = Auth::user()->user_type; // Mendapatkan tipe pengguna saat ini (misalnya, mahasiswa)
-
         $usertype = str_replace('_', ' ', $userType);
-
         $kategori = Kategori::where('nama_kategori', Str::lower($usertype))->first();
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        // dd($pertanyaan);
-        return view('level.index', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 
-    public function tenegakependidikan()
+    public function tenagakependidikan()
     {
         $userType = Auth::user()->user_type; // Mendapatkan tipe pengguna saat ini (misalnya, mahasiswa)
-
         $usertype = str_replace('_', ' ', $userType);
-
         $kategori = Kategori::where('nama_kategori', Str::lower($usertype))->first();
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.index', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 
 
     public function mahasiswa()
     {
         $userType = Auth::user()->user_type; // Mendapatkan tipe pengguna saat ini (misalnya, mahasiswa)
-
         $usertype = str_replace('_', ' ', $userType);
-
         $kategori = Kategori::where('nama_kategori', Str::lower($usertype))->first();
-
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.halamanpertanyaan', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 
 
@@ -132,17 +166,20 @@ class PertanyaanController extends Controller
     public function mitra()
     {
         $userType = Auth::user()->user_type; // Mendapatkan tipe pengguna saat ini (misalnya, mahasiswa)
-        // dd($userType);
-
         $usertype = str_replace('_', ' ', $userType);
-        // dd($usertype);
-
         $kategori = Kategori::where('nama_kategori', Str::lower($usertype))->first();
-
-        // dd($kategori);
 
         $pertanyaan = Pertanyaan::where('kategori_id', $kategori->id)->get();
 
-        return view('level.index', compact('pertanyaan'));
+        $userId = auth()->user()->id;
+        $isiJawaban =  Jawaban::where('users_id', $userId)->count();
+
+        // return $isiJawaban > 0;
+
+        if ($isiJawaban > 0) {
+            return view('level.thanks', compact('pertanyaan'));
+        } else {
+            return view('level.halamanpertanyaan', compact('pertanyaan'));
+        }
     }
 }

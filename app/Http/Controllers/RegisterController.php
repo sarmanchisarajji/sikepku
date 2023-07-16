@@ -18,11 +18,10 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-
         $request->validate([
             'nama_lengkap' => 'required|max:255',
-            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'email' => 'required|email|unique:users',
+            'nim' => 'required|min:3|max:255|unique:users',
+            'email' => ['required', 'email', 'unique:users', 'ends_with:@gmail.com'],
             'password' => 'required|min:5',
             'tbl_jurusan_id' => 'required',
             'jenis_kelamin' => 'required',
@@ -35,7 +34,7 @@ class RegisterController extends Controller
 
         Users::create([
             'nama_lengkap' => $request->nama_lengkap,
-            'username' => $request->username,
+            'nim' => strtoupper($request->nim),
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'tbl_jurusan_id' => $request->tbl_jurusan_id,

@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth::user()->nama_lengkap }}</span>
-                                    <small class="text-muted">Admin SikepKu</small>
+                                    <small class="text-muted">{{ Auth::user()->nim }}</small>
                                 </div>
                             </div>
                         </a>
@@ -50,16 +50,6 @@
                             </button>
                         </form>
                         {{-- </a> --}}
-                        {{-- <form action="/logout" method="post" class="dropdown-item">
-                            @csrf
-                            <i class="bx bx-power-off me-2">
-                                <span class="align-middle">
-                                    <button type="submit" class="align-middle">
-                                        Log Out
-                                    </button>
-                                </span>
-                            </i>
-                        </form> --}}
                     </li>
                 </ul>
             </li>

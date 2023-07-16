@@ -30,7 +30,7 @@
                                             <span class="badge bg-label-info me-1">{{ $krt->nama_kriteria }}</span>
                                         @elseif ($krt->nama_kriteria === 'Kriteria Sumber Daya Manusia')
                                             <span class="badge bg-label-success me-1">{{ $krt->nama_kriteria }}</span>
-                                        @elseif ($krt->nama_kriteria === 'Kriteria Keuangan')
+                                        @elseif ($krt->nama_kriteria === 'Kriteria Keuangan, Sarana, dan Prasarana')
                                             <span class="badge bg-label-primary me-1">{{ $krt->nama_kriteria }}</span>
                                         @elseif ($krt->nama_kriteria === 'Kriteria Pendidikan')
                                             <span class="badge bg-label-dark me-1">{{ $krt->nama_kriteria }}</span>

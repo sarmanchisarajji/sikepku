@@ -20,8 +20,10 @@
                 <a href="/dashboard" class="float-end fs-12 text-muted fw-light">Dashboard/</a>
             </h4>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                name="btn-tambah">Tambah Data
+            <button type="button" class="btn btn-info mb-4 mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                name="btn-tambah">
+                <i class="bi bi-patch-plus"></i>
+                Tambah Data
             </button>
 
             <div class="card">
@@ -95,7 +97,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-outline-danger"
                                                             data-bs-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-outline-info">Simpan</button>
+                                                        <button type="submit" class="btn btn-outline-info">Update</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -142,7 +144,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger"
                                         data-bs-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-outline-info">Simpan</button>
+                                    <button type="submit" class="btn btn-outline-primary">Simpan</button>
                                 </div>
                             </div>
                         </form>

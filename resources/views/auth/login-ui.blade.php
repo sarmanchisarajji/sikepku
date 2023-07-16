@@ -39,10 +39,10 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="email"
-                        class="form-control @error('email') is-invalid @enderror form-control-lg bg-light fs-6"
-                        id="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}" required>
-                    @error('email')
+                    <input type="text"
+                        class="form-control @error('nim') is-invalid @enderror form-control-lg bg-light fs-6" id="nim"
+                        name="nim" placeholder="Masukkan NIM/NIDN" value="{{ old('nim') }}" required>
+                    @error('nim')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>

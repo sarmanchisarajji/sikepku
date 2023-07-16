@@ -39,6 +39,9 @@
 
 
     <!-- Page CSS -->
+    {{-- <link rel="stylesheet" href="{{ asset('question/assets/CSS/style.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('question/assets/CSS/splash.css') }}">
+    <link rel="stylesheet" href="{{ asset('question/assets/js/script.js') }}">
 
     <!-- Helpers -->
     <script src="{{ asset('') }}vendor/js/helpers.js"></script>
@@ -49,7 +52,9 @@
 </head>
 
 <body>
-    <!-- Layout wrapper -->
+    <!-- Splashscreen -->
+    {{-- @include('level.layouts.splashscreen') --}}
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -106,6 +111,46 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script src="{{ asset('question/assets/js/script.js') }}"></script>
+
+    <script>
+        function menuToggle() {
+            const toggleMenu = document.querySelector('.menu');
+            toggleMenu.classList.toggle('active')
+        }
+    </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            $('.btn-edit').on('click', function() {
+                var id = $(this).data('id');
+                var modal = $('#staticBackdrop1' + id);
+
+                // Ambil data dari server menggunakan AJAX
+                $.ajax({
+                    url: '/get-user/' + id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Tampilkan data pada modal
+                        modal.find('#nama_lengkap').val(response.nama_lengkap);
+                        modal.find('#nim').val(response.nim);
+                        modal.find('#password').val(response.password);
+                        modal.find('#email').val(response.email);
+                        modal.find('#tbl_jurusan_id').val(response.tbl_jurusan_id);
+                        modal.find('#user_type').val(response.user_type);
+                        modal.find('#jenis_kelamin').val(response.jenis_kelamin);
+                        modal.find('#no_hp').val(response.no_hp);
+                        modal.find('#alamat').val(response.alamat);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script> --}}
 </body>
 
 </html>
