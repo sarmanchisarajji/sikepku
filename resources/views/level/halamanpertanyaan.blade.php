@@ -156,7 +156,7 @@
                 <div class="items text-center">
                     <div class="row">
                         @foreach ($pertanyaan as $item)
-                            <div class="card">
+                            <div class="card  mb-3">
                                 <div class="card-body">
                                     <div class="pertanyaan mt-3">
                                         <div class="perfect-circle">
