@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 08:55 AM
+-- Generation Time: Jul 17, 2023 at 09:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -74,7 +74,158 @@ CREATE TABLE `tbl_jawaban_user` (
 INSERT INTO `tbl_jawaban_user` (`id`, `jawaban`, `tbl_pertanyaan_id`, `users_id`) VALUES
 (167, 'sangat_puas', 45, 55),
 (168, 'puas', 46, 55),
-(169, 'cukup_puas', 47, 55);
+(169, 'cukup_puas', 47, 55),
+(170, 'cukup_puas', 80, 48),
+(171, 'cukup_puas', 81, 48),
+(172, 'cukup_puas', 82, 48),
+(173, 'cukup_puas', 83, 48),
+(174, 'cukup_puas', 176, 48),
+(175, 'cukup_puas', 177, 48),
+(176, 'cukup_puas', 178, 48),
+(177, 'cukup_puas', 179, 48),
+(178, 'cukup_puas', 180, 48),
+(179, 'cukup_puas', 181, 48),
+(180, 'cukup_puas', 190, 48),
+(181, 'cukup_puas', 191, 48),
+(182, 'cukup_puas', 192, 48),
+(183, 'cukup_puas', 193, 48),
+(184, 'cukup_puas', 194, 48),
+(185, 'cukup_puas', 195, 48),
+(186, 'cukup_puas', 66, 49),
+(187, 'cukup_puas', 67, 49),
+(188, 'cukup_puas', 68, 49),
+(189, 'cukup_puas', 69, 49),
+(190, 'cukup_puas', 70, 49),
+(191, 'cukup_puas', 71, 49),
+(192, 'cukup_puas', 72, 49),
+(193, 'cukup_puas', 100, 49),
+(194, 'cukup_puas', 101, 49),
+(195, 'cukup_puas', 102, 49),
+(196, 'cukup_puas', 103, 49),
+(197, 'cukup_puas', 104, 49),
+(198, 'cukup_puas', 105, 49),
+(199, 'puas', 45, 51),
+(200, 'puas', 46, 51),
+(201, 'puas', 47, 51),
+(202, 'cukup_puas', 73, 52),
+(203, 'cukup_puas', 74, 52),
+(204, 'cukup_puas', 75, 52),
+(205, 'cukup_puas', 76, 52),
+(206, 'cukup_puas', 77, 52),
+(207, 'cukup_puas', 78, 52),
+(208, 'cukup_puas', 79, 52),
+(209, 'sangat_puas', 57, 50),
+(210, 'sangat_puas', 58, 50),
+(211, 'sangat_puas', 59, 50),
+(212, 'sangat_puas', 60, 50),
+(213, 'sangat_puas', 61, 50),
+(214, 'sangat_puas', 62, 50),
+(215, 'sangat_puas', 63, 50),
+(216, 'sangat_puas', 64, 50),
+(217, 'sangat_puas', 65, 50),
+(218, 'sangat_puas', 94, 50),
+(219, 'sangat_puas', 95, 50),
+(220, 'sangat_puas', 96, 50),
+(221, 'sangat_puas', 97, 50),
+(222, 'sangat_puas', 118, 50),
+(223, 'sangat_puas', 119, 50),
+(224, 'sangat_puas', 120, 50),
+(225, 'sangat_puas', 121, 50),
+(226, 'sangat_puas', 122, 50),
+(227, 'sangat_puas', 123, 50),
+(228, 'sangat_puas', 124, 50),
+(229, 'sangat_puas', 125, 50),
+(230, 'sangat_puas', 126, 50),
+(231, 'sangat_puas', 127, 50),
+(232, 'sangat_puas', 128, 50),
+(233, 'sangat_puas', 129, 50),
+(234, 'sangat_puas', 130, 50),
+(235, 'sangat_puas', 131, 50),
+(236, 'sangat_puas', 132, 50),
+(237, 'sangat_puas', 133, 50),
+(238, 'sangat_puas', 168, 50),
+(239, 'sangat_puas', 169, 50),
+(240, 'sangat_puas', 170, 50),
+(241, 'sangat_puas', 171, 50),
+(242, 'sangat_puas', 172, 50),
+(243, 'sangat_puas', 173, 50),
+(244, 'sangat_puas', 174, 50),
+(245, 'sangat_puas', 175, 50),
+(246, 'sangat_puas', 182, 50),
+(247, 'sangat_puas', 183, 50),
+(248, 'sangat_puas', 184, 50),
+(249, 'sangat_puas', 185, 50),
+(250, 'sangat_puas', 186, 50),
+(251, 'sangat_puas', 187, 50),
+(252, 'sangat_puas', 188, 50),
+(253, 'sangat_puas', 189, 50),
+(254, 'sangat_puas', 199, 50),
+(255, 'sangat_puas', 200, 50),
+(256, 'sangat_puas', 48, 53),
+(257, 'sangat_puas', 49, 53),
+(258, 'sangat_puas', 50, 53),
+(259, 'sangat_puas', 51, 53),
+(260, 'sangat_puas', 52, 53),
+(261, 'sangat_puas', 53, 53),
+(262, 'sangat_puas', 54, 53),
+(263, 'sangat_puas', 55, 53),
+(264, 'sangat_puas', 56, 53),
+(265, 'sangat_puas', 84, 53),
+(266, 'sangat_puas', 85, 53),
+(267, 'sangat_puas', 86, 53),
+(268, 'sangat_puas', 87, 53),
+(269, 'sangat_puas', 88, 53),
+(270, 'sangat_puas', 89, 53),
+(271, 'sangat_puas', 90, 53),
+(272, 'sangat_puas', 91, 53),
+(273, 'sangat_puas', 92, 53),
+(274, 'sangat_puas', 93, 53),
+(275, 'sangat_puas', 106, 53),
+(276, 'sangat_puas', 107, 53),
+(277, 'sangat_puas', 108, 53),
+(278, 'sangat_puas', 109, 53),
+(279, 'sangat_puas', 110, 53),
+(280, 'sangat_puas', 111, 53),
+(281, 'sangat_puas', 112, 53),
+(282, 'sangat_puas', 113, 53),
+(283, 'sangat_puas', 114, 53),
+(284, 'sangat_puas', 115, 53),
+(285, 'sangat_puas', 116, 53),
+(286, 'sangat_puas', 117, 53),
+(287, 'sangat_puas', 134, 53),
+(288, 'sangat_puas', 135, 53),
+(289, 'sangat_puas', 136, 53),
+(290, 'sangat_puas', 137, 53),
+(291, 'sangat_puas', 138, 53),
+(292, 'sangat_puas', 139, 53),
+(293, 'sangat_puas', 140, 53),
+(294, 'sangat_puas', 141, 53),
+(295, 'sangat_puas', 142, 53),
+(296, 'sangat_puas', 143, 53),
+(297, 'sangat_puas', 144, 53),
+(298, 'sangat_puas', 145, 53),
+(299, 'sangat_puas', 146, 53),
+(300, 'sangat_puas', 147, 53),
+(301, 'sangat_puas', 148, 53),
+(302, 'sangat_puas', 149, 53),
+(303, 'sangat_puas', 150, 53),
+(304, 'sangat_puas', 151, 53),
+(305, 'sangat_puas', 152, 53),
+(306, 'sangat_puas', 153, 53),
+(307, 'sangat_puas', 154, 53),
+(308, 'sangat_puas', 155, 53),
+(309, 'sangat_puas', 156, 53),
+(310, 'sangat_puas', 157, 53),
+(311, 'sangat_puas', 158, 53),
+(312, 'sangat_puas', 159, 53),
+(313, 'sangat_puas', 160, 53),
+(314, 'sangat_puas', 161, 53),
+(315, 'sangat_puas', 162, 53),
+(316, 'sangat_puas', 163, 53),
+(317, 'sangat_puas', 164, 53),
+(318, 'sangat_puas', 165, 53),
+(319, 'sangat_puas', 166, 53),
+(320, 'sangat_puas', 167, 53);
 
 -- --------------------------------------------------------
 
@@ -397,7 +548,13 @@ CREATE TABLE `tbl_saran` (
 --
 
 INSERT INTO `tbl_saran` (`id`, `saran`, `users_id`) VALUES
-(31, 'Terimakasih', 55);
+(31, 'Terimakasih', 55),
+(32, 'Fasilitas Internet kurang bagus', 48),
+(33, 'Terimakasih', 49),
+(34, 'Terimakasih', 51),
+(35, 'Terimakasih', 52),
+(36, 'Semoga Lebih Baik', 50),
+(37, 'Mahasiswa', 53);
 
 -- --------------------------------------------------------
 
@@ -551,7 +708,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- AUTO_INCREMENT for table `tbl_kriteria`
@@ -569,7 +726,7 @@ ALTER TABLE `tbl_pertanyaan`
 -- AUTO_INCREMENT for table `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `users`
