@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2023 at 02:26 PM
+-- Generation Time: Jul 17, 2023 at 06:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,20 +72,13 @@ CREATE TABLE `tbl_jawaban_user` (
 --
 
 INSERT INTO `tbl_jawaban_user` (`id`, `jawaban`, `tbl_pertanyaan_id`, `users_id`) VALUES
-(10, '1', 45, 22),
-(11, '1', 46, 22),
-(12, '1', 47, 22),
-(13, '1', 45, 22),
-(14, '1', 45, 22),
-(15, '1', 46, 22),
-(16, '1', 47, 22),
-(17, '1', 73, 23),
-(18, '1', 74, 23),
-(19, '1', 75, 23),
-(20, '1', 76, 23),
-(21, '1', 77, 23),
-(22, '1', 78, 23),
-(23, '1', 79, 23);
+(160, 'sangat_tidak_puas', 73, 41),
+(161, 'tidak_puas', 74, 41),
+(162, 'cukup_puas', 75, 41),
+(163, 'puas', 76, 41),
+(164, 'sangat_puas', 77, 41),
+(165, 'sangat_tidak_puas', 78, 41),
+(166, 'tidak_puas', 79, 41);
 
 -- --------------------------------------------------------
 
@@ -160,8 +153,8 @@ INSERT INTO `tbl_kriteria` (`id`, `nama_kriteria`, `kategori_id`) VALUES
 (14, 'Kriteria Mahasiswa', 4),
 (15, 'Kriteria Sumber Daya Manusia', 5),
 (16, 'Kriteria Sumber Daya Manusia', 3),
-(17, 'Kriteria Keuangan', 4),
-(18, 'Kriteria Keuangan', 5),
+(17, 'Kriteria Keuangan, Sarana, dan Prasarana', 4),
+(18, 'Kriteria Keuangan, Sarana, dan Prasarana', 5),
 (19, 'Kriteria Pendidikan', 4),
 (20, 'Kriteria Penelitian', 5),
 (21, 'Kriteria Penelitian', 6),
@@ -266,7 +259,7 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (69, 'Kualitas layanan di tingkat prodi/fakultas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 3, 10),
 (70, 'Kualitas layanan di tingkat universitas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 3, 10),
 (71, 'Kemampuan petugas di tingkat fakultas dalam memberikan layanan/informasi ?', 3, 10),
-(72, 'Kemampuan petugas di tingkat universitas dalam memberikan layanan/informasi', 3, 10),
+(72, 'Kemampuan petugas di tingkat universitas dalam memberikan layanan/informasi ?', 3, 10),
 (73, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi ?', 2, 11),
 (74, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien ?', 2, 11),
 (75, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya ?', 2, 11),
@@ -292,14 +285,12 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (95, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri ?', 5, 15),
 (96, 'Jenjang karir didasarkan pada kinerja/prestasi kerja ?', 5, 15),
 (97, 'Sistem pembinaan dosen dalam bentuk pemberian penghargaan dan sanksi ?', 5, 15),
-(98, 'Fakultas Teknik dan Program Studi mengevaluasi pekerjaan yang dilakukan dosen secara periodik ?', 5, 15),
-(99, 'Fakultas Teknik dan Program Studi menanggapi maupun menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 5, 15),
 (100, 'Kejelasan sistem rekruitmen, orientasi, dan penempatan pegawai ?', 3, 16),
 (101, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri ?', 3, 16),
 (102, 'Jenjang karir didasarkan pada kinerja/prestasi kerja ?', 3, 16),
 (103, 'Sistem pembinaan tenaga kependidikan dalam bentuk pemberian penghargaan dan sanksi ?', 3, 16),
-(104, 'Fakultas Teknik dan Program Studi menilai dan mengevaluasi pekerjaan yang dilakukan tenaga kependidikan secara periodik ?', 3, 16),
-(105, 'Fakultas Teknik dan Program Studi menanggapi kemudian menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 3, 16),
+(104, 'Universitas menilai dan mengevaluasi pekerjaan yang dilakukan tenaga kependidikan secara periodik ?', 3, 16),
+(105, 'Universitas menanggapi kemudian menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 3, 16),
 (106, 'Adanya alokasi dana  untuk kegiatan kemahasiswaan ?', 4, 17),
 (107, 'Ruang kuliah nyaman, bersih, rapi, dan memadai ?', 4, 17),
 (108, 'Ketersediaan alat/bahan  penunjang kegiatan praktikum ?', 4, 17),
@@ -328,7 +319,7 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (131, 'Ketersediaan sarana dan prasarana kesehatan ?', 5, 18),
 (132, 'Tempat parkir yang aman dan memadai ?', 5, 18),
 (133, 'Toilet nyaman, bersih, dan memadai ?', 5, 18),
-(134, 'Kondisi sarana dan prasarana pembelajaran mengunakan E-Learning SPADA ?', 4, 19),
+(134, 'Kondisi sarana dan prasarana pembelajaran daring ?', 4, 19),
 (135, 'Perpustakaan yang nyaman dan memadai ?', 4, 19),
 (136, 'Perpustakaan menyediakan buku, jurnal, dan literature lain yang memadai ?', 4, 19),
 (137, 'Tersedianya sarana dalam mengakses buku, jurnal dan literature serta bahan ajar berbasis internet di perpustakaan ?', 4, 19),
@@ -337,7 +328,7 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (140, 'Ruang kuliah aman, nyaman, dan bersih ?', 4, 19),
 (141, 'Kelengkapan sarana perkuliahan ?', 4, 19),
 (142, 'Ruang layanan administrasi akademik fakultas (Tata Usaha) nyaman ?', 4, 19),
-(143, 'Ruang administrasi akademik (Tata Usaha fakultas) memiliki prosedur pelayanan akademik yang jelas ?', 4, 19),
+(143, 'Ruang administrasi akademik (Tata Usaha Fakultas) memiliki prosedur pelayanan akademik yang jelas ?', 4, 19),
 (144, 'Sistem informasi akademik universitas memberikan data administrasi yang akurat ?', 4, 19),
 (145, 'Jadwal kegiatan akademik diselenggarakan tepat waktu ?', 4, 19),
 (146, 'Tenaga kependidikan memberikan informasi yang akurat dan tepat waktu ?', 4, 19),
@@ -371,9 +362,9 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (174, 'Kemudahan mendapatkan bantuan seminar dalam negeri ?', 5, 20),
 (175, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan penelitian ?', 5, 20),
 (176, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang penelitan ?', 6, 21),
-(177, 'Kompetensi SDM yang tersedia di Fakultas Teknik dan Program Studi sehubungan dengan kerjasama bidang penelitian memadai ?', 6, 21),
-(178, 'Komunikasi yang baik antara pihak mitra dan pihak Fakultas Teknik dan Program Studi di bidang penelitian ?', 6, 21),
-(179, 'Kejelasan prosedur kerjasama bidang penelitian antara pihak mitra dan pihak Fakultas Teknik dan Program Studi ?', 6, 21),
+(177, 'Kompetensi SDM yang tersedia di universitas sehubungan dengan kerjasama bidang penelitian memadai ?', 6, 21),
+(178, 'Komunikasi yang baik antara pihak mitra dan universitas di bidang penelitian ?', 6, 21),
+(179, 'Kejelasan prosedur kerjasama bidang penelitian antara pihak mitra dan pihak fakultas ?', 6, 21),
 (180, 'Implementasi kegiatan kerja sama bidang penelitian sesuai kontrak ?', 6, 21),
 (181, 'Manfaat pelaksanaan kegiatan penelitian terhadap pihak mitra ?', 6, 21),
 (182, 'Kemudahan dalam memperoleh informasi tentang dana pengabdian kepada masyarakat ?', 5, 22),
@@ -384,12 +375,14 @@ INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) 
 (187, 'Kemudahan mendapatkan bantuan seminar luar negeri ?', 5, 22),
 (188, 'Kemudahan mendapatkan bantuan seminar dalam negeri ?', 5, 22),
 (189, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan pengabdian kepada masyarakat ?', 5, 22),
-(190, 'Layanan yang diberikan staf/petugas di bagian kerjasama Fakultas Teknik dan Program Studi bidang pengabdian kepada masyarakat ?', 6, 23),
-(191, 'Kompetensi SDM yang tersedia di Fakultas Teknik dan Program Studi sehubungan dengan kerjasama bidang pengabdian kepada masyarakat memadai ?', 6, 23),
-(192, 'Komunikasi yang baik antara pihak mitra dan pihak Fakultas Teknik dan Program Studi bidang pengabdian kepada masyarakat ?', 6, 23),
-(193, 'Kejelasan prosedur kerjasama antara pihak mitra dan pihak Fakultas Teknik dan Program Studi di bidang pengabdian kepada masyarakat ?', 6, 23),
+(190, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang pengabdian kepada masyarakat ?', 6, 23),
+(191, 'Kompetensi SDM yang tersedia di Universitas sehubungan dengan kerjasama bidang pengabdian kepada masyarakat memadai ?', 6, 23),
+(192, 'Komunikasi yang baik antara pihak mitra dan pihak universitas bidang pengabdian kepada masyarakat ?', 6, 23),
+(193, 'Kejelasan prosedur kerjasama antara pihak mitra dan pihak fakultas di bidang pengabdian kepada masyarakat ?', 6, 23),
 (194, 'Implementasi kegiatan kerja sama di bidang pengabdian kepada masyarakat sesuai kontrak ?', 6, 23),
-(195, 'Manfaat pelaksanaan kegiatan pengabdian kepada masyarakat terhadap pihak mitra ?', 6, 23);
+(195, 'Manfaat pelaksanaan kegiatan pengabdian kepada masyarakat terhadap pihak mitra ?', 6, 23),
+(199, 'Universitas mengevaluasi pekerjaan yang dilakukan dosen secara periodik ?', 5, 15),
+(200, 'Universitas menanggapi maupun menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 5, 15);
 
 -- --------------------------------------------------------
 
@@ -408,9 +401,7 @@ CREATE TABLE `tbl_saran` (
 --
 
 INSERT INTO `tbl_saran` (`id`, `saran`, `users_id`) VALUES
-(2, 'yayay', 22),
-(4, 'yayayay', 22),
-(5, 'iyaaaa', 23);
+(30, 'Apakah?', 41);
 
 -- --------------------------------------------------------
 
@@ -437,10 +428,10 @@ CREATE TABLE `tbl_tendik` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nama_lengkap` varchar(200) DEFAULT NULL,
-  `username` varchar(100) DEFAULT NULL,
+  `nim` varchar(100) NOT NULL,
   `email` varchar(200) DEFAULT NULL,
   `tbl_jurusan_id` int(11) NOT NULL,
-  `jenis_kelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
+  `jenis_kelamin` enum('Laki - Laki','Perempuan') DEFAULT NULL,
   `alamat` text CHARACTER SET armscii8 DEFAULT NULL,
   `no_hp` varchar(100) DEFAULT NULL,
   `user_type` enum('admin','pengguna_lulusan','alumni','tenaga_kependidikan','mahasiswa','dosen','mitra') NOT NULL,
@@ -451,11 +442,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama_lengkap`, `username`, `email`, `tbl_jurusan_id`, `jenis_kelamin`, `alamat`, `no_hp`, `user_type`, `password`) VALUES
-(20, 'Sarman Chisara', 'sarmanchisara', 'sarmanchysara@gmail.com', 3, 'Laki-Laki', 'Kost Putra Paperu, Kambu', '12345678', 'dosen', '$2y$10$zfyzIuexNVtO8Inf22ChwO.0n7Rw58JTjBRyDcGlzU1K6EMpZHlgO'),
-(21, 'Jurusan Teknik Informatika', 'Admin', 'admin@gmail.com', 3, 'Laki-Laki', 'Kampus UHO', '085255938568', 'admin', '$2y$10$zfyzIuexNVtO8Inf22ChwO.0n7Rw58JTjBRyDcGlzU1K6EMpZHlgO'),
-(22, 'Amhar Rayadin', 'amhar', 'amhar@gmail.com', 3, 'Laki-Laki', 'Pinang Kuning', '085255938568', 'pengguna_lulusan', '$2y$10$P5SEm5.oqSzj5hNrN2aeH.MxW/Vyu.fKSURfo0nZpQAM3vbcAVALO'),
-(23, 'Aulia Akbar', 'auliaakbar', 'akbar@gmail.com', 3, 'Laki-Laki', 'Puwatu', '12345678', 'alumni', '$2y$10$Wh/PJ/ClCuavMv.bU6me6uBAJYFIlmIMWiaShQpKLJLOgwq9wHI9K');
+INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `email`, `tbl_jurusan_id`, `jenis_kelamin`, `alamat`, `no_hp`, `user_type`, `password`) VALUES
+(41, 'Amhar', 'E1E120037', 'amhar@gmail.com', 3, 'Laki - Laki', 'Pinang Kuning', '12345678', 'alumni', '$2y$10$gjBg8ncReIStn6aRc0o7uu7ZjbqD/xZslrVrbTx9Jt53m3PNvRfS.'),
+(42, 'Admin Sikapku', 'E1E108001', 'admin@gmail.com', 3, 'Perempuan', 'Kampus Bumi Tridharma', '12345678910', 'admin', '$2y$10$TIrRHSf51KIMPEhGMjPS/eWah/H9Xgou1Y1AHmkrMdbq/7QQvgAQG'),
+(43, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Kelinci', '12345678', 'mahasiswa', '$2y$10$zbN9evf.BbdgSu8Fq5/2K.DDL9flmWtV7znkC9UkFIlMvZbf7k6V6'),
+(44, 'Sarman Chisara', 'E1E120050', 'sarmanchysara@gmail.com', 3, 'Laki - Laki', 'Palangga', '12345678', 'pengguna_lulusan', '$2y$10$vkc7xWFNRsOlNK379u.LWegpEXWkMqU2q57puHZDbrzT/SuRGVXZe');
 
 --
 -- Indexes for dumped tables
@@ -549,7 +540,7 @@ ALTER TABLE `tbl_tendik`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`,`nim`) USING BTREE,
   ADD KEY `fk_users_tbl_jurusan1` (`tbl_jurusan_id`);
 
 --
@@ -560,7 +551,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `tbl_kriteria`
@@ -572,19 +563,19 @@ ALTER TABLE `tbl_kriteria`
 -- AUTO_INCREMENT for table `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_pertanyaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT for table `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Constraints for dumped tables
