@@ -178,7 +178,7 @@
                                             <div class="row d-flex justify-content-center">
                                                 <!-- radio -->
                                                 <div class="radio-tile-group">
-                                                    <div class="input-container">
+                                                    <label class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]"
                                                             value="sangat_tidak_puas" type="radio" required>
@@ -186,11 +186,12 @@
                                                             <img name="sangat_tidak_puas"
                                                                 src="{{ asset('question/assets/svg/e-sangat-tidak-puas.svg') }}"
                                                                 alt="icon-survei">
+                                                            <ion-icon name="bicycle"></ion-icon>
                                                             <label for="sangat_tidak_puas">Sangat Tidak
                                                                 Puas</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="input-container">
+                                                    </label>
+                                                    <label class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="tidak_puas"
                                                             type="radio" required>
@@ -201,8 +202,8 @@
                                                             <ion-icon name="bicycle"></ion-icon>
                                                             <label for="tidak_puas">Tidak Puas</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="input-container">
+                                                    </label>
+                                                    <label class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="cukup_puas"
                                                             type="radio" required>
@@ -213,8 +214,8 @@
                                                             <ion-icon name="cukup_puas-sport"></ion-icon>
                                                             <label for="cukup_puas">Cukup Puas</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="input-container">
+                                                    </label>
+                                                    <label class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="puas"
                                                             type="radio" required>
@@ -225,8 +226,8 @@
                                                             <ion-icon name="airplane"></ion-icon>
                                                             <label for="puas">Puas</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="input-container">
+                                                    </label>
+                                                    <label class="input-container">
                                                         <input id="jawaban_{{ $item->id }}"
                                                             name="jawaban[{{ $item->id }}]" value="sangat_puas"
                                                             type="radio" required>
@@ -237,7 +238,7 @@
                                                             <ion-icon name="airplane"></ion-icon>
                                                             <label for="sangat_puas">Sangat Puas</label>
                                                         </div>
-                                                    </div>
+                                                    </label>
                                                 </div>
 
                                             </div>

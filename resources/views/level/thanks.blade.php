@@ -34,8 +34,10 @@
                         </div>
                         <div class="col-md-12 d-flex justify-content-center align-items-center h-100">
                             <div class="thanks">
-                                <p class="text-center">Terima kasih telah mengisi survei! Pendapat <br>Anda sangat
-                                    berharga bagi kami.</p>
+                                <p class="text-center">Terima kasih telah mengisi survei! Jawaban anda telah
+                                    disimpan<br>Pendapat Anda sangat
+                                    berharga bagi kami.
+                                </p>
                             </div>
                         </div>
                     </div>
