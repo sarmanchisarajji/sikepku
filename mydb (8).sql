@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 07:03 AM
+-- Generation Time: Jul 17, 2023 at 08:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -72,13 +72,9 @@ CREATE TABLE `tbl_jawaban_user` (
 --
 
 INSERT INTO `tbl_jawaban_user` (`id`, `jawaban`, `tbl_pertanyaan_id`, `users_id`) VALUES
-(160, 'sangat_tidak_puas', 73, 41),
-(161, 'tidak_puas', 74, 41),
-(162, 'cukup_puas', 75, 41),
-(163, 'puas', 76, 41),
-(164, 'sangat_puas', 77, 41),
-(165, 'sangat_tidak_puas', 78, 41),
-(166, 'tidak_puas', 79, 41);
+(167, 'sangat_puas', 45, 55),
+(168, 'puas', 46, 55),
+(169, 'cukup_puas', 47, 55);
 
 -- --------------------------------------------------------
 
@@ -401,7 +397,7 @@ CREATE TABLE `tbl_saran` (
 --
 
 INSERT INTO `tbl_saran` (`id`, `saran`, `users_id`) VALUES
-(30, 'Apakah?', 41);
+(31, 'Terimakasih', 55);
 
 -- --------------------------------------------------------
 
@@ -443,13 +439,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `email`, `tbl_jurusan_id`, `jenis_kelamin`, `alamat`, `no_hp`, `user_type`, `password`) VALUES
-(41, 'Amhar', 'E1E120037', 'amhar@gmail.com', 3, 'Laki - Laki', 'Pinang Kuning', '12345678', 'alumni', '$2y$10$gjBg8ncReIStn6aRc0o7uu7ZjbqD/xZslrVrbTx9Jt53m3PNvRfS.'),
-(42, 'Admin Sikapku', 'E1E108001', 'admin@gmail.com', 3, 'Perempuan', 'Kampus Bumi Tridharma', '12345678910', 'admin', '$2y$10$TIrRHSf51KIMPEhGMjPS/eWah/H9Xgou1Y1AHmkrMdbq/7QQvgAQG'),
-(43, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Kelinci', '12345678', 'mahasiswa', '$2y$10$zbN9evf.BbdgSu8Fq5/2K.DDL9flmWtV7znkC9UkFIlMvZbf7k6V6'),
-(44, 'Sarman Chisara', 'E1E120050', 'sarmanchysara@gmail.com', 3, 'Laki - Laki', 'Palangga', '12345678', 'pengguna_lulusan', '$2y$10$vkc7xWFNRsOlNK379u.LWegpEXWkMqU2q57puHZDbrzT/SuRGVXZe'),
-(45, 'Fauziah', 'E1E120087', 'fauzaiah@gmail.com', 3, 'Perempuan', 'Wanggu', '12345678', 'mitra', '$2y$10$2Pqy0h..e3n68Hi0CNS8KejAGeI.YNSXGEwacdk3gru6vwFEdpCJG'),
-(46, 'Lisa', 'E1E120051', 'lisa@gmail.com', 3, 'Perempuan', 'Lepo - Lepo', '12345678', 'dosen', '$2y$10$C6eZXpl2bGD136AmOlQqme8R0AiZfrfYZM6XEACekMHH9bG7TXDZq'),
-(47, 'Abdul', 'E1E120055', 'abdul@gmail.com', 3, 'Laki - Laki', 'garuda', '12345678', 'tenaga_kependidikan', '$2y$10$dtYsHcxU9GzFXHub4eDxb.EYnGr64NC5DBMjtGGcjca2As8XhC0t2');
+(48, 'Mitra', 'MITRA', 'mitra@gmail.com', 3, 'Laki - Laki', 'Kampus Uho', '12345678', 'mitra', '$2y$10$CPrKEDH2YAXdBcp9sLrFluos32dRvm8eeNEtKDwez3I9B30mxFSP.'),
+(49, 'Tenaga Pendidik', 'TENAGAPENDIDIK', 'tendik@gmail.com', 3, 'Laki - Laki', 'Kampus Uho', '12345678', 'tenaga_kependidikan', '$2y$10$T.N4vzwBO83AkndfDTewJezfGA7ThD6uya5XRwQ2o0ekVUKObFZf.'),
+(50, 'dosen', '0011078904', 'dosen@gmail.com', 3, 'Laki - Laki', 'Andonuhu', '12345678', 'dosen', '$2y$10$6fomaQTDcSgaD2IR6EWJB.bk4hDeqxOmeuR5qHwYmwLlHkdMJbsTG'),
+(51, 'Lisa', 'PENGGUNALULUSAN', 'penggunalulusan@gmail.com', 3, 'Laki - Laki', 'Andonuhu', '3923982983', 'pengguna_lulusan', '$2y$10$GObzeynJigwqyBIH0S6Jku90MU3GeD2A4xz.qs0xim1O20b/z.dTi'),
+(52, 'Dinar', 'ALUMNI', 'alumni@gmail.com', 3, 'Laki - Laki', 'Wua - Wua', '3923982983', 'alumni', '$2y$10$441LGMEHzVgrz3Gs3XHvEufuLaK5RZswLRPHlPMiNvpNxJAB5RAfm'),
+(53, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Kancil', '3923982983', 'mahasiswa', '$2y$10$TL65dokufygtLWOTCdqQKOh1cmIRyRHWHYH5q/sP7LRGQ/eUWvz56'),
+(54, 'Admin123', 'ADMIN', 'admin1@gmail.com', 3, 'Laki - Laki', 'uho', '12345678', 'admin', '$2y$10$e4CKhEuUukWchOq/tjJub.MK1eI.ofaVXqzgF0xr4XUaWaf8m9m/G'),
+(55, 'Sarman', 'SARMAN', 'sarman@gmail.com', 3, 'Laki - Laki', 'Palangga', '3923982983', 'pengguna_lulusan', '$2y$10$Ft7s63XglYkLm8ZnUox.beuW.LeFCG5PU5/7H02B3Qdr9/L.qE212');
 
 --
 -- Indexes for dumped tables
@@ -554,7 +551,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `tbl_kriteria`
@@ -572,13 +569,13 @@ ALTER TABLE `tbl_pertanyaan`
 -- AUTO_INCREMENT for table `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- Constraints for dumped tables
