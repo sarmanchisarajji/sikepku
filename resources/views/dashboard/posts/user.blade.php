@@ -54,7 +54,7 @@
                                         @elseif ($user->user_type === 'mahasiswa')
                                             <span class="badge bg-label-warning me-1">{{ $user->user_type }}</span>
                                         @elseif ($user->user_type === 'dosen')
-                                            <span class="badge bg-label-light me-1">{{ $user->user_type }}</span>
+                                            <span class="badge bg-label-dark me-1">{{ $user->user_type }}</span>
                                         @elseif ($user->user_type === 'mitra')
                                             <span class="badge bg-label-danger me-1">{{ $user->user_type }}</span>
                                         @endif
