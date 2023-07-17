@@ -17,6 +17,8 @@
         integrity="sha512-dzKBJ6vZncYqa7JJ0Gd4D7kkOo2Hwldx7SKDDFymVx0GrFn3xvH62dAQiWv8j0MQlp9p4v6qezdJL/2Kce06xw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('') }}question/assets/img/favicon.ico" />
+
     @php
         $userType = Auth::user()->user_type;
         
