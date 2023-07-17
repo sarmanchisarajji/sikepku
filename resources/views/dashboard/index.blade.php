@@ -300,7 +300,7 @@
                                         <h6 class="mb-0">Responden</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">150</h6>
+                                        <h6 class="mb-0">{{ $jmlhResponden }}</h6>
                                         <span class="text-muted">Orang</span>
                                     </div>
                                 </div>
@@ -316,7 +316,7 @@
                                         <h6 class="mb-0">Kusioner</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">100</h6>
+                                        <h6 class="mb-0">{{ $jumlahOrangMengisi }}</h6>
                                         <span class="text-muted">Orang</span>
                                     </div>
                                 </div>
@@ -332,7 +332,11 @@
                                         <h6 class="mb-0">Kusioner</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">66</h6>
+                                        @php
+                                            $persen = ($jumlahOrangMengisi / $jmlhResponden) * 100;
+                                            $persen1 = number_format($persen, 0);
+                                        @endphp
+                                        <h6 class="mb-0">{{ $persen1 }}</h6>
                                         <span class="text-muted">%</span>
                                     </div>
                                 </div>

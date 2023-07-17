@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Dotenv\Util\Str;
+use App\Models\Users;
+use App\Models\Jawaban;
 use App\Models\Kategori;
 use App\Models\Kriteria;
 use App\Models\Pertanyaan;
@@ -77,7 +79,9 @@ class DashboardController extends Controller
             ->first()
             ->kriteria_count;
 
-        // dd($jumlahKriteriaPenggunaLulusan, $jumlahKriteriaAlumni, $jumlahKriteriaTendik, $jumlahKriteriaMahasiswa, $jumlahKriteriaDosen, $jumlahKriteriaMitra);
+        $jmlhResponden =  Users::where('user_type', '!=', 'admin')->count();
+
+        $jumlahOrangMengisi = Jawaban::distinct('users_id')->count('users_id');
 
         return view('dashboard.index', [
             'jmlSoalPenggunaLulusan' =>  $jumlahKategoriSoalPenggunaLulusan,
@@ -92,6 +96,8 @@ class DashboardController extends Controller
             'jmlKriteriaMahasiswa' => $jumlahKriteriaMahasiswa,
             'jmlKriteriaDosen' => $jumlahKriteriaDosen,
             'jmlKriteriaMitra' => $jumlahKriteriaMitra,
+            'jmlhResponden' => $jmlhResponden,
+            'jumlahOrangMengisi' => $jumlahOrangMengisi,
         ]);
     }
 }
