@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 06:26 AM
+-- Generation Time: Jul 17, 2023 at 07:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -446,7 +446,10 @@ INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `email`, `tbl_jurusan_id`, `je
 (41, 'Amhar', 'E1E120037', 'amhar@gmail.com', 3, 'Laki - Laki', 'Pinang Kuning', '12345678', 'alumni', '$2y$10$gjBg8ncReIStn6aRc0o7uu7ZjbqD/xZslrVrbTx9Jt53m3PNvRfS.'),
 (42, 'Admin Sikapku', 'E1E108001', 'admin@gmail.com', 3, 'Perempuan', 'Kampus Bumi Tridharma', '12345678910', 'admin', '$2y$10$TIrRHSf51KIMPEhGMjPS/eWah/H9Xgou1Y1AHmkrMdbq/7QQvgAQG'),
 (43, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Kelinci', '12345678', 'mahasiswa', '$2y$10$zbN9evf.BbdgSu8Fq5/2K.DDL9flmWtV7znkC9UkFIlMvZbf7k6V6'),
-(44, 'Sarman Chisara', 'E1E120050', 'sarmanchysara@gmail.com', 3, 'Laki - Laki', 'Palangga', '12345678', 'pengguna_lulusan', '$2y$10$vkc7xWFNRsOlNK379u.LWegpEXWkMqU2q57puHZDbrzT/SuRGVXZe');
+(44, 'Sarman Chisara', 'E1E120050', 'sarmanchysara@gmail.com', 3, 'Laki - Laki', 'Palangga', '12345678', 'pengguna_lulusan', '$2y$10$vkc7xWFNRsOlNK379u.LWegpEXWkMqU2q57puHZDbrzT/SuRGVXZe'),
+(45, 'Fauziah', 'E1E120087', 'fauzaiah@gmail.com', 3, 'Perempuan', 'Wanggu', '12345678', 'mitra', '$2y$10$2Pqy0h..e3n68Hi0CNS8KejAGeI.YNSXGEwacdk3gru6vwFEdpCJG'),
+(46, 'Lisa', 'E1E120051', 'lisa@gmail.com', 3, 'Perempuan', 'Lepo - Lepo', '12345678', 'dosen', '$2y$10$C6eZXpl2bGD136AmOlQqme8R0AiZfrfYZM6XEACekMHH9bG7TXDZq'),
+(47, 'Abdul', 'E1E120055', 'abdul@gmail.com', 3, 'Laki - Laki', 'garuda', '12345678', 'tenaga_kependidikan', '$2y$10$dtYsHcxU9GzFXHub4eDxb.EYnGr64NC5DBMjtGGcjca2As8XhC0t2');
 
 --
 -- Indexes for dumped tables
@@ -575,23 +578,11 @@ ALTER TABLE `tbl_saran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `tbl_alumni`
---
-ALTER TABLE `tbl_alumni`
-  ADD CONSTRAINT `fk_tbl_alumni_tbl_user1` FOREIGN KEY (`tbl_user_id`,`tbl_user_tbl_user_level_id`,`tbl_user_tbl_jurusan_id`) REFERENCES `tbl_user` (`id`, `tbl_user_level_id`, `tbl_jurusan_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_dosen`
---
-ALTER TABLE `tbl_dosen`
-  ADD CONSTRAINT `fk_tbl_dosen_tbl_user1` FOREIGN KEY (`tbl_user_id`,`tbl_user_tbl_user_level_id`,`tbl_user_tbl_jurusan_id`) REFERENCES `tbl_user` (`id`, `tbl_user_level_id`, `tbl_jurusan_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tbl_jawaban_user`
@@ -606,18 +597,6 @@ ALTER TABLE `tbl_kriteria`
   ADD CONSTRAINT `fk_tbl_kriteria_tbl_kategori1` FOREIGN KEY (`kategori_id`) REFERENCES `tbl_kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_mitra`
---
-ALTER TABLE `tbl_mitra`
-  ADD CONSTRAINT `fk_tbl_mitra_tbl_user1` FOREIGN KEY (`tbl_user_id`,`tbl_user_tbl_user_level_id`,`tbl_user_tbl_jurusan_id`) REFERENCES `tbl_user` (`id`, `tbl_user_level_id`, `tbl_jurusan_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_penggunalulusan`
---
-ALTER TABLE `tbl_penggunalulusan`
-  ADD CONSTRAINT `fk_tbl_penggunalulusan_tbl_user1` FOREIGN KEY (`tbl_user_id`,`tbl_user_tbl_user_level_id`,`tbl_user_tbl_jurusan_id`) REFERENCES `tbl_user` (`id`, `tbl_user_level_id`, `tbl_jurusan_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_pertanyaan`
@@ -629,12 +608,6 @@ ALTER TABLE `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_saran`
   ADD CONSTRAINT `fk_tbl_saran_user1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tbl_tendik`
---
-ALTER TABLE `tbl_tendik`
-  ADD CONSTRAINT `fk_tbl_tendik_tbl_user1` FOREIGN KEY (`tbl_user_id`,`tbl_user_tbl_user_level_id`,`tbl_user_tbl_jurusan_id`) REFERENCES `tbl_user` (`id`, `tbl_user_level_id`, `tbl_jurusan_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `users`
