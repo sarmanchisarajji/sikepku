@@ -43,6 +43,16 @@
     <link rel="stylesheet" href="{{ asset('question/assets/CSS/splash.css') }}">
     <link rel="stylesheet" href="{{ asset('question/assets/js/script.js') }}">
 
+
+    {{-- CHART --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ asset('question/assets/CSS/chart.css') }}" />
+
     <!-- Helpers -->
     <script src="{{ asset('') }}vendor/js/helpers.js"></script>
 
@@ -122,6 +132,9 @@
             toggleMenu.classList.toggle('active')
         }
     </script>
+    {{-- CHART --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('question/assets/js/chart.js') }}"></script>
 
     {{-- <script>
         $(document).ready(function() {

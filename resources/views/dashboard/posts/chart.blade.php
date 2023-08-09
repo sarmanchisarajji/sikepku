@@ -42,6 +42,33 @@
             chart.draw(data, options);
         }
     </script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart1);
+
+        function drawChart1() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Jawaban', 'Jumlah'],
+                ['Sangat Tidak Puas', {{ $jumlahJawaban['sangat_tidak_puas'] }}],
+                ['Tidak Puas', {{ $jumlahJawaban['tidak_puas'] }}],
+                ['Cukup Puas', {{ $jumlahJawaban['cukup_puas'] }}],
+                ['Puas', {{ $jumlahJawaban['puas'] }}],
+                ['Sangat Puas', {{ $jumlahJawaban['sangat_puas'] }}]
+            ]);
+
+            var options = {
+                title: 'Grafik Kepuasan Pengguna Lulusan Terhadap Kriteria Tata Pamong',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
 @endsection
 
 {{-- @extends('dashboard.layouts.main')

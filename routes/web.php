@@ -59,6 +59,10 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::put('/edit/{id}', [UserController::class, 'update']);
     Route::delete('/delete/{id}', [UserController::class, 'destroy']);
 
+    //csv
+    Route::get('/import-csv', [UserController::class, 'showImportForm']);
+    Route::post('/import-csv', [UserController::class, 'importCSV']);
+
     // crud tambah akun admin
     Route::post('/add', [AdminController::class, 'tambah']);
     Route::put('/upTodate/{id}', [AdminController::class, 'upTodate']);

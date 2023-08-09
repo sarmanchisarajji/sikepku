@@ -43,6 +43,6 @@ class ChartController extends Controller
         }
         // dd($jumlahJawaban);
 
-        return view('dashboard.posts.chart', compact('jumlahJawaban'));
+        return view('dashboard.posts.chartui', compact('jumlahJawaban'));
     }
 }
