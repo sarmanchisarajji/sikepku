@@ -1,6 +1,9 @@
 @extends('dashboard.layouts.main')
 @section('main-content')
 <div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4" style="font-size: 16px">
+    <span class="text-muted fw-light">Diagram /</span> Kriteria
+</h4>
   <div class="row">
     <div class="col">
       <div class="programming-stats">

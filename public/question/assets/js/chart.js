@@ -1,6 +1,6 @@
 const chartData = {
   labels: ["Sangat Puas", "Puas", "Cukup Puas", "Tidak Puas", "Sangat Tidak Puas"],
-  data: [30, 17, 10, 7, 30, 6],
+  data: [30, 17, 10, 7, 30],
 };
 
 const myChart = document.querySelector(".my-chart");
