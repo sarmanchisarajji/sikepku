@@ -1,0 +1,11 @@
+﻿nama_lengkap,nim,email,password,tbl_jurusan_id,jenis_kelamin,user_type,alamat,no_hp
+John Doe,12345,johndoe@example.com,secret,1,Laki - Laki,mitra,123 Main St,(123) 456-7890
+Jane Smith,67890,janesmith@example.com,pass123,2,Perempuan,mitra,456 Elm St,(987) 654-3210
+Alice Johnson,54321,alice@example.com,secure,3,Perempuan,dosen,789 Oak St,(567) 890-1234
+Bob Brown,98765,bob@example.com,password,1,Laki - Laki,mitra,567 Pine St,(234) 567-8901
+Eva Green,23456,eva@example.com,hidden,2,Perempuan,dosen,890 Cedar St,(678) 901-2345
+Michael Smith,76543,michael@example.com,pass456,3,Laki - Laki,dosen,432 Birch St,(345) 678-9012
+Sarah Miller,43210,sarah@example.com,open123,1,Perempuan,dosen,321 Spruce St,(456) 789-0123
+David Davis,87654,david@example.com,private,2,Laki - Laki,dosen,678 Redwood St,(567) 890-1234
+Olivia White,34567,olivia@example.com,secretpass,3,Perempuan,mitra,890 Willow St,(678) 901-2345
+Daniel Johnson,21098,daniel@example.com,protected,1,Laki - Laki,mitra,567 Maple St,(789) 012-3456

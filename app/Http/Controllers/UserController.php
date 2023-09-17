@@ -6,6 +6,7 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -61,36 +62,40 @@ class UserController extends Controller
 
     public function importCSV(Request $request)
     {
-        if ($request->hasFile('csv_file')) {
-            $path = $request->file('csv_file')->getRealPath();
-            $file = fopen($path, 'r');
-        
-            // Lewati baris pertama (header) pada file CSV
-            fgetcsv($file);
-        
-            while (($data = fgetcsv($file, 1000, ',')) !== false) {
-                if (count($data) === 9) { // Pastikan ada 9 nilai dalam setiap baris
-                    $user = new Users([
-                        'nama_lengkap' => $data[0],
-                        'nim' => $data[1],
-                        'email' => $data[2],
-                        'tbl_jurusan_id' => intval($data[3]),
-                        'jenis_kelamin' => $data[4],
-                        'alamat' => $data[5],
-                        'no_hp' => $data[6],
-                        'user_type' => $data[7],
-                        'password' => Hash::make($data[8]),
-                    ]);
-            
-                    $user->save();
-                }
-            }            
-        
-            fclose($file);
-            return redirect('/')->with('success', 'CSV data imported successfully.');
+        $validator = Validator::make($request->all(), [
+            'csv_file' => 'required|mimes:csv,txt|max:2048',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-        
-        return redirect('/')->with('error', 'No CSV file found.');
+    
+        $file = $request->file('csv_file');
+        $fileContent = file_get_contents($file);
+        $rows = explode("\n", trim($fileContent));
+    
+        // Skip header (baris pertama) dengan menggunakan array_shift
+        $header = array_shift($rows);
+    
+        foreach ($rows as $row) {
+            $data = str_getcsv($row);
+    
+            if (count($data) == 9) {
+                Users::create([
+                    'nama_lengkap' => $data[0],
+                    'nim' => strtoupper($data[1]),
+                    'email' => $data[2],
+                    'password' => Hash::make($data[3]),
+                    'tbl_jurusan_id' => $data[4],
+                    'jenis_kelamin' => $data[5],
+                    'user_type' => $data[6],
+                    'alamat' => $data[7],
+                    'no_hp' => $data[8],
+                ]);
+            }
+        }
+    
+        return redirect()->back()->with('success', 'Data berhasil diimpor.');
     }
 
 
