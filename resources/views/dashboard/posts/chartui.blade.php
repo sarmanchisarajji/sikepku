@@ -17,11 +17,9 @@
                     <ul id="tata-pamong-details"></ul>
                 </div>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-info mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    name="btn-tambah">
-                    <i class="bi bi-pie-chart"></i>
-                    Export
+                <!-- Button to export data to CSV -->
+                <button type="button" class="btn btn-primary mt-4" onclick="exportToCSV('tata_pamong_data.csv', jumlahJawaban)">
+                    Export to CSV
                 </button>
             </div>
         </div>
@@ -42,11 +40,9 @@
                     <ul id="penelitian-details"></ul>
                 </div>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-info mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    name="btn-tambah">
-                    <i class="bi bi-pie-chart"></i>
-                    Export
+                <!-- Button to export data to CSV -->
+                <button type="button" class="btn btn-primary mt-4" onclick="exportToCSV('penelitian_data.csv', jumlahJawaban)">
+                    Export to CSV
                 </button>
             </div>
         </div>
@@ -147,5 +143,47 @@
 
     populateUl(tataPamongDetails, jumlahJawaban);
     populateUl(penelitianDetails, jumlahJawaban);
+
+    // Fungsi untuk mengekspor data ke dalam format CSV
+    function exportToCSV(filename, data) {
+        const csvData = [];
+        
+        // Header CSV
+        const headers = ['Label', 'Jumlah'];
+
+        // Menambahkan header ke data CSV
+        csvData.push(headers.join(','));
+
+        // Menambahkan baris data ke data CSV
+        for (const label in data) {
+            if (data.hasOwnProperty(label)) {
+                const row = [label, data[label]];
+                csvData.push(row.join(','));
+            }
+        }
+
+        // Membuat teks CSV
+        const csvText = csvData.join('\n');
+
+        // Membuat objek blob
+        const blob = new Blob([csvText], { type: 'text/csv' });
+
+        // Membuat URL objek blob
+        const url = window.URL.createObjectURL(blob);
+
+        // Membuat elemen <a> untuk men-trigger unduhan
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = filename;
+
+        // Men-trigger klik pada elemen <a> untuk mengunduh
+        document.body.appendChild(a);
+        a.click();
+
+        // Menghapus elemen <a> setelah selesai
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    }
 </script>
 @endsection
