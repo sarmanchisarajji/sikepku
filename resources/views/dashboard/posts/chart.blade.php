@@ -1,16 +1,5 @@
 @extends('dashboard.layouts.main')
 @section('main-content')
-    <style>
-        .chart-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            width: 100%;
-            padding-bottom: 60%;
-            /* Atur tinggi grafik sesuai kebutuhan Anda */
-            position: relative;
-        }
-    </style>
     <div class="container-xxl container-p-y">
         <div id="piechart" style="width: 900px; height: 500px;"></div>
     </div>
