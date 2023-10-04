@@ -34,11 +34,13 @@ class PertanyaanController extends Controller
             'kategoriId' => 'required',
         ]);
 
-        Pertanyaan::create([
+        $data = Pertanyaan::create([
             'pertanyaan' => ucfirst($request->pertanyaan),
             'kategori_id' => $request->kategoriId,
             'kriteria_id' => $request->kriteriaId,
         ]);
+
+        // return dd($data);
 
         return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }

@@ -248,7 +248,7 @@
             <!-- Modal Tambah Data-->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                    <form action="/create" method="POST">
+                    <form action="/dashboard/user/create" method="POST">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
@@ -351,34 +351,35 @@
                     </form>
                 </div>
             </div>
-    <!-- Modal Tambah Data File CSV-->
-    <div class="modal fade" id="csvstaticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form action="/import-csv" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">Tambah Data User File CSV</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row g-2 mb-1">
-                            <div class="mb-1">
-                                <label for="csv_file" class="form-label">Default file input example</label>
-                                <input class="form-control" type="file" id="csv_file" name="csv_file" accept=".csv" required />
+            <!-- Modal Tambah Data File CSV-->
+            <div class="modal fade" id="csvstaticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="/import-csv" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel1">Tambah Data User File CSV</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                            Batal
-                        </button>
-                        <button type="submit" class="btn btn-outline-primary">Simpan</button>
-                    </div>
+                            <div class="modal-body">
+                                <div class="row g-2 mb-1">
+                                    <div class="mb-1">
+                                        <label for="csv_file" class="form-label">Default file input example</label>
+                                        <input class="form-control" type="file" id="csv_file" name="csv_file"
+                                            accept=".csv" required />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                        Batal
+                                    </button>
+                                    <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                                </div>
+                            </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
     </div>

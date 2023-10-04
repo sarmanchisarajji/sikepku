@@ -54,7 +54,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
 
     // crud tambah akun user
-    Route::post('/create', [UserController::class, 'create']);
+    Route::post('/dashboard/user/create', [UserController::class, 'create']);
     // Route::get('/get-user/{id}', [UserController::class, 'getData']);
     Route::put('/edit/{id}', [UserController::class, 'update']);
     Route::delete('/delete/{id}', [UserController::class, 'destroy']);
