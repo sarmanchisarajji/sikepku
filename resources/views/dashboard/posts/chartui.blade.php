@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col">
                 <div class="programming-stats">
-                    <h5 class="card-title">Diagram Kriteria Tata Pamong</h5>
+                    <h5 class="card-title">Diagram Kriteria Tata Pamong <br>Terhadap Pengguna Lulusan</h5>
 
                     <div class="chart-container">
                         <canvas class="my-chart" id="tata-pamong-chart"></canvas>
@@ -27,39 +27,13 @@
         </div>
     </div>
 
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="row">
-            <div class="col">
-                <div class="programming-stats">
-                    <h5 class="card-title">Diagram Kriteria Penelitian</h5>
-
-                    <div class="chart-container">
-                        <canvas class="my-chart1" id="penelitian-chart"></canvas>
-                    </div>
-
-                    <div class="details">
-                        <ul id="penelitian-details"></ul>
-                    </div>
-
-                    <!-- Button to export data to CSV -->
-                    <button type="button" class="btn btn-primary mt-4"
-                        onclick="exportToCSV('penelitian_data.csv', jumlahJawaban)">
-                        Export to CSV
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const jumlahJawaban = @json($jumlahJawaban);
 
         const tataPamongChart = document.getElementById("tata-pamong-chart").getContext("2d");
-        const penelitianChart = document.getElementById("penelitian-chart").getContext("2d");
-
         const tataPamongDetails = document.getElementById("tata-pamong-details");
-        const penelitianDetails = document.getElementById("penelitian-details");
+
 
         new Chart(tataPamongChart, {
             type: "doughnut",
@@ -95,39 +69,39 @@
             },
         });
 
-        new Chart(penelitianChart, {
-            type: "doughnut",
-            data: {
-                labels: ['Sangat Tidak Puas', 'Tidak Puas', 'Cukup Puas', 'Puas', 'Sangat Puas'],
-                datasets: [{
-                    label: "Tingkat Kepuasan",
-                    data: [
-                        jumlahJawaban.sangat_tidak_puas,
-                        jumlahJawaban.tidak_puas,
-                        jumlahJawaban.cukup_puas,
-                        jumlahJawaban.puas,
-                        jumlahJawaban.sangat_puas
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 205, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(54, 162, 235, 0.6)'
-                    ],
-                }, ],
-            },
-            options: {
-                borderWidth: 10,
-                borderRadius: 2,
-                hoverBorderWidth: 0,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                },
-            },
-        });
+        // new Chart(penelitianChart, {
+        //     type: "doughnut",
+        //     data: {
+        //         labels: ['Sangat Tidak Puas', 'Tidak Puas', 'Cukup Puas', 'Puas', 'Sangat Puas'],
+        //         datasets: [{
+        //             label: "Tingkat Kepuasan",
+        //             data: [
+        //                 jumlahJawaban.sangat_tidak_puas,
+        //                 jumlahJawaban.tidak_puas,
+        //                 jumlahJawaban.cukup_puas,
+        //                 jumlahJawaban.puas,
+        //                 jumlahJawaban.sangat_puas
+        //             ],
+        //             backgroundColor: [
+        //                 'rgba(255, 99, 132, 0.6)',
+        //                 'rgba(255, 159, 64, 0.6)',
+        //                 'rgba(255, 205, 86, 0.6)',
+        //                 'rgba(75, 192, 192, 0.6)',
+        //                 'rgba(54, 162, 235, 0.6)'
+        //             ],
+        //         }, ],
+        //     },
+        //     options: {
+        //         borderWidth: 10,
+        //         borderRadius: 2,
+        //         hoverBorderWidth: 0,
+        //         plugins: {
+        //             legend: {
+        //                 display: false,
+        //             },
+        //         },
+        //     },
+        // });
 
         const populateUl = (ul, jumlahJawaban) => {
             ul.innerHTML = "";

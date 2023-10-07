@@ -12,7 +12,7 @@ class ChartController extends Controller
 {
     public function index()
     {
-        $kategori = 'Alumni';
+        $kategori = 'Pengguna Lulusan';
         $kriteria = 'Kriteria Tata Pamong';
 
         $tabelPertanyaanIds = Pertanyaan::whereHas('kategori', function ($query) use ($kategori) {
