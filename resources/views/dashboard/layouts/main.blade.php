@@ -47,10 +47,7 @@
     {{-- CHART --}}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('question/assets/CSS/chart.css') }}" />
 
     <!-- Helpers -->
@@ -61,11 +58,15 @@
     <script src="{{ asset('') }}js/config.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
     <!-- Splashscreen -->
     {{-- @include('level.layouts.splashscreen') --}}
+
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -88,6 +89,8 @@
                     @yield('main-content')
                     <!-- / Content -->
 
+                    @include('sweetalert::alert')
+
                     <!-- Footer -->
                     @include('dashboard.layouts.footer')
                     <!-- / Footer -->
@@ -101,6 +104,8 @@
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

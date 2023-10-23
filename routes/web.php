@@ -46,7 +46,8 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/dashboard/tampil/kriteria/{kategori:id}/pertanyaan/{kriteria:id}', [PertanyaanController::class, 'index']);
     Route::post('/create', [PertanyaanController::class, 'create']);
     Route::put('/update/{pertanyaan}', [PertanyaanController::class, 'update']);
-    Route::delete('/hapus/{pertanyaan}', [PertanyaanController::class, 'destroy']);
+    Route::delete('/hapus/{pertanyaan}/{kriteria}/{kategori}', [PertanyaanController::class, 'destroy']);
+    // Route::get('/hapus/{pertanyaan}', [PertanyaanController::class, 'destroy'])->name('hapus.destroy');
 
     Route::get('/dashboard', [DashboardController::class, 'jumlah']);
     Route::get('/dashboard/user', [UserController::class, 'index']);

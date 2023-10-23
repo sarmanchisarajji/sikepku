@@ -12,13 +12,16 @@ class ChartController extends Controller
 {
     public function index()
     {
-        $kategori = 'Pengguna Lulusan';
         $kriteria = 'Kriteria Tata Pamong';
 
-        $tabelPertanyaanIds = Pertanyaan::whereHas('kategori', function ($query) use ($kategori) {
-            $query->where('nama_kategori', $kategori);
-        })->whereHas('kriteria', function ($query) use ($kriteria) {
-            $query->where('nama_kriteria', $kriteria);
+        // $tabelPertanyaanIds = Pertanyaan::whereHas('kategori', function ($query) use ($kategori) {
+        //     $query->where('nama_kategori', $kategori);
+        // })->whereHas('kriteria', function ($query) use ($kriteria) {
+        //     $query->where('nama_kriteria', $kriteria);
+        // })->pluck('id');
+
+        $tabelPertanyaanIds = Pertanyaan::whereHas('kriteria', function ($query) use ($kriteria) {
+            $query->where('nama_kriteria', 'Kriteria Tata Pamong');
         })->pluck('id');
 
         $jawabanCounts = Jawaban::whereIn('tbl_pertanyaan_id', $tabelPertanyaanIds)
@@ -41,8 +44,8 @@ class ChartController extends Controller
                 $jumlahJawaban[$jawaban] = $total;
             }
         }
-        // dd($jumlahJawaban);
 
+        // dd($jumlahJawaban);
         return view('dashboard.posts.chartui', compact('jumlahJawaban'));
     }
 }

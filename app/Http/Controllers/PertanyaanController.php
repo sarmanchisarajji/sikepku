@@ -11,12 +11,17 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PertanyaanController extends Controller
 {
 
     public function index($kategori, Kriteria $kriteria)
     {
+        $title = 'Menghapus Data!';
+        $text = "Apakah yakin ingin menghapus data?";
+        confirmDelete($title, $text);
+
         return view('dashboard.posts.pertanyaan', [
             'pertanyaans' => $kriteria->pertanyaan,
             'kriteriaId' => $kriteria->id,
@@ -34,30 +39,65 @@ class PertanyaanController extends Controller
             'kategoriId' => 'required',
         ]);
 
-        $data = Pertanyaan::create([
-            'pertanyaan' => ucfirst($request->pertanyaan),
-            'kategori_id' => $request->kategoriId,
-            'kriteria_id' => $request->kriteriaId,
-        ]);
+        try {
+            Pertanyaan::create([
+                'pertanyaan' => ucfirst($request->pertanyaan),
+                'kategori_id' => $request->kategoriId,
+                'kriteria_id' => $request->kriteriaId,
+            ]);
+            Alert::success('Berhasil tambah data', session('success'));
+            return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Gagal menambahkan data');
+        }
 
-        // return dd($data);
+        // Pertanyaan::create([
+        //     'pertanyaan' => ucfirst($request->pertanyaan),
+        //     'kategori_id' => $request->kategoriId,
+        //     'kriteria_id' => $request->kriteriaId,
+        // ]);
 
-        return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
     public function update(Pertanyaan $pertanyaan, Request $request)
     {
-        $pertanyaan->update([
-            'pertanyaan' => ucfirst($request->pertanyaan)
-        ]);
-        return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        try {
+            $pertanyaan->update([
+                'pertanyaan' => ucfirst($request->pertanyaan)
+            ]);
+            Alert::success('Berhasil update data', session('success'));
+            return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Gagal mengubah data data');
+        }
+        // $pertanyaan->update([
+        //     'pertanyaan' => ucfirst($request->pertanyaan)
+        // ]);
+        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
 
-    public function destroy(Pertanyaan $pertanyaan, Request $request)
+    public function destroy(Pertanyaan $pertanyaan, $kriteria, $kategori, Request $request)
     {
+
         $pertanyaan->delete();
-        return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+
+        Alert::success('Berhasil', session('success'));
+        return redirect()->to("/dashboard/tampil/kriteria/$kategori/pertanyaan/$kriteria");
+
+        // try {
+        //     $pertanyaan->delete();
+        //     return redirect()->back()
+        //         ->with('success', 'Berhasil menghapus data');
+        // } catch (\Exception $e) {
+        //     return redirect()->back()
+        //         ->with('error', 'Gagal menghapus data data');
+        // }
+        // $pertanyaan->delete();
+        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
 

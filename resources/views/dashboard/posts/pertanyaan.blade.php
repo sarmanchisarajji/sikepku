@@ -48,16 +48,20 @@
                                         {{ $prty->pertanyaan }}
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        <form action="/hapus/{{ $prty->id }}" class="mx-1" method="post">
+                                        {{-- <form action="/hapus/{{ $prty->id }}" class="mx-1" method="post">
                                             <input type="hidden" value="{{ $kriteriaId }}" name="kriteriaId">
                                             <input type="hidden" value="{{ $kategoriId }}" name="kategoriId">
                                             @csrf
                                             @method('delete')
-                                            <button onclick="return confirm('Hapus data?')" type="submit"
-                                                class="btn btn-danger">
+                                            <button data-confirm-delete="true" type="submit" class="btn btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
+                                        <a href="{{ url("/hapus/$prty->id/$kriteriaId/$kategoriId") }}"
+                                            class="btn btn-danger mx-1" data-confirm-delete="true">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+
                                         <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop1{{ $prty->id }}" class="btn btn-warning"
                                             name="btn-edit">
