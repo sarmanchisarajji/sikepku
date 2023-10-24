@@ -5,117 +5,99 @@
             <span class="text-muted fw-light">Diagram /</span> Kriteria
         </h4>
         <div class="row">
-            <div class="col">
-                <div class="programming-stats">
-                    <h5 class="card-title">Diagram Kriteria Tata Pamong <br>Terhadap Pengguna Lulusan</h5>
+            @foreach ($data as $kriteria => $jumlahJawaban)
+                <div class="col my-1">
+                    <div class="programming-stats">
+                        @php
+                            $krt = strtolower(str_replace(' ', '', str_replace(',', '', str_replace('Kriteria', '', $kriteria))));
+                            $krtSlug = Str::slug($krt);
+                        @endphp
+                        <h5 class="card-title">Diagram {{ $kriteria }}</h5>
 
-                    <div class="chart-container">
-                        <canvas class="my-chart" id="tata-pamong-chart"></canvas>
+                        <div class="chart-container">
+                            <canvas class="my-chart" id="{{ $krtSlug }}-chart"></canvas>
+                        </div>
+
+                        <div class="details">
+                            <ul id="{{ $krtSlug }}-details"></ul>
+                        </div>
+
+                        <!-- Button to export data to CSV -->
+                        <button type="button" class="btn btn-primary mt-4"
+                            onclick="exportToCSV('{{ $krtSlug }}_data.csv', {{ json_encode($jumlahJawaban) }})">
+                            Export to CSV
+                        </button>
                     </div>
-
-                    <div class="details">
-                        <ul id="tata-pamong-details"></ul>
-                    </div>
-
-                    <!-- Button to export data to CSV -->
-                    <button type="button" class="btn btn-primary mt-4"
-                        onclick="exportToCSV('tata_pamong_data.csv', jumlahJawaban)">
-                        Export to CSV
-                    </button>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const jumlahJawaban = @json($jumlahJawaban);
+        // const jumlahJawaban = @json($jumlahJawaban);
 
-        const tataPamongChart = document.getElementById("tata-pamong-chart").getContext("2d");
-        const tataPamongDetails = document.getElementById("tata-pamong-details");
+        @foreach ($data as $kriteria => $jumlahJawaban)
+
+            @php
+                $krt = strtolower(str_replace(' ', '', str_replace(',', '', str_replace('Kriteria', '', $kriteria))));
+                $krtSlug = Str::slug($krt);
+            @endphp
 
 
-        new Chart(tataPamongChart, {
-            type: "doughnut",
-            data: {
-                labels: ['Sangat Tidak Puas', 'Tidak Puas', 'Cukup Puas', 'Puas', 'Sangat Puas'],
-                datasets: [{
-                    label: "Tingkat Kepuasan",
-                    data: [
-                        jumlahJawaban.sangat_tidak_puas,
-                        jumlahJawaban.tidak_puas,
-                        jumlahJawaban.cukup_puas,
-                        jumlahJawaban.puas,
-                        jumlahJawaban.sangat_puas
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 205, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(54, 162, 235, 0.6)'
-                    ],
-                }, ],
-            },
-            options: {
-                borderWidth: 10,
-                borderRadius: 2,
-                hoverBorderWidth: 0,
-                plugins: {
-                    legend: {
-                        display: false,
+            const {{ $krtSlug }}Chart = document.getElementById("{{ $krtSlug }}-chart").getContext(
+                "2d");
+            const {{ $krtSlug }}Details = document.getElementById("{{ $krtSlug }}-details");
+
+            new Chart({{ $krtSlug }}Chart, {
+                type: "doughnut",
+                data: {
+                    labels: ['Sangat Tidak Puas', 'Tidak Puas', 'Cukup Puas', 'Puas', 'Sangat Puas'],
+                    datasets: [{
+                        label: "Tingkat Kepuasan",
+                        data: [
+                            {{ $jumlahJawaban['sangat_tidak_puas'] }},
+                            {{ $jumlahJawaban['tidak_puas'] }},
+                            {{ $jumlahJawaban['cukup_puas'] }},
+                            {{ $jumlahJawaban['puas'] }},
+                            {{ $jumlahJawaban['sangat_puas'] }}
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(255, 159, 64, 0.6)',
+                            'rgba(255, 205, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(54, 162, 235, 0.6)'
+                        ],
+                    }, ],
+                },
+                options: {
+                    borderWidth: 10,
+                    borderRadius: 2,
+                    hoverBorderWidth: 0,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
                     },
                 },
-            },
-        });
-
-        // new Chart(penelitianChart, {
-        //     type: "doughnut",
-        //     data: {
-        //         labels: ['Sangat Tidak Puas', 'Tidak Puas', 'Cukup Puas', 'Puas', 'Sangat Puas'],
-        //         datasets: [{
-        //             label: "Tingkat Kepuasan",
-        //             data: [
-        //                 jumlahJawaban.sangat_tidak_puas,
-        //                 jumlahJawaban.tidak_puas,
-        //                 jumlahJawaban.cukup_puas,
-        //                 jumlahJawaban.puas,
-        //                 jumlahJawaban.sangat_puas
-        //             ],
-        //             backgroundColor: [
-        //                 'rgba(255, 99, 132, 0.6)',
-        //                 'rgba(255, 159, 64, 0.6)',
-        //                 'rgba(255, 205, 86, 0.6)',
-        //                 'rgba(75, 192, 192, 0.6)',
-        //                 'rgba(54, 162, 235, 0.6)'
-        //             ],
-        //         }, ],
-        //     },
-        //     options: {
-        //         borderWidth: 10,
-        //         borderRadius: 2,
-        //         hoverBorderWidth: 0,
-        //         plugins: {
-        //             legend: {
-        //                 display: false,
-        //             },
-        //         },
-        //     },
-        // });
-
-        const populateUl = (ul, jumlahJawaban) => {
-            ul.innerHTML = "";
-            const labels = ['sangat_tidak_puas', 'tidak_puas', 'cukup_puas', 'puas', 'sangat_puas'];
-            labels.forEach((l, i) => {
-                const label = l.replace(/_/g, ' ');
-                let li = document.createElement("li");
-                li.innerHTML = `${label}: <span class='percentage'>${jumlahJawaban[l]}%</span>`;
-                ul.appendChild(li);
             });
-        };
 
-        populateUl(tataPamongDetails, jumlahJawaban);
-        populateUl(penelitianDetails, jumlahJawaban);
+            const populate{{ $krtSlug }}Ul = (ul, jumlahJawaban) => {
+                ul.innerHTML = "";
+                const labels = ['sangat_tidak_puas', 'tidak_puas', 'cukup_puas', 'puas', 'sangat_puas'];
+                labels.forEach((l, i) => {
+                    const label = l.replace(/_/g, ' ');
+                    let li = document.createElement("li");
+                    li.innerHTML = `${label}: <span class='percentage'>${jumlahJawaban[l]}%</span>`;
+                    ul.appendChild(li);
+                });
+            };
+
+            populate{{ $krtSlug }}Ul({{ $krtSlug }}Details, {!! json_encode($jumlahJawaban) !!});
+        @endforeach
+
+        // populateUl(penelitianDetails, jumlahJawaban);
 
         // Fungsi untuk mengekspor data ke dalam format CSV
         function exportToCSV(filename, data) {
