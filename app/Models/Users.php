@@ -77,6 +77,11 @@ class Users extends Authenticatable
         return $this->hasMany(Jawaban::class);
     }
 
+    public function pertanyaan()
+    {
+        return $this->hasMany(Pertanyaan::class);
+    }
+
     public function saran()
     {
         return $this->belongsTo(Saran::class);

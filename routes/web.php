@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Kategori;
 use App\Models\Pertanyaan;
@@ -18,6 +19,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+
+// ROUTE COBA EXPORT
+Route::get('/export', [CobaController::class, 'index']);
+Route::get('/export2', [CobaController::class, 'index2']);
 
 // regster
 Route::get('/register', [RegisterController::class, 'index']);
@@ -71,6 +76,9 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
     //
     Route::get('/grafik-kepuasan', [ChartController::class, 'index']);
+    Route::get('/tentang', function () {
+        return view('posts.tentang');
+    });
 });
 
 
