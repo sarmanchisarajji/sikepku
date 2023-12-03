@@ -6,12 +6,17 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
     //
     public function index()
     {
+        $title = 'Menghapus Data!';
+        $text = "Apakah yakin ingin menghapus data?";
+        confirmDelete($title, $text);
+
         return view('dashboard.posts.admin', [
             'admins' => Users::with('jurusan')->where('user_type', 'admin')->get()
         ]);
@@ -42,6 +47,7 @@ class AdminController extends Controller
             'no_hp' => $request->no_hp,
         ]);
 
+        Alert::success('Berhasil tambah data', session('success'));
         return redirect()->to('/dashboard/admin');
     }
 
@@ -71,6 +77,7 @@ class AdminController extends Controller
         $user->no_hp = $request->no_hp;
         $user->save();
 
+        Alert::success('Berhasil update data', session('success'));
         return redirect()->to('/dashboard/admin');
     }
 
@@ -79,6 +86,7 @@ class AdminController extends Controller
     {
         $user = Users::find($id);
         $user->delete();
+        Alert::success('Berhasil', session('success'));
         return redirect()->to('/dashboard/admin');
     }
 }

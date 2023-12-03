@@ -6,49 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body style="height: 1oovh; width: 100%; display: flex; justify-content: center; justify-items: : center;">
-    <div style="margin-top: 40px">
+<body class="p-5">
+    @php
+        $kriteria = App\Models\Kriteria::find($kriteriaId);
+        $userId = App\Models\Jawaban::select('users_id')
+            ->distinct()
+            ->pluck('users_id')
+            ->toArray();
+        $users = App\Models\Users::whereIn('id', $userId)->get();
+    @endphp
 
-        <table border="1" cellspacing="0" cellpadding="5">
-            <tr style="font-weight: bold">
-                <td>No</td>
-                <td>Nama</td>
-                <td>NIM</td>
-                <td>Pertanyaan</td>
-                <td>Jawaban</td>
+    <h4>{{ $kriteria->nama_kriteria }}</h4>
+    <table class="table table-bordered border-secondary">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">NIM</th>
+                <th scope="col">Pertanyaan</th>
+                <th scope="col">Jawaban</th>
+                <th scope="col">Saran</th>
             </tr>
-
-            @foreach ($data as $index => $item)
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
                 <tr>
-                    <td style="width: 3%">{{ $loop->iteration }} </td>
-                    <td style="width: 10%">{{ $item->nama_lengkap }}</td>
-                    <td style="width: 10%">{{ $item->nim }}</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $user->nama_lengkap }}</td>
+                    <td>{{ $user->nim }}</td>
 
-                    <td style="width: 25%">
-                        @foreach ($item->jawaban as $index => $jwb)
+                    <td>
+                        <ul>
                             @php
-                                $pertanyaan = \App\Models\Pertanyaan::find($jwb->tbl_pertanyaan_id);
+                                $count = 0;
                             @endphp
-                            {{ $loop->iteration }}. {{ $pertanyaan->pertanyaan }} <br>
-                        @endforeach
+                            @foreach ($user->jawaban as $jawaban)
+                                @php
+                                    $pertanyaan = \App\Models\Pertanyaan::where('id', $jawaban->tbl_pertanyaan_id)
+                                        ->where('kriteria_id', $kriteriaId)
+                                        ->first();
+
+                                @endphp
+                                @if ($pertanyaan->kriteria->nama_kriteria ?? '')
+                                    <li>{{ $loop->iteration }}. {{ $pertanyaan->pertanyaan }}</li>
+                                    @php
+                                        $count++;
+                                    @endphp
+                                @endif
+                            @endforeach
+                        </ul>
                     </td>
 
-                    <td style="width: 25%">
-                        @foreach ($item->jawaban as $index => $jwb)
-                            @if ($index == 0 && $item->jawaban)
-                                @foreach ($item->jawaban as $jwbn)
-                                    {{ $loop->iteration }}. {{ $jwbn->jawaban }} <br>
-                                @endforeach
-                            @endif
-                        @endforeach
+                    <td>
+                        <ul>
+                            @for ($i = 0; $i < $count; $i++)
+                                <li>
+                                    {{ $i + 1 }}. {{ $user->jawaban[$i]->jawaban }}
+                                </li>
+                            @endfor
+                        </ul>
+                    </td>
+
+                    <td>
+                        {{ $user->saran->saran }}
                     </td>
                 </tr>
             @endforeach
-        </table>
+        </tbody>
+    </table>
 
-    </div>
 </body>
 
 </html>

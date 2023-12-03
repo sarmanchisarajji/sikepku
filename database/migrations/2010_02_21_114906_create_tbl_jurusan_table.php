@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dosen', function (Blueprint $table) {
+        Schema::create('tbl_jurusan', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nama_prodi', 45);
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('tbl_jurusan');
     }
 };

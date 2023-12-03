@@ -15,13 +15,17 @@ class Kategori extends Model
 
     public $timestamps = false;
 
+
+    // KATEGORI to PERTANYAAN => 1:*
     public function pertanyaan()
     {
         return $this->hasMany(Pertanyaan::class);
     }
 
+
+     // MANY TO MANY KATEGORI to KRITERIA => *:*
     public function kriteria()
     {
-        return $this->hasMany(Kriteria::class);
+        return $this->belongsToMany(Kriteria::class, 'tbl_kategori_kriteria', 'tbl_kategori_id', 'tbl_kriteria_id');
     }
 }

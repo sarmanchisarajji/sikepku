@@ -15,34 +15,19 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        Kategori::create([
-            'id' => 1,
-            'nama_kategori' => 'Pengguna Lulusan'
-        ]);
+        $kategori = [
+            'Pengguna Lulusan',
+            'Alumni',
+            'Tenaga Kependidikan',
+            'Mahasiswa',
+            'Dosen',
+            'Mitra'
+        ];
 
-        Kategori::create([
-            'id' => 2,
-            'nama_kategori' => 'Alumni'
-        ]);
-
-        Kategori::create([
-            'id' => 3,
-            'nama_kategori' => 'Tenaga Kependidikan'
-        ]);
-
-        Kategori::create([
-            'id' => 4,
-            'nama_kategori' => 'Mahasiswa'
-        ]);
-
-        Kategori::create([
-            'id' => 5,
-            'nama_kategori' => 'Dosen'
-        ]);
-
-        Kategori::create([
-            'id' => 6,
-            'nama_kategori' => 'Mitra'
-        ]);
+        foreach ($kategori as $item) {
+            Kategori::create([
+                'nama_kategori' => $item,
+            ]);
+        }
     }
 }

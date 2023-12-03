@@ -14,13 +14,16 @@ class Kriteria extends Model
 
     public $timestamps = false;
 
+
+     // KRITERIA to PERTANYAAN => 1:*
     public function pertanyaan()
     {
         return $this->hasMany(Pertanyaan::class);
     }
 
+    // MANYTOMOANY KRITERIA to KATEGORI => *:*
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsToMany(Kategori::class, 'tbl_kategori_kriteria', 'tbl_kriteria_id', 'tbl_kategori_id');
     }
 }

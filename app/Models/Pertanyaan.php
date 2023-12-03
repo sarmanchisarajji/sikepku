@@ -15,18 +15,21 @@ class Pertanyaan extends Model
 
     public $timestamps = false;
 
+    // PERTANYAAN to KATEGORI => *:1
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
     }
 
+    // PERTANYAAN to KRITERIA => *:1
     public function kriteria()
     {
         return $this->belongsTo(Kriteria::class);
     }
 
-    public function jawaban()
-    {
-        return $this->hasMany(Jawaban::class);
-    }
+    // PERTANYAAN to JAWABAN => 1:* 
+    // public function jawaban()
+    // {
+    //     return $this->hasMany(Jawaban::class);
+    // }
 }

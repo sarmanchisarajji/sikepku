@@ -41,19 +41,21 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        {{-- <div class="dropdown"> --}}
+                                        {{-- <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                                 data-bs-toggle="dropdown">
                                                 <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item"
+                                            </button> --}}
+                                        {{-- <div class="dropdown-menu"> --}}
+                                        {{-- <a class="dropdown-item"
                                                     href="/dashboard/tampil/kriteria/{{ $kriteriaId }}/pertanyaan/{{ $krt->id }}">
                                                     <i class="bi bi-eye-fill"></i>
                                                     Selengkapnya
-                                                </a>
-                                            </div>
-                                        </div>
+                                                </a> --}}
+                                        {{-- </div> --}}
+                                        {{-- </div> --}}
+                                        <a href="/dashboard/tampil/kriteria/{{ $kriteriaId }}/pertanyaan/{{ $krt->id }}"
+                                            class="btn btn-primary btn-sm">Selengkanya</a>
                                     </td>
                                 </tr>
                             @endforeach

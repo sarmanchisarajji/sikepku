@@ -14,85 +14,21 @@ class KriteriaSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '4'
-        ]);
+    {   
+        $kriteria = [
+            'Kriteria Tata Pamong',
+            'Kriteria Mahasiswa',
+            'Kriteria Sumber Daya Manusia',
+            'Kriteria Keuangan, Sarana, dan Prasarana',
+            'Kriteria Pendidikan',
+            'Kriteria Penelitian',
+            'Kriteria Pengabdian Kepada Masyarakat'    
+        ];
 
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '5'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '3'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '2'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '1'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Tata Pamong',
-            'kategori_id' => '6'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Mahasiswa',
-            'kategori_id' => '4'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Sumber Daya Manusia',
-            'kategori_id' => '5'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Sumber Daya Manusia',
-            'kategori_id' => '3'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Keuangan',
-            'kategori_id' => '4'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Keuangan',
-            'kategori_id' => '5'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Pendidikan',
-            'kategori_id' => '4'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Penelitian',
-            'kategori_id' => '5'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Penelitian',
-            'kategori_id' => '6'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Pengabdian Kepada Masyarakat',
-            'kategori_id' => '5'
-        ]);
-
-        Kriteria::create([
-            'nama_kriteria' => 'Kriteria Pengabdian Kepada Masyarakat',
-            'kategori_id' => '6'
-        ]);
+        foreach ($kriteria as $item) {
+            Kriteria::create([
+                'nama_kriteria' => $item,
+            ]);
+        }
     }
 }

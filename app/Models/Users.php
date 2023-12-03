@@ -62,29 +62,26 @@ class Users extends Authenticatable
     // Untuk login
     protected $guarded = [''];
 
+    // RELASI USERS KE JURUSAN => 1:1
     public function jurusan()
     {
         return $this->belongsTo(Jurusan::class, 'tbl_jurusan_id');
     }
 
-    public function dosen()
-    {
-        return $this->hasMany(Dosen::class);
-    }
-
+    // USERS to JAWABAN => 1:*
     public function jawaban()
     {
         return $this->hasMany(Jawaban::class);
     }
 
-    public function pertanyaan()
-    {
-        return $this->hasMany(Pertanyaan::class);
-    }
+    // public function pertanyaan()
+    // {
+    //     return $this->hasMany(Pertanyaan::class);
+    // }
 
     public function saran()
     {
-        return $this->belongsTo(Saran::class);
+        return $this->hasOne(Saran::class);
     }
 
     /**

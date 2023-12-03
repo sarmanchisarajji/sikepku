@@ -22,13 +22,15 @@ class PertanyaanController extends Controller
         $text = "Apakah yakin ingin menghapus data?";
         confirmDelete($title, $text);
 
+        $pertanyaans = Pertanyaan::where('kategori_id', $kategori)->where('kriteria_id', $kriteria->id)->get();
+
         return view('dashboard.posts.pertanyaan', [
-            'pertanyaans' => $kriteria->pertanyaan,
+            // 'pertanyaans' => Kategori::find($kategori)->pertanyaan,
+            'pertanyaans' => $pertanyaans,
             'kriteriaId' => $kriteria->id,
             'kategoriId' => $kategori,
         ]);
     }
-
 
     public function create(Request $request)
     {
@@ -39,44 +41,22 @@ class PertanyaanController extends Controller
             'kategoriId' => 'required',
         ]);
 
-        try {
-            Pertanyaan::create([
-                'pertanyaan' => ucfirst($request->pertanyaan),
-                'kategori_id' => $request->kategoriId,
-                'kriteria_id' => $request->kriteriaId,
-            ]);
-            Alert::success('Berhasil tambah data', session('success'));
-            return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Gagal menambahkan data');
-        }
-
-        // Pertanyaan::create([
-        //     'pertanyaan' => ucfirst($request->pertanyaan),
-        //     'kategori_id' => $request->kategoriId,
-        //     'kriteria_id' => $request->kriteriaId,
-        // ]);
-
-        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        Pertanyaan::create([
+            'pertanyaan' => ucfirst($request->pertanyaan),
+            'kategori_id' => $request->kategoriId,
+            'kriteria_id' => $request->kriteriaId,
+        ]);
+        Alert::success('Berhasil tambah data', session('success'));
+        return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
     public function update(Pertanyaan $pertanyaan, Request $request)
     {
-        try {
-            $pertanyaan->update([
-                'pertanyaan' => ucfirst($request->pertanyaan)
-            ]);
-            Alert::success('Berhasil update data', session('success'));
-            return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Gagal mengubah data data');
-        }
-        // $pertanyaan->update([
-        //     'pertanyaan' => ucfirst($request->pertanyaan)
-        // ]);
-        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
+        $pertanyaan->update([
+            'pertanyaan' => ucfirst($request->pertanyaan)
+        ]);
+        Alert::success('Berhasil update data', session('success'));
+        return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
 
@@ -87,17 +67,6 @@ class PertanyaanController extends Controller
 
         Alert::success('Berhasil', session('success'));
         return redirect()->to("/dashboard/tampil/kriteria/$kategori/pertanyaan/$kriteria");
-
-        // try {
-        //     $pertanyaan->delete();
-        //     return redirect()->back()
-        //         ->with('success', 'Berhasil menghapus data');
-        // } catch (\Exception $e) {
-        //     return redirect()->back()
-        //         ->with('error', 'Gagal menghapus data data');
-        // }
-        // $pertanyaan->delete();
-        // return redirect()->to("/dashboard/tampil/kriteria/$request->kategoriId/pertanyaan/$request->kriteriaId");
     }
 
 
@@ -111,8 +80,6 @@ class PertanyaanController extends Controller
 
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
-
-        // return $isiJawaban > 0;
 
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));
@@ -134,8 +101,6 @@ class PertanyaanController extends Controller
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
 
-        // return $isiJawaban > 0;
-
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));
         } else {
@@ -153,8 +118,6 @@ class PertanyaanController extends Controller
 
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
-
-        // return $isiJawaban > 0;
 
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));
@@ -174,8 +137,6 @@ class PertanyaanController extends Controller
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
 
-        // return $isiJawaban > 0;
-
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));
         } else {
@@ -194,16 +155,12 @@ class PertanyaanController extends Controller
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
 
-        // return $isiJawaban > 0;
-
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));
         } else {
             return view('level.halamanpertanyaan', compact('pertanyaan'));
         }
     }
-
-
 
     public function mitra()
     {
@@ -215,8 +172,6 @@ class PertanyaanController extends Controller
 
         $userId = auth()->user()->id;
         $isiJawaban =  Jawaban::where('users_id', $userId)->count();
-
-        // return $isiJawaban > 0;
 
         if ($isiJawaban > 0) {
             return view('level.thanks', compact('pertanyaan'));

@@ -13,7 +13,8 @@ class Jawaban extends Model
     protected $guarded = [''];
     public $timestamps = false;
 
-    public function user()
+    // JAWABAN to USERS => *:1
+    public function users()
     {
         return $this->belongsTo(Users::class, 'users_id');
     }

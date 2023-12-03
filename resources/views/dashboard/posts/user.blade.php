@@ -1,5 +1,3 @@
-{{-- {{ $users }} --}}
-
 @extends('dashboard.layouts.main')
 @section('main-content')
     <!-- Basic Bootstrap Table -->
@@ -73,14 +71,18 @@
                                         {{ $user->jurusan->nama_prodi }}
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        <form action="/delete/{{ $user->id }}" class="mx-1" method="post">
+                                        <a href="{{ url("/delete/$user->id") }}" class="btn btn-danger mx-1"
+                                            data-confirm-delete="true">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                        {{-- <form action="/delete/{{ $user->id }}" class="mx-1" method="post">
                                             @csrf
                                             @method('delete')
                                             <button onclick="return confirm('Hapus data?')" type="submit"
                                                 class="btn btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                         <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop1{{ $user->id }}"
                                             class="btn btn-warning btn-edit" name="btn-edit">

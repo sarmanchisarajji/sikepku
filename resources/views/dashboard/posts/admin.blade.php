@@ -43,23 +43,6 @@
                                 <td>
                                     {{ $user->nim }}
                                 </td>
-                                {{-- <td>
-                                        @if ($user->user_type === 'admin')
-                                            <span class="badge bg-label-warning me-1">{{ $user->user_type }}</span>
-                                        @elseif ($user->user_type === 'pengguna_lulusan')
-                                            <span class="badge bg-label-info me-1">{{ $user->user_type }}</span>
-                                        @elseif ($user->user_type === 'alumni')
-                                            <span class="badge bg-label-success me-1">{{ $user->user_type }}</span>
-                                        @elseif ($user->user_type === 'tenaga_kependidikan')
-                                            <span class="badge bg-label-primary me-1">{{ $user->user_type }}</span>
-                                        @elseif ($user->user_type === 'mahasiswa')
-                                            <span class="badge bg-label-dark me-1">{{ $user->user_type }}</span>
-                                        @elseif ($user->user_type === 'dosen')
-                                            <span class="badge bg-label-light me-1">{{ $user->user_type }}</span>
-                                        @else
-                                            <span class="badge bg-label-danger me-1">{{ $user->nama_kriteria }}</span>
-                                        @endif
-                                    </td> --}}
                                 <td>
                                     {{ $user->jenis_kelamin }}
                                 </td>
@@ -67,14 +50,18 @@
                                     {{ $user->jurusan->nama_prodi }}
                                 </td>
                                 <td class="d-flex justify-content-center">
-                                    <form action="/destroy/{{ $user->id }}" class="mx-1" method="post">
+                                    <a href="{{ url("/destroy/$user->id") }}" class="btn btn-danger mx-1"
+                                        data-confirm-delete="true">
+                                        <i class="bi bi-trash" data-confirm-delete="true"></i>
+                                    </a>
+                                    {{-- <form action="/destroy/{{ $user->id }}" class="mx-1" method="post">
                                         @csrf
                                         @method('delete')
                                         <button onclick="return confirm('Hapus data?')" type="submit"
                                             class="btn btn-danger">
                                             <i class="bi bi-trash"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
                                     <button type="button" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop1{{ $user->id }}"
                                         class="btn btn-warning btn-edit" name="btn-edit">
@@ -324,5 +311,4 @@
             </div>
         </div>
     </div>
-    <!--/ Basic Bootstrap Table -->
 @endsection

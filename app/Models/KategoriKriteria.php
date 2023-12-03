@@ -5,18 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jurusan extends Model
+class KategoriKriteria extends Model
 {
     use HasFactory;
-
-    protected $table = 'tbl_jurusan';
+    protected $table = 'tbl_kategori_kriteria';
     protected $guarded = [''];
 
     public $timestamps = false;
-
-    // RELASI JURUSAN KE USERS => 1:*
-    public function users()
-    {
-        return $this->hasMany(Users::class, 'tbl_jurusan_id');
-    }
 }

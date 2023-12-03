@@ -30,6 +30,10 @@
             <span class="text-muted fw-light">Diagram /</span> Persentasi Kepuasan Layanan Berdasarkan Kriteria
         </h4>
         <div class="row">
+            @php
+                $kriteriaId = App\Models\Kriteria::pluck('id')->toArray();    
+            @endphp
+
             @foreach ($data as $kriteria => $jumlahJawaban)
                 <div class="col mb-3">
                     <div class="programming-stats">
@@ -47,11 +51,9 @@
                             <ul id="{{ $krtSlug }}-details"></ul>
                         </div>
 
-                        <!-- Button to export data to CSV -->
-                        <button type="button" class="btn btn-primary mt-4"
-                            onclick="exportToCSV('{{ $krtSlug }}_data.csv', {{ json_encode($jumlahJawaban) }})">
+                        <a href="{{ route('export', $kriteriaId[$loop->index]) }}" class="btn btn-primary mt-4">
                             Export to CSV
-                        </button>
+                        </a>
                     </div>
                 </div>
             @endforeach

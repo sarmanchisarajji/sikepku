@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jawaban;
+use App\Models\Kriteria;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -12,10 +13,7 @@ class ChartController extends Controller
 {
     public function index()
     {
-        $kriteria = [
-            'Kriteria Tata Pamong', 'Kriteria Mahasiswa', 'Kriteria Sumber Daya Manusia',
-            'Kriteria Keuangan, Sarana, dan Prasarana', 'Kriteria Pendidikan', 'Kriteria Penelitian', 'Kriteria Pengabdian Kepada Masyarakat'
-        ];
+        $kriteria = Kriteria::pluck('nama_kriteria')->toArray();
 
         $data = [];
 

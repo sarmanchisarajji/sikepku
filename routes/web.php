@@ -4,12 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\DashboardController;
-use App\Models\Kategori;
-use App\Models\Pertanyaan;
-use App\Models\Dosen;
-use App\Models\Users;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JawabanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KriteriaController;
@@ -17,12 +12,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 // ROUTE COBA EXPORT
-Route::get('/export', [CobaController::class, 'index']);
-Route::get('/export2', [CobaController::class, 'index2']);
+Route::get('/tes/{kriteriaId}', [CobaController::class, 'index']);
+// Route::get('/export2', [CobaController::class, 'index2']);
+
+Route::get('/export/{kriteriaId}', [CobaController::class, 'export'])->name('export');
 
 // regster
 Route::get('/register', [RegisterController::class, 'index']);

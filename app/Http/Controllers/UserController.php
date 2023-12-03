@@ -6,12 +6,16 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index()
     {
+        $title = 'Menghapus Data!';
+        $text = "Apakah yakin ingin menghapus data?";
+        confirmDelete($title, $text);
         // $dosen = Users::with('jurusan')->where('user_type', 'dosen')->get();
         // $mahasiswa = Users::with('jurusan')->where('user_type', 'mahasiswa')->get();
         // $alumni = Users::with('jurusan')->where('user_type', 'alumni')->get();
@@ -44,7 +48,6 @@ class UserController extends Controller
             'alamat' => 'required',
             'no_hp' => 'required'
         ]);
-        // dd($request->validate);
         Users::create([
             'nama_lengkap' => $request->nama_lengkap,
             'nim' => strtoupper($request->nim),
@@ -57,6 +60,7 @@ class UserController extends Controller
             'no_hp' => $request->no_hp,
         ]);
 
+        Alert::success('Berhasil tambah data', session('success'));
         return redirect()->to('/dashboard/user');
     }
 
@@ -65,21 +69,21 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'csv_file' => 'required|mimes:csv,txt|max:2048',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         $file = $request->file('csv_file');
         $fileContent = file_get_contents($file);
         $rows = explode("\n", trim($fileContent));
-    
+
         // Skip header (baris pertama) dengan menggunakan array_shift
         $header = array_shift($rows);
-    
+
         foreach ($rows as $row) {
             $data = str_getcsv($row);
-    
+
             if (count($data) == 9) {
                 Users::create([
                     'nama_lengkap' => $data[0],
@@ -94,17 +98,11 @@ class UserController extends Controller
                 ]);
             }
         }
-    
-        return redirect()->back()->with('success', 'Data berhasil diimpor.');
+
+        Alert::success('Berhasil tambah data', session('success'));
+        // return redirect()->back()->with('success', 'Data berhasil diimpor.');
+        return redirect()->to('/dashboard/user');
     }
-
-
-
-    // public function getData($id)
-    // {
-    //     $users = Users::find($id);
-    //     return view('dashboard.posts.user', compact('users'));
-    // }
 
     public function update(Request $request, $id)
     {
@@ -132,20 +130,16 @@ class UserController extends Controller
         $user->no_hp = $request->no_hp;
         $user->save();
 
+        Alert::success('Berhasil update data', session('success'));
         return redirect()->to('/dashboard/user');
-        // return redirect()->route('update.user', ['id' => $id]);
     }
-
-    // public function getUser($id)
-    // {
-    //     $user = Users::find($id);
-    //     return response()->json($user);
-    // }
 
     public function destroy($id)
     {
         $user = Users::find($id);
         $user->delete();
+
+        Alert::success('Berhasil', session('success'));
         return redirect()->to('/dashboard/user');
     }
 }
