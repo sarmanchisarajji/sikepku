@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 09:46 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Waktu pembuatan: 03 Des 2023 pada 12.23
+-- Versi server: 8.0.30
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,222 +24,105 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_alumni`
+-- Struktur dari tabel `failed_jobs`
 --
 
-CREATE TABLE `tbl_alumni` (
-  `id` int(11) NOT NULL,
-  `nim` varchar(100) DEFAULT NULL,
-  `pekerjaan` varchar(100) DEFAULT NULL,
-  `tahun_masuk` varchar(100) DEFAULT NULL,
-  `tahun_lulus` varchar(100) DEFAULT NULL,
-  `lama_kuliah` varchar(100) DEFAULT NULL,
-  `ipk` varchar(100) DEFAULT NULL,
-  `jenis_biaya_saatkuliah` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `failed_jobs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_dosen`
+-- Struktur dari tabel `migrations`
 --
 
-CREATE TABLE `tbl_dosen` (
-  `id` int(11) NOT NULL,
-  `nip` varchar(100) DEFAULT NULL,
-  `status_dosen` enum('PNS','Non PNS') DEFAULT NULL,
-  `jabatan` varchar(100) DEFAULT NULL,
-  `tugas_tambahan` varchar(100) DEFAULT NULL,
-  `lama_kerja` varchar(100) DEFAULT NULL,
-  `tingkat_pendidikan` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `migrations` (
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2010_02_21_114906_create_tbl_jurusan_table', 1),
+(2, '2014_10_12_000000_create_users_table', 1),
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2023_11_21_141340_create_tbl_kategori_table', 1),
+(7, '2023_11_21_141645_create_tbl_kriteria_table', 1),
+(8, '2023_11_21_160859_create_tbl_saran_table', 1),
+(9, '2023_12_21_141703_create_tbl_kategori_kriteria_table', 1),
+(10, '2023_13_20_122147_create_tbl_pertanyaan_table', 1),
+(11, '2023_13_21_121918_create_tbl_jawaban_user_table', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_jawaban_user`
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_jawaban_user`
 --
 
 CREATE TABLE `tbl_jawaban_user` (
-  `id` int(11) NOT NULL,
-  `jawaban` varchar(45) DEFAULT NULL,
-  `tbl_pertanyaan_id` int(11) NOT NULL,
-  `users_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_jawaban_user`
---
-
-INSERT INTO `tbl_jawaban_user` (`id`, `jawaban`, `tbl_pertanyaan_id`, `users_id`) VALUES
-(167, 'sangat_puas', 45, 55),
-(168, 'puas', 46, 55),
-(169, 'cukup_puas', 47, 55),
-(170, 'cukup_puas', 80, 48),
-(171, 'cukup_puas', 81, 48),
-(172, 'cukup_puas', 82, 48),
-(173, 'cukup_puas', 83, 48),
-(174, 'cukup_puas', 176, 48),
-(175, 'cukup_puas', 177, 48),
-(176, 'cukup_puas', 178, 48),
-(177, 'cukup_puas', 179, 48),
-(178, 'cukup_puas', 180, 48),
-(179, 'cukup_puas', 181, 48),
-(180, 'cukup_puas', 190, 48),
-(181, 'cukup_puas', 191, 48),
-(182, 'cukup_puas', 192, 48),
-(183, 'cukup_puas', 193, 48),
-(184, 'cukup_puas', 194, 48),
-(185, 'cukup_puas', 195, 48),
-(186, 'cukup_puas', 66, 49),
-(187, 'cukup_puas', 67, 49),
-(188, 'cukup_puas', 68, 49),
-(189, 'cukup_puas', 69, 49),
-(190, 'cukup_puas', 70, 49),
-(191, 'cukup_puas', 71, 49),
-(192, 'cukup_puas', 72, 49),
-(193, 'cukup_puas', 100, 49),
-(194, 'cukup_puas', 101, 49),
-(195, 'cukup_puas', 102, 49),
-(196, 'cukup_puas', 103, 49),
-(197, 'cukup_puas', 104, 49),
-(198, 'cukup_puas', 105, 49),
-(199, 'puas', 45, 51),
-(200, 'puas', 46, 51),
-(201, 'puas', 47, 51),
-(202, 'cukup_puas', 73, 52),
-(203, 'cukup_puas', 74, 52),
-(204, 'cukup_puas', 75, 52),
-(205, 'cukup_puas', 76, 52),
-(206, 'cukup_puas', 77, 52),
-(207, 'cukup_puas', 78, 52),
-(208, 'cukup_puas', 79, 52),
-(209, 'sangat_puas', 57, 50),
-(210, 'sangat_puas', 58, 50),
-(211, 'sangat_puas', 59, 50),
-(212, 'sangat_puas', 60, 50),
-(213, 'sangat_puas', 61, 50),
-(214, 'sangat_puas', 62, 50),
-(215, 'sangat_puas', 63, 50),
-(216, 'sangat_puas', 64, 50),
-(217, 'sangat_puas', 65, 50),
-(218, 'sangat_puas', 94, 50),
-(219, 'sangat_puas', 95, 50),
-(220, 'sangat_puas', 96, 50),
-(221, 'sangat_puas', 97, 50),
-(222, 'sangat_puas', 118, 50),
-(223, 'sangat_puas', 119, 50),
-(224, 'sangat_puas', 120, 50),
-(225, 'sangat_puas', 121, 50),
-(226, 'sangat_puas', 122, 50),
-(227, 'sangat_puas', 123, 50),
-(228, 'sangat_puas', 124, 50),
-(229, 'sangat_puas', 125, 50),
-(230, 'sangat_puas', 126, 50),
-(231, 'sangat_puas', 127, 50),
-(232, 'sangat_puas', 128, 50),
-(233, 'sangat_puas', 129, 50),
-(234, 'sangat_puas', 130, 50),
-(235, 'sangat_puas', 131, 50),
-(236, 'sangat_puas', 132, 50),
-(237, 'sangat_puas', 133, 50),
-(238, 'sangat_puas', 168, 50),
-(239, 'sangat_puas', 169, 50),
-(240, 'sangat_puas', 170, 50),
-(241, 'sangat_puas', 171, 50),
-(242, 'sangat_puas', 172, 50),
-(243, 'sangat_puas', 173, 50),
-(244, 'sangat_puas', 174, 50),
-(245, 'sangat_puas', 175, 50),
-(246, 'sangat_puas', 182, 50),
-(247, 'sangat_puas', 183, 50),
-(248, 'sangat_puas', 184, 50),
-(249, 'sangat_puas', 185, 50),
-(250, 'sangat_puas', 186, 50),
-(251, 'sangat_puas', 187, 50),
-(252, 'sangat_puas', 188, 50),
-(253, 'sangat_puas', 189, 50),
-(254, 'sangat_puas', 199, 50),
-(255, 'sangat_puas', 200, 50),
-(256, 'sangat_puas', 48, 53),
-(257, 'sangat_puas', 49, 53),
-(258, 'sangat_puas', 50, 53),
-(259, 'sangat_puas', 51, 53),
-(260, 'sangat_puas', 52, 53),
-(261, 'sangat_puas', 53, 53),
-(262, 'sangat_puas', 54, 53),
-(263, 'sangat_puas', 55, 53),
-(264, 'sangat_puas', 56, 53),
-(265, 'sangat_puas', 84, 53),
-(266, 'sangat_puas', 85, 53),
-(267, 'sangat_puas', 86, 53),
-(268, 'sangat_puas', 87, 53),
-(269, 'sangat_puas', 88, 53),
-(270, 'sangat_puas', 89, 53),
-(271, 'sangat_puas', 90, 53),
-(272, 'sangat_puas', 91, 53),
-(273, 'sangat_puas', 92, 53),
-(274, 'sangat_puas', 93, 53),
-(275, 'sangat_puas', 106, 53),
-(276, 'sangat_puas', 107, 53),
-(277, 'sangat_puas', 108, 53),
-(278, 'sangat_puas', 109, 53),
-(279, 'sangat_puas', 110, 53),
-(280, 'sangat_puas', 111, 53),
-(281, 'sangat_puas', 112, 53),
-(282, 'sangat_puas', 113, 53),
-(283, 'sangat_puas', 114, 53),
-(284, 'sangat_puas', 115, 53),
-(285, 'sangat_puas', 116, 53),
-(286, 'sangat_puas', 117, 53),
-(287, 'sangat_puas', 134, 53),
-(288, 'sangat_puas', 135, 53),
-(289, 'sangat_puas', 136, 53),
-(290, 'sangat_puas', 137, 53),
-(291, 'sangat_puas', 138, 53),
-(292, 'sangat_puas', 139, 53),
-(293, 'sangat_puas', 140, 53),
-(294, 'sangat_puas', 141, 53),
-(295, 'sangat_puas', 142, 53),
-(296, 'sangat_puas', 143, 53),
-(297, 'sangat_puas', 144, 53),
-(298, 'sangat_puas', 145, 53),
-(299, 'sangat_puas', 146, 53),
-(300, 'sangat_puas', 147, 53),
-(301, 'sangat_puas', 148, 53),
-(302, 'sangat_puas', 149, 53),
-(303, 'sangat_puas', 150, 53),
-(304, 'sangat_puas', 151, 53),
-(305, 'sangat_puas', 152, 53),
-(306, 'sangat_puas', 153, 53),
-(307, 'sangat_puas', 154, 53),
-(308, 'sangat_puas', 155, 53),
-(309, 'sangat_puas', 156, 53),
-(310, 'sangat_puas', 157, 53),
-(311, 'sangat_puas', 158, 53),
-(312, 'sangat_puas', 159, 53),
-(313, 'sangat_puas', 160, 53),
-(314, 'sangat_puas', 161, 53),
-(315, 'sangat_puas', 162, 53),
-(316, 'sangat_puas', 163, 53),
-(317, 'sangat_puas', 164, 53),
-(318, 'sangat_puas', 165, 53),
-(319, 'sangat_puas', 166, 53),
-(320, 'sangat_puas', 167, 53);
+  `id` bigint UNSIGNED NOT NULL,
+  `jawaban` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tbl_pertanyaan_id` bigint UNSIGNED NOT NULL,
+  `users_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_jurusan`
+-- Struktur dari tabel `tbl_jurusan`
 --
 
 CREATE TABLE `tbl_jurusan` (
-  `id` int(11) NOT NULL,
-  `nama_prodi` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_prodi` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tbl_jurusan`
+-- Dumping data untuk tabel `tbl_jurusan`
 --
 
 INSERT INTO `tbl_jurusan` (`id`, `nama_prodi`) VALUES
@@ -254,16 +137,16 @@ INSERT INTO `tbl_jurusan` (`id`, `nama_prodi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_kategori`
+-- Struktur dari tabel `tbl_kategori`
 --
 
 CREATE TABLE `tbl_kategori` (
-  `id` int(11) NOT NULL,
-  `nama_kategori` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_kategori` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tbl_kategori`
+-- Dumping data untuk tabel `tbl_kategori`
 --
 
 INSERT INTO `tbl_kategori` (`id`, `nama_kategori`) VALUES
@@ -277,497 +160,475 @@ INSERT INTO `tbl_kategori` (`id`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_kriteria`
+-- Struktur dari tabel `tbl_kategori_kriteria`
+--
+
+CREATE TABLE `tbl_kategori_kriteria` (
+  `id` bigint UNSIGNED NOT NULL,
+  `tbl_kategori_id` bigint UNSIGNED NOT NULL,
+  `tbl_kriteria_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tbl_kategori_kriteria`
+--
+
+INSERT INTO `tbl_kategori_kriteria` (`id`, `tbl_kategori_id`, `tbl_kriteria_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 3, 3),
+(5, 4, 1),
+(6, 4, 2),
+(7, 4, 4),
+(8, 4, 5),
+(9, 5, 1),
+(10, 5, 3),
+(11, 5, 4),
+(12, 5, 6),
+(13, 5, 7),
+(14, 6, 1),
+(15, 6, 6),
+(16, 6, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_kriteria`
 --
 
 CREATE TABLE `tbl_kriteria` (
-  `id` int(11) NOT NULL,
-  `nama_kriteria` varchar(100) CHARACTER SET armscii8 DEFAULT NULL,
-  `kategori_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_kriteria` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tbl_kriteria`
+-- Dumping data untuk tabel `tbl_kriteria`
 --
 
-INSERT INTO `tbl_kriteria` (`id`, `nama_kriteria`, `kategori_id`) VALUES
-(8, 'Kriteria Tata Pamong', 4),
-(9, 'Kriteria Tata Pamong', 5),
-(10, 'Kriteria Tata Pamong', 3),
-(11, 'Kriteria Tata Pamong', 2),
-(12, 'Kriteria Tata Pamong', 1),
-(13, 'Kriteria Tata Pamong', 6),
-(14, 'Kriteria Mahasiswa', 4),
-(15, 'Kriteria Sumber Daya Manusia', 5),
-(16, 'Kriteria Sumber Daya Manusia', 3),
-(17, 'Kriteria Keuangan, Sarana, dan Prasarana', 4),
-(18, 'Kriteria Keuangan, Sarana, dan Prasarana', 5),
-(19, 'Kriteria Pendidikan', 4),
-(20, 'Kriteria Penelitian', 5),
-(21, 'Kriteria Penelitian', 6),
-(22, 'Kriteria Pengabdian Kepada Masyarakat', 5),
-(23, 'Kriteria Pengabdian Kepada Masyarakat', 6);
+INSERT INTO `tbl_kriteria` (`id`, `nama_kriteria`) VALUES
+(1, 'Kriteria Tata Pamong'),
+(2, 'Kriteria Mahasiswa'),
+(3, 'Kriteria Sumber Daya Manusia'),
+(4, 'Kriteria Keuangan, Sarana, dan Prasarana'),
+(5, 'Kriteria Pendidikan'),
+(6, 'Kriteria Penelitian'),
+(7, 'Kriteria Pengabdian Kepada Masyarakat');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_mahasiswa`
---
-
-CREATE TABLE `tbl_mahasiswa` (
-  `id` int(11) NOT NULL,
-  `nim` varchar(100) DEFAULT NULL,
-  `tahun_masuk` int(4) DEFAULT NULL,
-  `lama_studi` enum('<1 tahun','1-2 tahun','3-4 tahun','>5 tahun') DEFAULT NULL,
-  `ipk` varchar(100) DEFAULT NULL,
-  `jenis_biayakuliah` enum('UKT','Non-UKT','Beasiswa','Bidikmisi') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_menu`
---
-
-CREATE TABLE `tbl_menu` (
-  `id` int(11) NOT NULL,
-  `nama_menu` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_mitra`
---
-
-CREATE TABLE `tbl_mitra` (
-  `id` int(11) NOT NULL,
-  `jabatan` varchar(100) DEFAULT NULL,
-  `instansi` varchar(100) DEFAULT NULL,
-  `bidang_kerjasama` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_penggunalulusan`
---
-
-CREATE TABLE `tbl_penggunalulusan` (
-  `id` int(11) NOT NULL,
-  `jabatan` varchar(100) DEFAULT NULL,
-  `instansi` varchar(100) DEFAULT NULL,
-  `jml_pegawai` int(11) DEFAULT NULL,
-  `jml_pegawai_alumniuho` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_pertanyaan`
+-- Struktur dari tabel `tbl_pertanyaan`
 --
 
 CREATE TABLE `tbl_pertanyaan` (
-  `id` int(11) NOT NULL,
-  `pertanyaan` varchar(200) DEFAULT NULL,
-  `kategori_id` int(11) NOT NULL,
-  `kriteria_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint UNSIGNED NOT NULL,
+  `pertanyaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori_id` bigint UNSIGNED NOT NULL,
+  `kriteria_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `tbl_pertanyaan`
+-- Dumping data untuk tabel `tbl_pertanyaan`
 --
 
 INSERT INTO `tbl_pertanyaan` (`id`, `pertanyaan`, `kategori_id`, `kriteria_id`) VALUES
-(45, 'Telah tercipta komunikasi yang baik antara pihak pengguna lulusan dengan pihak fakultas/universitas ?', 1, 12),
-(46, 'Adanya kejelasan prosedur layanan manajemen antara pihak pengguna lulusan dengan fakultas/universitas ?', 1, 12),
-(47, 'Kualitas layanan yang diberikan oleh staf/petugas ?', 1, 12),
-(48, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi ?', 4, 8),
-(49, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien ?', 4, 8),
-(50, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya ?', 4, 8),
-(51, 'Kualitas pelayanan di program studi dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(52, 'Kualitas pelayanan di tingkat fakultas dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(53, 'Kualitas pelayanan di tingkat universitas dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(54, 'Sikap profesional petugas di program studi dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(55, 'Sikap profesional petugas di tingkat fakultas dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(56, 'Sikap profesional petugas di tingkat universitas dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya ?', 4, 8),
-(57, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi ?', 5, 9),
-(58, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien ?', 5, 9),
-(59, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya ?', 5, 9),
-(60, 'Kualitas layanan di tingkat prodi/fakultas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 5, 9),
-(61, 'Kualitas layanan di tingkat universitas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 5, 9),
-(62, 'Kualitas layanan di tingkat fakultas dalam penyediaan kebutuhan pembelajaran ?', 5, 9),
-(63, 'Kualitas layanan di tingkat universitas dalam penyediaan kebutuhan pembelajaran ?', 5, 9),
-(64, 'Kemampuan petugas di tingkat prodi/fakultas  dalam memberikan layanan/informasi ?', 5, 9),
-(65, 'Kemampuan petugas di tingkat universitas  dalam memberikan layanan/informasi ?', 5, 9),
-(66, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi ?', 3, 10),
-(67, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien ?', 3, 10),
-(68, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya ?', 3, 10),
-(69, 'Kualitas layanan di tingkat prodi/fakultas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 3, 10),
-(70, 'Kualitas layanan di tingkat universitas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll) ?', 3, 10),
-(71, 'Kemampuan petugas di tingkat fakultas dalam memberikan layanan/informasi ?', 3, 10),
-(72, 'Kemampuan petugas di tingkat universitas dalam memberikan layanan/informasi ?', 3, 10),
-(73, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi ?', 2, 11),
-(74, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien ?', 2, 11),
-(75, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya ?', 2, 11),
-(76, 'Kualitas layanan di tingkat program studi/fakultas dalam pengurusan administratif (ijazah, legalisir, dan kebutuhan lainnya) ?', 2, 11),
-(77, 'Kualitas layanan di tingkat fakultas/universitas dalam pengelolaan alumni ?', 2, 11),
-(78, 'Kualitas layanan di tingkat fakultas  dalam memberikan layanan/informasi ?', 2, 11),
-(79, 'Kualitas layanan di tingkat universitas  dalam memberikan layanan/informasi ?', 2, 11),
-(80, 'Telah tercipta komunikasi yang baik antara pihak mitra UHO dengan pihak universitas ?', 6, 13),
-(81, 'Adanya kejelasan prosedur kerjasama  antara pihak mitra dengan pihak universitas ?', 6, 13),
-(82, 'Realisasi kegiatan kerja sama selama masa berlaku MOA MOU/sejenisnya ?', 6, 13),
-(83, 'Manfaat yang diberikan oleh pelaksanaan kegiatan terhadap pihak mitra ?', 6, 13),
-(84, 'Kemudahan memperoleh informasi kegiatan penalaran ?', 4, 14),
-(85, 'Kejelasan pembinaan kegiatan penalaran ?', 4, 14),
-(86, 'Kemudahan memperoleh infomasi tentang minat dan bakat ?', 4, 14),
-(87, 'Kejelasan pembinaan dalam minat/bakat ?', 4, 14),
-(88, 'Kemudahan memperoleh infomasi tentang kesejahtraan (beasiswa, bimbingan konseling, dan layanan kesehatan) ?', 4, 14),
-(89, 'Kejelasan prosedur dalam kesejahtraan (beasiswa, bimbingan konseling, dan layanan kesehatan) ?', 4, 14),
-(90, 'Kemudahan memperoleh infomasi tentang karier dan bimbingan kewirausahaan ?', 4, 14),
-(91, 'Kejelasan prosedur dalam karier dan bimbingan kewirausahaan ?', 4, 14),
-(92, 'Kejelasan kriteria seleksi beasiswa ?', 4, 14),
-(93, 'Ketepatan waktu pencairan beasiswa ?', 4, 14),
-(94, 'Kejelasan sistem rekruitmen, orientasi, dan penempatan/pembagian tugas dosen ?', 5, 15),
-(95, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri ?', 5, 15),
-(96, 'Jenjang karir didasarkan pada kinerja/prestasi kerja ?', 5, 15),
-(97, 'Sistem pembinaan dosen dalam bentuk pemberian penghargaan dan sanksi ?', 5, 15),
-(100, 'Kejelasan sistem rekruitmen, orientasi, dan penempatan pegawai ?', 3, 16),
-(101, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri ?', 3, 16),
-(102, 'Jenjang karir didasarkan pada kinerja/prestasi kerja ?', 3, 16),
-(103, 'Sistem pembinaan tenaga kependidikan dalam bentuk pemberian penghargaan dan sanksi ?', 3, 16),
-(104, 'Universitas menilai dan mengevaluasi pekerjaan yang dilakukan tenaga kependidikan secara periodik ?', 3, 16),
-(105, 'Universitas menanggapi kemudian menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 3, 16),
-(106, 'Adanya alokasi dana  untuk kegiatan kemahasiswaan ?', 4, 17),
-(107, 'Ruang kuliah nyaman, bersih, rapi, dan memadai ?', 4, 17),
-(108, 'Ketersediaan alat/bahan  penunjang kegiatan praktikum ?', 4, 17),
-(109, 'Perpustakaan yang nyaman, bersih, dan memadai ?', 4, 17),
-(110, 'Perpustakaan menyediakan buku, jurnal, dan literatur lain yang memadai ?', 4, 17),
-(111, 'Tempat ibadah nyaman, bersih, dan memadai ?', 4, 17),
-(112, 'Ketersediaan sarana dan prasarana internet ?', 4, 17),
-(113, 'Taman dan ruang terbuka yang mendukung terciptanya suasana akademik yang kondusif ?', 4, 17),
-(114, 'Ketersediaan sarana dan prasarana olah raga ?', 4, 17),
-(115, 'Ketersediaan sarana dan prasarana kesehatan ?', 4, 17),
-(116, 'Tempat parkir yang aman dan memadai ?', 4, 17),
-(117, 'Toilet nyaman, bersih, dan memadai ?', 4, 17),
-(118, 'Alokasi biaya operasional pendidikan memadai ?', 5, 18),
-(119, 'Alokasi dana kegiatan penelitian dosen memadai ?', 5, 18),
-(120, 'Alokasi dana untuk kegiatan Pengabdian kepada Masyarakat oleh dosen memadai ?', 5, 18),
-(121, 'Ruang kuliah nyaman dan memadai ?', 5, 18),
-(122, 'Ruang dosen nyaman dan memadai ?', 5, 18),
-(123, 'Ketersediaan alat-alat penunjang untuk kegiatan mengajar ?', 5, 18),
-(124, 'Perpustakaan nyaman dan memadai ?', 5, 18),
-(125, 'Perpustakaan menyediakan buku, jurnal, dan literatur lain yang memadai ?', 5, 18),
-(126, 'Tempat ibadah nyaman dan memadai ?', 5, 18),
-(127, 'Akses jaringan internet memadai dan lancer ?', 5, 18),
-(128, 'Ketersediaan sarana dan prasarana pembelajaran daring ?', 5, 18),
-(129, 'Taman maupun ruang terbuka yang mendukung terciptanya suasana akademik ?', 5, 18),
-(130, 'Ketersediaan sarana dan prasarana olah raga ?', 5, 18),
-(131, 'Ketersediaan sarana dan prasarana kesehatan ?', 5, 18),
-(132, 'Tempat parkir yang aman dan memadai ?', 5, 18),
-(133, 'Toilet nyaman, bersih, dan memadai ?', 5, 18),
-(134, 'Kondisi sarana dan prasarana pembelajaran daring ?', 4, 19),
-(135, 'Perpustakaan yang nyaman dan memadai ?', 4, 19),
-(136, 'Perpustakaan menyediakan buku, jurnal, dan literature lain yang memadai ?', 4, 19),
-(137, 'Tersedianya sarana dalam mengakses buku, jurnal dan literature serta bahan ajar berbasis internet di perpustakaan ?', 4, 19),
-(138, 'Ketersediaan laboratorium yang relevan dengan kebutuhan keilmuan ?', 4, 19),
-(139, 'Kelengkapan sarana laboratorium yang mudah diakses dan berkualitas ?', 4, 19),
-(140, 'Ruang kuliah aman, nyaman, dan bersih ?', 4, 19),
-(141, 'Kelengkapan sarana perkuliahan ?', 4, 19),
-(142, 'Ruang layanan administrasi akademik fakultas (Tata Usaha) nyaman ?', 4, 19),
-(143, 'Ruang administrasi akademik (Tata Usaha Fakultas) memiliki prosedur pelayanan akademik yang jelas ?', 4, 19),
-(144, 'Sistem informasi akademik universitas memberikan data administrasi yang akurat ?', 4, 19),
-(145, 'Jadwal kegiatan akademik diselenggarakan tepat waktu ?', 4, 19),
-(146, 'Tenaga kependidikan memberikan informasi yang akurat dan tepat waktu ?', 4, 19),
-(147, 'Dosen menyampaikan RPS dan melaksanakan kontrak perkuliahan yang telah disepakati ?', 4, 19),
-(148, 'Pengelola program studi/fakultas memberikan pelayanan prima kepada mahasiswa ?', 4, 19),
-(149, 'Sistem informasi akademik mudah diakses ?', 4, 19),
-(150, 'Staf perpustakaan tanggap melayani mahasiswa ?', 4, 19),
-(151, 'Tenaga kependidikan tanggap melayani keluhan mahasiswa ?', 4, 19),
-(152, 'Dosen memberikan kesempatan untuk bertanya atau berdiskusi ?', 4, 19),
-(153, 'Kemudahan dosen dalam melayani mahasiswa ?', 4, 19),
-(154, 'Dosen wali akademik tanggap menangani permasalahan akademik mahasiswa ?', 4, 19),
-(155, 'Pustakawan memiliki pengetahuan sesuai dengan pekerjaannya ?', 4, 19),
-(156, 'Tenaga kependidikan memiliki pengetahuan sesuai dengan bidang pekerjaannya ?', 4, 19),
-(157, 'Tenaga kependidikan bersikap ramah dan professional ?', 4, 19),
-(158, 'Dosen memberikan perkuliahan sesuai kontrak (minimal 14 minggu) ?', 4, 19),
-(159, 'Dosen transparan dalam pemberian nilai ?', 4, 19),
-(160, 'Dosen wali akademik memberikan solusi dalam menangani permasalahan mahasiswa ?', 4, 19),
-(161, 'Kurikulum sesuai dengan kompetensi lulusan ?', 4, 19),
-(162, 'Dosen memiliki kompetensi sesuai bidang ilmu ?', 4, 19),
-(163, 'Sistem informasi akademik memberikan peringatan terkait kegiatan akademik maupun kelengkapan administrasi akademik ?', 4, 19),
-(164, 'Pustakawan membantu mencarikan buku/ jurnal terkait ?', 4, 19),
-(165, 'Tenaga kependidikan memahami masalah dan kepentingan administrasi akademik mahasiswa ?', 4, 19),
-(166, 'Dosen memberikan perhatian kepada semua mahasiswa terkait perkuliahan ?', 4, 19),
-(167, 'Dosen wali akademik memantau perkembangan akademik mahasiswa ?', 4, 19),
-(168, 'Kemudahan dalam memperoleh informasi tentang dana penelitian ?', 5, 20),
-(169, 'Seleksi dana penelitian dilakukan secara transparan dan akuntabel ?', 5, 20),
-(170, 'Kesesuaian  penelitian dengan bidang ilmu ?', 5, 20),
-(171, 'Keterlibatan mahasiswa dalam penelitian ?', 5, 20),
-(172, 'Hasil penelitian telah diintegrasikan dalam proses pembelajaran (bahan ajar/buku ajar) ?', 5, 20),
-(173, 'Kemudahan mendapatkan bantuan seminar luar negeri ?', 5, 20),
-(174, 'Kemudahan mendapatkan bantuan seminar dalam negeri ?', 5, 20),
-(175, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan penelitian ?', 5, 20),
-(176, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang penelitan ?', 6, 21),
-(177, 'Kompetensi SDM yang tersedia di universitas sehubungan dengan kerjasama bidang penelitian memadai ?', 6, 21),
-(178, 'Komunikasi yang baik antara pihak mitra dan universitas di bidang penelitian ?', 6, 21),
-(179, 'Kejelasan prosedur kerjasama bidang penelitian antara pihak mitra dan pihak fakultas ?', 6, 21),
-(180, 'Implementasi kegiatan kerja sama bidang penelitian sesuai kontrak ?', 6, 21),
-(181, 'Manfaat pelaksanaan kegiatan penelitian terhadap pihak mitra ?', 6, 21),
-(182, 'Kemudahan dalam memperoleh informasi tentang dana pengabdian kepada masyarakat ?', 5, 22),
-(183, 'Seleksi dana pengabdian kepada masyarakat dilakukan secara transparan dan akuntabel ?', 5, 22),
-(184, 'Kesesuaian pengabdian kepada masyarakat dengan bidang ilmu ?', 5, 22),
-(185, 'Keterlibatan mahasiswa dalam pengabdian kepada masyarakat ?', 5, 22),
-(186, 'Hasil pengabdian kepada masyarakat diintegrasikan dalam proses pembelajaran (bahan ajar/buku ajar) ?', 5, 22),
-(187, 'Kemudahan mendapatkan bantuan seminar luar negeri ?', 5, 22),
-(188, 'Kemudahan mendapatkan bantuan seminar dalam negeri ?', 5, 22),
-(189, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan pengabdian kepada masyarakat ?', 5, 22),
-(190, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang pengabdian kepada masyarakat ?', 6, 23),
-(191, 'Kompetensi SDM yang tersedia di Universitas sehubungan dengan kerjasama bidang pengabdian kepada masyarakat memadai ?', 6, 23),
-(192, 'Komunikasi yang baik antara pihak mitra dan pihak universitas bidang pengabdian kepada masyarakat ?', 6, 23),
-(193, 'Kejelasan prosedur kerjasama antara pihak mitra dan pihak fakultas di bidang pengabdian kepada masyarakat ?', 6, 23),
-(194, 'Implementasi kegiatan kerja sama di bidang pengabdian kepada masyarakat sesuai kontrak ?', 6, 23),
-(195, 'Manfaat pelaksanaan kegiatan pengabdian kepada masyarakat terhadap pihak mitra ?', 6, 23),
-(199, 'Universitas mengevaluasi pekerjaan yang dilakukan dosen secara periodik ?', 5, 15),
-(200, 'Universitas menanggapi maupun menindaklanjuti kritik, saran, dan keluhan yang disampaikan ?', 5, 15);
+(1, 'Telah tercipta komunikasi yang baik antara pihak pengguna lulusan dengan pihak fakultas/universitas?', 1, 1),
+(2, 'Adanya kejelasan prosedur layanan manajemen antara pihak pengguna lulusan dengan fakultas/universitas?', 1, 1),
+(3, 'Kualitas layanan yang diberikan oleh staf/petugas?', 1, 1),
+(4, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi?', 4, 1),
+(5, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien?', 4, 1),
+(6, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya?', 4, 1),
+(7, 'Kualitas pelayanan di program studi dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(8, 'Kualitas pelayanan di tingkat fakultas dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(9, 'Kualitas pelayanan di tingkat universitas dalam pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(10, 'Sikap profesional petugas di program studi dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(11, 'Sikap profesional petugas di tingkat fakultas dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(12, 'Sikap profesional petugas di tingkat universitas dalam melayani pengurusan kegiatan kemahasiswaan atau kebutuhan lainnya?', 4, 1),
+(13, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi?', 5, 1),
+(14, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien?', 5, 1),
+(15, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya?', 5, 1),
+(16, 'Kualitas layanan di tingkat prodi/fakultas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll)?', 5, 1),
+(17, 'Kualitas layanan di tingkat universitas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll)?', 5, 1),
+(18, 'Kualitas layanan di tingkat fakultas dalam penyediaan kebutuhan pembelajaran?', 5, 1),
+(19, 'Kualitas layanan di tingkat universitas dalam penyediaan kebutuhan pembelajaran?', 5, 1),
+(20, 'Kemampuan petugas di tingkat prodi/fakultas  dalam memberikan layanan/informasi?', 5, 1),
+(21, 'Kemampuan petugas di tingkat universitas  dalam memberikan layanan/informasi?', 5, 1),
+(22, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi?', 3, 1),
+(23, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien?', 3, 1),
+(24, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya?', 3, 1),
+(25, 'Kualitas layanan di tingkat prodi/fakultas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll)?', 3, 1),
+(26, 'Kualitas layanan di tingkat universitas dalam kegiatan administratif (kepangkatan/jabatan fungsional, surat ijin, dll)?', 3, 1),
+(27, 'Kemampuan petugas di tingkat fakultas dalam memberikan layanan/informasi?', 3, 1),
+(28, 'Kemampuan petugas di tingkat universitas dalam memberikan layanan/informasi?', 3, 1),
+(29, 'UHO telah memiliki sistem tata pamong yang dapat menjamin terlaksananya akuntabilitas, keberlanjutan dan transparansi, serta mitigasi potensi risiko institusi?', 2, 1),
+(30, 'Peraturan (Statuta, OTK, Peratutan Akademik) telah dilaksanakan secara konsisten, efektif dan efisien?', 2, 1),
+(31, 'Dosen dan Tenaga Kependidikan telah bekerja sesuai tugas dan fungsinya?', 2, 1),
+(32, 'Kualitas layanan di tingkat program studi/fakultas dalam pengurusan administratif (ijazah, legalisir, dan kebutuhan lainnya)?', 2, 1),
+(33, 'Kualitas layanan di tingkat fakultas/universitas dalam pengelolaan alumni?', 2, 1),
+(34, 'Kualitas layanan di tingkat fakultas  dalam memberikan layanan/informasi?', 2, 1),
+(35, 'Kualitas layanan di tingkat universitas  dalam memberikan layanan/informasi?', 2, 1),
+(36, 'Telah tercipta komunikasi yang baik antara pihak mitra UHO dengan pihak universitas?', 6, 1),
+(37, 'Adanya kejelasan prosedur kerjasama  antara pihak mitra dengan pihak universitas?', 6, 1),
+(38, 'Realisasi kegiatan kerja sama selama masa berlaku MOA MOU/sejenisnya?', 6, 1),
+(39, 'Manfaat yang diberikan oleh pelaksanaan kegiatan terhadap pihak mitra?', 6, 1),
+(40, 'Kemudahan memperoleh informasi kegiatan penalaran?', 4, 2),
+(41, 'Kejelasan pembinaan kegiatan penalaran?', 4, 2),
+(42, 'Kemudahan memperoleh infomasi tentang minat dan bakat?', 4, 2),
+(43, 'Kejelasan pembinaan dalam minat/bakat?', 4, 2),
+(44, 'Kemudahan memperoleh infomasi tentang kesejahtraan (beasiswa, bimbingan konseling, dan layanan kesehatan)?', 4, 2),
+(45, 'Kejelasan prosedur dalam kesejahtraan (beasiswa, bimbingan konseling, dan layanan kesehatan)?', 4, 2),
+(46, 'Kemudahan memperoleh infomasi tentang karier dan bimbingan kewirausahaan?', 4, 2),
+(47, 'Kejelasan prosedur dalam karier dan bimbingan kewirausahaan?', 4, 2),
+(48, 'Kejelasan kriteria seleksi beasiswa?', 4, 2),
+(49, 'Ketepatan waktu pencairan beasiswa?', 4, 2),
+(50, 'Kejelasan sistem rekruitmen, orientasi, dan penempatan/pembagian tugas dosen?', 5, 3),
+(51, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri?', 5, 3),
+(52, 'Jenjang karir didasarkan pada kinerja/prestasi kerja?', 5, 3),
+(53, 'Sistem pembinaan dosen dalam bentuk pemberian penghargaan dan sanksi?', 5, 3),
+(54, 'Kejelasan sistem rekruitmen, orientasi, dan penempatan pegawai?', 3, 3),
+(55, 'Kesempatan untuk mengikuti pelatihan/workshop/seminar yang dibutuhkan untuk pengembangan diri?', 3, 3),
+(56, 'Jenjang karir didasarkan pada kinerja/prestasi kerja?', 3, 3),
+(57, 'Sistem pembinaan tenaga kependidikan dalam bentuk pemberian penghargaan dan sanksi?', 3, 3),
+(58, 'Universitas menilai dan mengevaluasi pekerjaan yang dilakukan tenaga kependidikan secara periodik?', 3, 3),
+(59, 'Universitas menanggapi kemudian menindaklanjuti kritik, saran, dan keluhan yang disampaikan?', 3, 3),
+(60, 'Universitas mengevaluasi pekerjaan yang dilakukan dosen secara periodik?', 5, 3),
+(61, 'Universitas menanggapi maupun menindaklanjuti kritik, saran, dan keluhan yang disampaikan?', 5, 3),
+(62, 'Adanya alokasi dana  untuk kegiatan kemahasiswaan?', 4, 4),
+(63, 'Ruang kuliah nyaman, bersih, rapi, dan memadai?', 4, 4),
+(64, 'Ketersediaan alat/bahan  penunjang kegiatan praktikum?', 4, 4),
+(65, 'Perpustakaan yang nyaman, bersih, dan memadai?', 4, 4),
+(66, 'Perpustakaan menyediakan buku, jurnal, dan literatur lain yang memadai?', 4, 4),
+(67, 'Tempat ibadah nyaman, bersih, dan memadai?', 4, 4),
+(68, 'Ketersediaan sarana dan prasarana internet?', 4, 4),
+(69, 'Taman dan ruang terbuka yang mendukung terciptanya suasana akademik yang kondusif?', 4, 4),
+(70, 'Ketersediaan sarana dan prasarana olah raga?', 4, 4),
+(71, 'Ketersediaan sarana dan prasarana kesehatan?', 4, 4),
+(72, 'Tempat parkir yang aman dan memadai?', 4, 4),
+(73, 'Toilet nyaman, bersih, dan memadai?', 4, 4),
+(74, 'Alokasi biaya operasional pendidikan memadai?', 5, 4),
+(75, 'Alokasi dana kegiatan penelitian dosen memadai?', 5, 4),
+(76, 'Alokasi dana untuk kegiatan Pengabdian kepada Masyarakat oleh dosen memadai?', 5, 4),
+(77, 'Ruang kuliah nyaman dan memadai?', 5, 4),
+(78, 'Ruang dosen nyaman dan memadai?', 5, 4),
+(79, 'Ketersediaan alat-alat penunjang untuk kegiatan mengajar?', 5, 4),
+(80, 'Perpustakaan nyaman dan memadai?', 5, 4),
+(81, 'Perpustakaan menyediakan buku, jurnal, dan literatur lain yang memadai?', 5, 4),
+(82, 'Tempat ibadah nyaman dan memadai?', 5, 4),
+(83, 'Akses jaringan internet memadai dan lancer?', 5, 4),
+(84, 'Ketersediaan sarana dan prasarana pembelajaran daring?', 5, 4),
+(85, 'Taman maupun ruang terbuka yang mendukung terciptanya suasana akademik?', 5, 4),
+(86, 'Ketersediaan sarana dan prasarana olah raga?', 5, 4),
+(87, 'Ketersediaan sarana dan prasarana kesehatan?', 5, 4),
+(88, 'Tempat parkir yang aman dan memadai?', 5, 4),
+(89, 'Toilet nyaman, bersih, dan memadai?', 5, 4),
+(90, 'Kondisi sarana dan prasarana pembelajaran daring ?', 4, 5),
+(91, 'Perpustakaan yang nyaman dan memadai?', 4, 5),
+(92, 'Perpustakaan menyediakan buku, jurnal, dan literature lain yang memadai?', 4, 5),
+(93, 'Tersedianya sarana dalam mengakses buku, jurnal dan literature serta bahan ajar berbasis internet di perpustakaan?', 4, 5),
+(94, 'Ketersediaan laboratorium yang relevan dengan kebutuhan keilmuan?', 4, 5),
+(95, 'Kelengkapan sarana laboratorium yang mudah diakses dan berkualitas?', 4, 5),
+(96, 'Ruang kuliah aman, nyaman, dan bersih?', 4, 5),
+(97, 'Kelengkapan sarana perkuliahan?', 4, 5),
+(98, 'Ruang layanan administrasi akademik fakultas (Tata Usaha) nyaman?', 4, 5),
+(99, 'Ruang administrasi akademik (Tata Usaha Fakultas) memiliki prosedur pelayanan akademik yang jelas?', 4, 5),
+(100, 'Sistem informasi akademik universitas memberikan data administrasi yang akurat?', 4, 5),
+(101, 'Jadwal kegiatan akademik diselenggarakan tepat waktu?', 4, 5),
+(102, 'Tenaga kependidikan memberikan informasi yang akurat dan tepat waktu?', 4, 5),
+(103, 'Dosen menyampaikan RPS dan melaksanakan kontrak perkuliahan yang telah disepakati?', 4, 5),
+(104, 'Pengelola program studi/fakultas memberikan pelayanan prima kepada mahasiswa?', 4, 5),
+(105, 'Sistem informasi akademik mudah diakses?', 4, 5),
+(106, 'Staf perpustakaan tanggap melayani mahasiswa?', 4, 5),
+(107, 'Tenaga kependidikan tanggap melayani keluhan mahasiswa?', 4, 5),
+(108, 'Dosen memberikan kesempatan untuk bertanya atau berdiskusi?', 4, 5),
+(109, 'Kemudahan dosen dalam melayani mahasiswa?', 4, 5),
+(110, 'Dosen wali akademik tanggap menangani permasalahan akademik mahasiswa?', 4, 5),
+(111, 'Pustakawan memiliki pengetahuan sesuai dengan pekerjaannya?', 4, 5),
+(112, 'Tenaga kependidikan memiliki pengetahuan sesuai dengan bidang pekerjaannya?', 4, 5),
+(113, 'Tenaga kependidikan bersikap ramah dan professional?', 4, 5),
+(114, 'Dosen memberikan perkuliahan sesuai kontrak (minimal 14 minggu)?', 4, 5),
+(115, 'Dosen transparan dalam pemberian nilai?', 4, 5),
+(116, 'Dosen wali akademik memberikan solusi dalam menangani permasalahan mahasiswa?', 4, 5),
+(117, 'Kurikulum sesuai dengan kompetensi lulusan?', 4, 5),
+(118, 'Dosen memiliki kompetensi sesuai bidang ilmu?', 4, 5),
+(119, 'Sistem informasi akademik memberikan peringatan terkait kegiatan akademik maupun kelengkapan administrasi akademik?', 4, 5),
+(120, 'Pustakawan membantu mencarikan buku/ jurnal terkait?', 4, 5),
+(121, 'Tenaga kependidikan memahami masalah dan kepentingan administrasi akademik mahasiswa?', 4, 5),
+(122, 'Dosen memberikan perhatian kepada semua mahasiswa terkait perkuliahan?', 4, 5),
+(123, 'Dosen wali akademik memantau perkembangan akademik mahasiswa?', 4, 5),
+(124, 'Kemudahan dalam memperoleh informasi tentang dana penelitian?', 5, 6),
+(125, 'Seleksi dana penelitian dilakukan secara transparan dan akuntabel?', 5, 6),
+(126, 'Kesesuaian penelitian dengan bidang ilmu?', 5, 6),
+(127, 'Keterlibatan mahasiswa dalam penelitian?', 5, 6),
+(128, 'Hasil penelitian telah diintegrasikan dalam proses pembelajaran (bahan ajar/buku ajar)?', 5, 6),
+(129, 'Kemudahan mendapatkan bantuan seminar luar negeri?', 5, 6),
+(130, 'Kemudahan mendapatkan bantuan seminar dalam negeri?', 5, 6),
+(131, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan penelitian?', 5, 6),
+(132, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang penelitan?', 6, 6),
+(133, 'Kompetensi SDM yang tersedia di universitas sehubungan dengan kerjasama bidang penelitian memadai?', 6, 6),
+(134, 'Komunikasi yang baik antara pihak mitra dan universitas di bidang penelitian?', 6, 6),
+(135, 'Kejelasan prosedur kerjasama bidang penelitian antara pihak mitra dan pihak fakultas?', 6, 6),
+(136, 'Implementasi kegiatan kerja sama bidang penelitian sesuai kontrak?', 6, 6),
+(137, 'Manfaat pelaksanaan kegiatan penelitian terhadap pihak mitra?', 6, 6),
+(138, 'Kemudahan dalam memperoleh informasi tentang dana pengabdian kepada masyarakat?', 5, 7),
+(139, 'Seleksi dana pengabdian kepada masyarakat dilakukan secara transparan dan akuntabel?', 5, 7),
+(140, 'Kesesuaian pengabdian kepada masyarakat dengan bidang ilmu?', 5, 7),
+(141, 'Keterlibatan mahasiswa dalam pengabdian kepada masyarakat?', 5, 7),
+(142, 'Hasil pengabdian kepada masyarakat diintegrasikan dalam proses pembelajaran (bahan ajar/buku ajar)?', 5, 7),
+(143, 'Kemudahan mendapatkan bantuan seminar luar negeri?', 5, 7),
+(144, 'Kemudahan mendapatkan bantuan seminar dalam negeri?', 5, 7),
+(145, 'Kemudahan dalam memanfaatkan fasilitas atau sarana prasarana fakultas/universitas untuk keperluan pelaksanaan pengabdian kepada masyarakat?', 5, 7),
+(146, 'Layanan yang diberikan staf/petugas di bagian kerjasama Universitas bidang pengabdian kepada masyarakat?', 6, 7),
+(147, 'Kompetensi SDM yang tersedia di Universitas sehubungan dengan kerjasama bidang pengabdian kepada masyarakat memadai?', 6, 7),
+(148, 'Komunikasi yang baik antara pihak mitra dan pihak universitas bidang pengabdian kepada masyarakat?', 6, 7),
+(149, 'Kejelasan prosedur kerjasama antara pihak mitra dan pihak fakultas di bidang pengabdian kepada masyarakat?', 6, 7),
+(150, 'Implementasi kegiatan kerja sama di bidang pengabdian kepada masyarakat sesuai kontrak?', 6, 7),
+(151, 'Manfaat pelaksanaan kegiatan pengabdian kepada masyarakat terhadap pihak mitra?', 6, 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_saran`
+-- Struktur dari tabel `tbl_saran`
 --
 
 CREATE TABLE `tbl_saran` (
-  `id` int(11) NOT NULL,
-  `saran` text DEFAULT NULL,
-  `users_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_saran`
---
-
-INSERT INTO `tbl_saran` (`id`, `saran`, `users_id`) VALUES
-(31, 'Terimakasih', 55),
-(32, 'Fasilitas Internet kurang bagus', 48),
-(33, 'Terimakasih', 49),
-(34, 'Terimakasih', 51),
-(35, 'Terimakasih', 52),
-(36, 'Semoga Lebih Baik', 50),
-(37, 'Mahasiswa', 53);
+  `id` bigint UNSIGNED NOT NULL,
+  `saran` text COLLATE utf8mb4_unicode_ci,
+  `users_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_tendik`
---
-
-CREATE TABLE `tbl_tendik` (
-  `id` int(11) NOT NULL,
-  `nip` varchar(100) DEFAULT NULL,
-  `status_tendik` varchar(100) DEFAULT NULL,
-  `jabatan` varchar(100) DEFAULT NULL,
-  `unit_kerja` varchar(100) DEFAULT NULL,
-  `lama_kerja` varchar(100) DEFAULT NULL,
-  `tingkat_pendidikan` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `nama_lengkap` varchar(200) DEFAULT NULL,
-  `nim` varchar(100) NOT NULL,
-  `email` varchar(200) DEFAULT NULL,
-  `tbl_jurusan_id` int(11) NOT NULL,
-  `jenis_kelamin` enum('Laki - Laki','Perempuan') DEFAULT NULL,
-  `alamat` text CHARACTER SET armscii8 DEFAULT NULL,
-  `no_hp` varchar(100) DEFAULT NULL,
-  `user_type` enum('admin','pengguna_lulusan','alumni','tenaga_kependidikan','mahasiswa','dosen','mitra') NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_lengkap` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nim` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tbl_jurusan_id` bigint UNSIGNED NOT NULL,
+  `jenis_kelamin` enum('Laki - Laki','Perempuan') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_type` enum('admin','pengguna_lulusan','alumni','tenaga_kependidikan','mahasiswa','dosen','mitra') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `email`, `tbl_jurusan_id`, `jenis_kelamin`, `alamat`, `no_hp`, `user_type`, `password`) VALUES
-(48, 'Mitra', 'MITRA', 'mitra@gmail.com', 3, 'Laki - Laki', 'Kampus Uho', '12345678', 'mitra', '$2y$10$CPrKEDH2YAXdBcp9sLrFluos32dRvm8eeNEtKDwez3I9B30mxFSP.'),
-(49, 'Tenaga Pendidik', 'TENAGAPENDIDIK', 'tendik@gmail.com', 3, 'Laki - Laki', 'Kampus Uho', '12345678', 'tenaga_kependidikan', '$2y$10$T.N4vzwBO83AkndfDTewJezfGA7ThD6uya5XRwQ2o0ekVUKObFZf.'),
-(50, 'dosen', '0011078904', 'dosen@gmail.com', 3, 'Laki - Laki', 'Andonuhu', '12345678', 'dosen', '$2y$10$6fomaQTDcSgaD2IR6EWJB.bk4hDeqxOmeuR5qHwYmwLlHkdMJbsTG'),
-(51, 'Lisa', 'PENGGUNALULUSAN', 'penggunalulusan@gmail.com', 3, 'Laki - Laki', 'Andonuhu', '3923982983', 'pengguna_lulusan', '$2y$10$GObzeynJigwqyBIH0S6Jku90MU3GeD2A4xz.qs0xim1O20b/z.dTi'),
-(52, 'Dinar', 'ALUMNI', 'alumni@gmail.com', 3, 'Laki - Laki', 'Wua - Wua', '3923982983', 'alumni', '$2y$10$441LGMEHzVgrz3Gs3XHvEufuLaK5RZswLRPHlPMiNvpNxJAB5RAfm'),
-(53, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Kancil', '3923982983', 'mahasiswa', '$2y$10$TL65dokufygtLWOTCdqQKOh1cmIRyRHWHYH5q/sP7LRGQ/eUWvz56'),
-(54, 'Admin123', 'ADMIN', 'admin1@gmail.com', 3, 'Laki - Laki', 'uho', '12345678', 'admin', '$2y$10$e4CKhEuUukWchOq/tjJub.MK1eI.ofaVXqzgF0xr4XUaWaf8m9m/G'),
-(55, 'Sarman', 'SARMAN', 'sarman@gmail.com', 3, 'Laki - Laki', 'Palangga', '3923982983', 'pengguna_lulusan', '$2y$10$Ft7s63XglYkLm8ZnUox.beuW.LeFCG5PU5/7H02B3Qdr9/L.qE212');
+INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `email`, `tbl_jurusan_id`, `jenis_kelamin`, `alamat`, `no_hp`, `user_type`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Mitra', 'MITRA', 'mitra@gmail.com', 3, 'Laki - Laki', 'Kampus UHO', '0813233123', 'mitra', '$2y$10$GmHqbDeivO69E7C5gYGHUeDn9MlSnOzl34xvzGnCzeIVd2BMyAVC.', NULL, NULL, NULL, NULL),
+(2, 'Tenaga Pendidik', 'TENAGAPENDIDIK', 'tendik@gmail.com', 3, 'Laki - Laki', 'Kampus UHO', '0813233123', 'tenaga_kependidikan', '$2y$10$/.XVBwJesZywf/.UoGuviOXgoUXLgcTXQPdWeV9UKv.y1bl1nQ0zi', NULL, NULL, NULL, NULL),
+(3, 'Dosen', '0011078904', 'dosen@gmail.com', 3, 'Laki - Laki', 'Anduhonohu', '08154433434', 'dosen', '$2y$10$asm3AOQ4mq141w.x/Y.Qb.BkEd5ZP91A0CDcRJYXjUJ6T8iQ3tcE6', NULL, NULL, NULL, NULL),
+(4, 'Lisa', 'PENGGUNALULUSAN', 'penggunalulusan@gmail.com', 3, 'Laki - Laki', 'Anduhonohu', '08154433434', 'pengguna_lulusan', '$2y$10$ziGAubbrz/SdEtSXfEg5le8f6Vl8pfa50LlBDRAEoh1VpT2pthss2', NULL, NULL, NULL, NULL),
+(5, 'Dinar', 'ALUMNI', 'alumni@gmail.com', 3, 'Laki - Laki', 'Anduhonohu', '08154433434', 'alumni', '$2y$10$C1triFs6qwdlwcoWyER8r.eNJyvGMKz4n8kCVBWg4oZhu5n1GOZFq', NULL, NULL, NULL, NULL),
+(6, 'Fauzan', 'E1E120067', 'fauzan@gmail.com', 3, 'Laki - Laki', 'Anduhonohu', '08154433434', 'mahasiswa', '$2y$10$4dRBufal1K5zVWwpYzv1..XbOIJcDw3aJWq1zl5esNymaP3yLjIQO', NULL, NULL, NULL, NULL),
+(7, 'Admin', 'ADMIN', 'admin@gmail.com', 3, 'Laki - Laki', 'UHO', '08154433434', 'admin', '$2y$10$7vCfxXiiQT0hi4P9byEIwOU4u5JESyGeQgdVyDU.XjVfcM2RhFcL2', NULL, NULL, NULL, NULL),
+(8, 'Sarman', 'Sarman', 'sarman@gmail.com', 3, 'Laki - Laki', 'Palangga', '08154433434', 'pengguna_lulusan', '$2y$10$kjbe4lONUDLJEW7ifjQIsuOcqBo42byNJm6M9mmF2g66cBYp3y1ne', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_alumni`
+-- Indeks untuk tabel `failed_jobs`
 --
-ALTER TABLE `tbl_alumni`
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_dosen`
+-- Indeks untuk tabel `password_resets`
 --
-ALTER TABLE `tbl_dosen`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `tbl_jawaban_user`
+-- Indeks untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeks untuk tabel `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tbl_jawaban_user_tbl_pertanyaan1` (`tbl_pertanyaan_id`),
-  ADD KEY `fk_tbl_jawaban_user_users1` (`users_id`);
+  ADD KEY `tbl_jawaban_user_tbl_pertanyaan_id_foreign` (`tbl_pertanyaan_id`),
+  ADD KEY `tbl_jawaban_user_users_id_foreign` (`users_id`);
 
 --
--- Indexes for table `tbl_jurusan`
+-- Indeks untuk tabel `tbl_jurusan`
 --
 ALTER TABLE `tbl_jurusan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_kategori`
+-- Indeks untuk tabel `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_kriteria`
+-- Indeks untuk tabel `tbl_kategori_kriteria`
+--
+ALTER TABLE `tbl_kategori_kriteria`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_kategori_kriteria_tbl_kategori_id_foreign` (`tbl_kategori_id`),
+  ADD KEY `tbl_kategori_kriteria_tbl_kriteria_id_foreign` (`tbl_kriteria_id`);
+
+--
+-- Indeks untuk tabel `tbl_kriteria`
 --
 ALTER TABLE `tbl_kriteria`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tbl_kriteria_tbl_kategori1` (`kategori_id`);
-
---
--- Indexes for table `tbl_mahasiswa`
---
-ALTER TABLE `tbl_mahasiswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_menu`
---
-ALTER TABLE `tbl_menu`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_mitra`
---
-ALTER TABLE `tbl_mitra`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_penggunalulusan`
---
-ALTER TABLE `tbl_penggunalulusan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_pertanyaan`
+-- Indeks untuk tabel `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_pertanyaan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tbl_pertanyaan_tbl_kategori1` (`kategori_id`) USING BTREE,
-  ADD KEY `fk_tbl_pertanyaan_tbl_kriteria1` (`kriteria_id`);
+  ADD KEY `tbl_pertanyaan_kategori_id_foreign` (`kategori_id`),
+  ADD KEY `tbl_pertanyaan_kriteria_id_foreign` (`kriteria_id`);
 
 --
--- Indexes for table `tbl_saran`
+-- Indeks untuk tabel `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tbl_saran_user1` (`users_id`);
+  ADD KEY `tbl_saran_users_id_foreign` (`users_id`);
 
 --
--- Indexes for table `tbl_tendik`
---
-ALTER TABLE `tbl_tendik`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`,`nim`) USING BTREE,
-  ADD KEY `fk_users_tbl_jurusan1` (`tbl_jurusan_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_nim_unique` (`nim`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_tbl_jurusan_id_foreign` (`tbl_jurusan_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_jawaban_user`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_kriteria`
+-- AUTO_INCREMENT untuk tabel `tbl_jurusan`
+--
+ALTER TABLE `tbl_jurusan`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_kategori`
+--
+ALTER TABLE `tbl_kategori`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_kategori_kriteria`
+--
+ALTER TABLE `tbl_kategori_kriteria`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_kriteria`
 --
 ALTER TABLE `tbl_kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_pertanyaan`
+-- AUTO_INCREMENT untuk tabel `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_pertanyaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
--- AUTO_INCREMENT for table `tbl_saran`
+-- AUTO_INCREMENT untuk tabel `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tbl_jawaban_user`
+-- Ketidakleluasaan untuk tabel `tbl_jawaban_user`
 --
 ALTER TABLE `tbl_jawaban_user`
-  ADD CONSTRAINT `fk_tbl_jawaban_user_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_jawaban_user_tbl_pertanyaan_id_foreign` FOREIGN KEY (`tbl_pertanyaan_id`) REFERENCES `tbl_pertanyaan` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_jawaban_user_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tbl_kriteria`
+-- Ketidakleluasaan untuk tabel `tbl_kategori_kriteria`
 --
-ALTER TABLE `tbl_kriteria`
-  ADD CONSTRAINT `fk_tbl_kriteria_tbl_kategori1` FOREIGN KEY (`kategori_id`) REFERENCES `tbl_kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tbl_kategori_kriteria`
+  ADD CONSTRAINT `tbl_kategori_kriteria_tbl_kategori_id_foreign` FOREIGN KEY (`tbl_kategori_id`) REFERENCES `tbl_kategori` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_kategori_kriteria_tbl_kriteria_id_foreign` FOREIGN KEY (`tbl_kriteria_id`) REFERENCES `tbl_kriteria` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tbl_pertanyaan`
+-- Ketidakleluasaan untuk tabel `tbl_pertanyaan`
 --
 ALTER TABLE `tbl_pertanyaan`
-  ADD CONSTRAINT `fk_tbl_pertanyaan_tbl_kategori1` FOREIGN KEY (`kategori_id`) REFERENCES `tbl_kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_tbl_pertanyaan_tbl_kriteria1` FOREIGN KEY (`kriteria_id`) REFERENCES `tbl_kriteria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_pertanyaan_kategori_id_foreign` FOREIGN KEY (`kategori_id`) REFERENCES `tbl_kategori` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_pertanyaan_kriteria_id_foreign` FOREIGN KEY (`kriteria_id`) REFERENCES `tbl_kriteria` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tbl_saran`
+-- Ketidakleluasaan untuk tabel `tbl_saran`
 --
 ALTER TABLE `tbl_saran`
-  ADD CONSTRAINT `fk_tbl_saran_user1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_saran_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `users`
+-- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_users_tbl_jurusan1` FOREIGN KEY (`tbl_jurusan_id`) REFERENCES `tbl_jurusan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `users_tbl_jurusan_id_foreign` FOREIGN KEY (`tbl_jurusan_id`) REFERENCES `tbl_jurusan` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

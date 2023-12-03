@@ -59,7 +59,7 @@
                                         </form> --}}
                                         <a href="{{ url("/hapus/$prty->id/$kriteriaId/$kategoriId") }}"
                                             class="btn btn-danger mx-1" data-confirm-delete="true">
-                                            <i class="bi bi-trash" data-confirm-delete="true"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
 
                                         <button type="button" data-bs-toggle="modal"

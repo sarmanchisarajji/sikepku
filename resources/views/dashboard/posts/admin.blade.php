@@ -52,7 +52,7 @@
                                 <td class="d-flex justify-content-center">
                                     <a href="{{ url("/destroy/$user->id") }}" class="btn btn-danger mx-1"
                                         data-confirm-delete="true">
-                                        <i class="bi bi-trash" data-confirm-delete="true"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                     {{-- <form action="/destroy/{{ $user->id }}" class="mx-1" method="post">
                                         @csrf
