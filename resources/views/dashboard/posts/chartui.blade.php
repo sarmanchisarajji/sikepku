@@ -41,7 +41,7 @@
                             $krt = strtolower(str_replace(' ', '', str_replace(',', '', str_replace('Kriteria', '', $kriteria))));
                             $krtSlug = Str::slug($krt);
                         @endphp
-                        <h5 class="card-title">Diagram {{ $kriteria }}</h5>
+                        <h5 class="card-title">Diagram <br> {{ $kriteria }}</h5>
 
                         <div class="chart-container">
                             <canvas class="my-chart" id="{{ $krtSlug }}-chart"></canvas>
