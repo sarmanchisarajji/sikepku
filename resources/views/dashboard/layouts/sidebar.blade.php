@@ -86,11 +86,11 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" style="font-size: 12px">Lainnya</span>
         </li>
-        <li class="menu-item {{ request()->is('dashboard/tentang*') ? 'active open' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('dashboard/tentang*') ? 'active open' : '' }}">
             <a href="/tentang" class="menu-link {{ request()->is('dashboard/tentang)' ? 'active' : '') }}">
                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
                 <div data-i18n="Misc">Tentang</div>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </aside>

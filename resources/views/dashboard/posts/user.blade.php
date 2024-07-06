@@ -71,10 +71,10 @@
                                         {{ $user->jurusan->nama_prodi }}
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        <a href="{{ url("/delete/$user->id") }}" class="btn btn-danger mx-1"
+                                        {{-- <a href="{{ url("/delete/$user->id") }}" class="btn btn-danger mx-1"
                                             data-confirm-delete="true">
                                             <i class="bi bi-trash"></i>
-                                        </a>
+                                        </a> --}}
                                         {{-- <form action="/delete/{{ $user->id }}" class="mx-1" method="post">
                                             @csrf
                                             @method('delete')
@@ -83,6 +83,16 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form> --}}
+                                        <form action="/delete/{{ $user->id }}" method="post"
+                                            id="deleteForm{{ $user->id }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="btn btn-danger mx-1"
+                                                onclick="confirmDelete('{{ $user->id }}')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+
                                         <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop1{{ $user->id }}"
                                             class="btn btn-warning btn-edit" name="btn-edit">
@@ -416,4 +426,24 @@
             });
         });
     </script> --}}
+
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna menekan "Ya", kirim formulir
+                    document.getElementById('deleteForm' + userId).submit();
+                }
+            });
+        }
+    </script>
 @endsection

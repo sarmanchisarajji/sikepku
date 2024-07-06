@@ -57,10 +57,20 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form> --}}
-                                        <a href="{{ url("/hapus/$prty->id/$kriteriaId/$kategoriId") }}"
+                                        {{-- <a href="{{ url("/hapus/$prty->id/$kriteriaId/$kategoriId") }}"
                                             class="btn btn-danger mx-1" data-confirm-delete="true">
                                             <i class="bi bi-trash"></i>
-                                        </a>
+                                        </a> --}}
+
+                                        <form action="{{ url("/hapus/$prty->id/$kriteriaId/$kategoriId") }}" method="post"
+                                            id="deleteForm{{ $prty->id }}-{{ $kriteriaId }}-{{ $kategoriId }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="btn btn-danger mx-1"
+                                                onclick="confirmDelete('{{ $prty->id }}-{{ $kriteriaId }}-{{ $kategoriId }}')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
 
                                         <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop1{{ $prty->id }}" class="btn btn-warning"
@@ -157,4 +167,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmDelete(formId) {
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna menekan "Ya", kirim formulir
+                    document.getElementById('deleteForm' + formId).submit();
+                }
+            });
+        }
+    </script>
 @endsection
